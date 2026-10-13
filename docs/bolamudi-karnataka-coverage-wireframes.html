@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karnataka Coverage — Wireframes · Bolamudi Enterprise</title>
+<style>
+  :root{
+    --ink:#14181b; --ink2:#3d474e; --ink3:#78848c;
+    --line:#c9d1d6; --line2:#e4e9ec; --paper:#fbfcfc; --wash:#f1f4f6;
+    --t1:#1f4f4a; --t2:#5d8f89; --t3:#b9cfcc; --t0:#e8ecee;
+    --accent:#b4622a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#eef1f3;color:var(--ink);
+    font:14px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:1180px;margin:0 auto;padding:48px 28px 80px}
+  header.doc{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:8px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);margin:0 0 10px}
+  h1{font-size:30px;line-height:1.15;margin:0 0 8px;letter-spacing:-.02em;font-weight:600}
+  .sub{color:var(--ink2);margin:0;max-width:60ch}
+  section{background:var(--paper);border:1px solid var(--line);margin-top:28px;padding:26px 28px 30px}
+  h2{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);
+     margin:0 0 4px;font-weight:600}
+  h3{font-size:20px;margin:0 0 6px;font-weight:600;letter-spacing:-.01em}
+  .note{color:var(--ink2);font-size:13px;max-width:78ch;margin:0 0 20px}
+  svg{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--line2)}
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:12px;color:var(--ink2)}
+  .legend span{display:flex;align-items:center;gap:7px}
+  .sw{width:22px;height:12px;border:1px solid var(--ink3);display:inline-block}
+  .cap{font-size:11.5px;color:var(--ink3);margin-top:9px;font-style:italic}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="doc">
+  <p class="eyebrow">Bolamudi Enterprise · Signature Page</p>
+  <h1>Karnataka Coverage — Layout &amp; Interaction Wireframes</h1>
+  <p class="sub">Structural diagrams only. No brand colours, no final typography. Tier colours are indicative to show hierarchy, not palette.</p>
+</header>
+
+<!-- ============ 1. DESKTOP FULL PAGE ============ -->
+<section>
+  <h2>Diagram 01</h2>
+  <h3>Desktop full page — ≥1280px</h3>
+  <p class="note">Nine zones. The map module (Z3) sits third, not first: the visitor needs the orientation strip to know what question the map answers before it is worth interacting with.</p>
+
+  <svg viewBox="0 0 1120 1560" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="7" stroke="#c9d1d6" stroke-width="1"/>
+      </pattern>
+      <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+        <path d="M0,0 L9,4.5 L0,9 z" fill="#78848c"/>
+      </marker>
+    </defs>
+
+    <!-- nav -->
+    <rect x="40" y="24" width="1040" height="42" fill="#fff" stroke="#14181b" stroke-width="1.5"/>
+    <text x="60" y="50" font-size="13" font-weight="700" fill="#14181b">BOLAMUDI ENTERPRISE</text>
+    <text x="700" y="50" font-size="11.5" fill="#78848c">Services</text>
+    <text x="775" y="50" font-size="11.5" font-weight="700" fill="#14181b">Karnataka</text>
+    <rect x="773" y="55" width="66" height="2" fill="#b4622a"/>
+    <text x="860" y="50" font-size="11.5" fill="#78848c">Approach</text>
+    <text x="940" y="50" font-size="11.5" fill="#78848c">About</text>
+    <text x="1000" y="50" font-size="11.5" fill="#78848c">Contact</text>
+
+    <!-- Z1 HERO -->
+    <rect x="40" y="80" width="1040" height="250" fill="#fbfcfc" stroke="#c9d1d6"/>
+    <text x="58" y="102" font-size="10" letter-spacing="3" fill="#78848c">Z1 · HERO — 72vh · NO PHOTOGRAPH</text>
+    <text x="60" y="140" font-size="10" letter-spacing="3" fill="#b4622a">KARNATAKA</text>
+    <text x="60" y="188" font-size="42" font-weight="600" fill="#14181b">We know this ground.</text>
+    <rect x="60" y="208" width="440" height="8" fill="#e4e9ec"/>
+    <rect x="60" y="222" width="470" height="8" fill="#e4e9ec"/>
+    <rect x="60" y="236" width="330" height="8" fill="#e4e9ec"/>
+    <rect x="60" y="264" width="150" height="36" fill="#14181b"/>
+    <text x="82" y="287" font-size="11.5" fill="#fff">Explore the map</text>
+    <rect x="222" y="264" width="200" height="36" fill="none" stroke="#14181b"/>
+    <text x="244" y="287" font-size="11.5" fill="#14181b">Request a briefing</text>
+    <!-- silhouette -->
+    <path d="M700,120 L790,110 L830,150 L845,215 L820,270 L790,320 L745,318 L720,270 L695,215 L690,165 Z"
+          fill="url(#hatch)" stroke="#c9d1d6" stroke-width="1.5"/>
+    <text x="712" y="230" font-size="9.5" fill="#78848c">self-drawing</text>
+    <text x="712" y="244" font-size="9.5" fill="#78848c">silhouette, 8%</text>
+
+    <!-- Z2 ORIENTATION -->
+    <rect x="40" y="342" width="1040" height="92" fill="#fff" stroke="#c9d1d6"/>
+    <line x1="40" y1="342" x2="1080" y2="342" stroke="#14181b" stroke-width="2"/>
+    <text x="58" y="364" font-size="10" letter-spacing="3" fill="#78848c">Z2 · ORIENTATION — HOW TO READ THIS MAP</text>
+    <g font-size="10.5" fill="#3d474e">
+      <rect x="58" y="378" width="14" height="14" fill="#1f4f4a"/><text x="80" y="389">Core Operating</text>
+      <rect x="58" y="400" width="200" height="6" fill="#e4e9ec"/>
+      <rect x="318" y="378" width="14" height="14" fill="#5d8f89"/><text x="340" y="389">Active Coverage</text>
+      <rect x="318" y="400" width="200" height="6" fill="#e4e9ec"/>
+      <rect x="578" y="378" width="14" height="14" fill="#b9cfcc"/><text x="600" y="389">Statewide Capability</text>
+      <rect x="578" y="400" width="200" height="6" fill="#e4e9ec"/>
+      <rect x="838" y="378" width="14" height="14" fill="#e8ecee" stroke="#c9d1d6"/><text x="860" y="389">Not claimed</text>
+      <rect x="838" y="400" width="200" height="6" fill="#e4e9ec"/>
+    </g>
+
+    <!-- Z3 MAP MODULE -->
+    <rect x="40" y="446" width="1040" height="500" fill="#fbfcfc" stroke="#14181b" stroke-width="2"/>
+    <text x="58" y="470" font-size="10" letter-spacing="3" fill="#b4622a">Z3 · MAP MODULE — THE SIGNATURE · min-height 900px</text>
+
+    <!-- rail -->
+    <rect x="58" y="484" width="170" height="446" fill="#fff" stroke="#c9d1d6"/>
+    <text x="72" y="506" font-size="9.5" letter-spacing="2" fill="#78848c">FILTER RAIL · 2 col</text>
+    <text x="72" y="530" font-size="10" font-weight="700" fill="#14181b">LAYERS</text>
+    <g font-size="10" fill="#3d474e">
+      <rect x="72" y="540" width="20" height="11" rx="5.5" fill="#1f4f4a"/><text x="100" y="549">Solar</text>
+      <rect x="72" y="558" width="20" height="11" rx="5.5" fill="#1f4f4a"/><text x="100" y="567">Wind</text>
+      <rect x="72" y="576" width="20" height="11" rx="5.5" fill="#e4e9ec" stroke="#c9d1d6"/><text x="100" y="585">Hybrid</text>
+      <rect x="72" y="594" width="20" height="11" rx="5.5" fill="#e4e9ec" stroke="#c9d1d6"/><text x="100" y="603">Pumped Storage</text>
+      <rect x="72" y="612" width="20" height="11" rx="5.5" fill="#e4e9ec" stroke="#c9d1d6"/><text x="100" y="621">Transmission</text>
+    </g>
+    <line x1="72" y1="636" x2="214" y2="636" stroke="#e4e9ec"/>
+    <text x="72" y="656" font-size="10" font-weight="700" fill="#14181b">TIER</text>
+    <g font-size="10" fill="#3d474e">
+      <rect x="72" y="664" width="11" height="11" fill="#14181b"/><text x="92" y="673">Core</text>
+      <rect x="72" y="680" width="11" height="11" fill="#fff" stroke="#c9d1d6"/><text x="92" y="689">Active</text>
+      <rect x="72" y="696" width="11" height="11" fill="#fff" stroke="#c9d1d6"/><text x="92" y="705">Statewide</text>
+    </g>
+    <line x1="72" y1="718" x2="214" y2="718" stroke="#e4e9ec"/>
+    <text x="72" y="738" font-size="10" font-weight="700" fill="#14181b">DIVISION</text>
+    <rect x="72" y="746" width="142" height="26" fill="#fff" stroke="#c9d1d6"/>
+    <text x="82" y="763" font-size="10" fill="#3d474e">All divisions ▾</text>
+    <rect x="72" y="850" width="142" height="60" fill="#f1f4f6" stroke="#c9d1d6"/>
+    <text x="84" y="875" font-size="19" font-weight="700" fill="#14181b">14</text>
+    <text x="84" y="893" font-size="9.5" fill="#78848c">districts · Solar + Wind</text>
+
+    <!-- map canvas -->
+    <rect x="244" y="484" width="378" height="446" fill="#fff" stroke="#c9d1d6"/>
+    <text x="258" y="506" font-size="9.5" letter-spacing="2" fill="#78848c">MAP CANVAS · 5 col · position:sticky</text>
+    <g transform="translate(300,516) scale(0.86)">
+      <path d="M120,10 L200,4 L246,34 L262,86 L272,150 L256,214 L232,268 L206,320 L166,340 L124,330 L96,286 L70,232 L52,168 L58,104 L82,50 Z"
+            fill="#f7f9fa" stroke="#14181b" stroke-width="2"/>
+      <path d="M120,10 L200,4 L214,60 L150,72 L110,52 Z" fill="#b9cfcc" stroke="#c9d1d6"/>
+      <path d="M214,60 L246,34 L262,86 L228,110 L206,84 Z" fill="#1f4f4a" stroke="#fff"/>
+      <path d="M110,52 L150,72 L146,128 L92,120 L82,74 Z" fill="#1f4f4a" stroke="#fff"/>
+      <path d="M150,72 L214,60 L206,84 L228,110 L200,146 L146,128 Z" fill="#1f4f4a" stroke="#fff"/>
+      <path d="M228,110 L262,86 L272,150 L236,168 L200,146 Z" fill="#5d8f89" stroke="#fff"/>
+      <path d="M92,120 L146,128 L142,186 L86,180 L74,140 Z" fill="#5d8f89" stroke="#fff"/>
+      <path d="M146,128 L200,146 L236,168 L214,218 L152,206 Z" fill="#1f4f4a" stroke="#fff"/>
+      <path d="M236,168 L256,214 L232,268 L196,252 L214,218 Z" fill="#b9cfcc" stroke="#c9d1d6"/>
+      <path d="M86,180 L142,186 L152,206 L146,258 L92,246 L70,232 L74,196 Z" fill="#b9cfcc" stroke="#c9d1d6"/>
+      <path d="M152,206 L214,218 L196,252 L206,320 L166,340 L146,300 Z" fill="#e8ecee" stroke="#c9d1d6"/>
+      <path d="M92,246 L146,258 L146,300 L124,330 L96,286 Z" fill="#e8ecee" stroke="#c9d1d6"/>
+      <!-- glyphs -->
+      <g stroke="#14181b" stroke-width="1.4" fill="none">
+        <rect x="112" y="90" width="8" height="8" transform="rotate(45 116 94)" fill="#14181b" stroke="none"/>
+        <path d="M172,102 l0,-9 M172,102 l8,5 M172,102 l-8,5"/>
+        <rect x="216" y="128" width="8" height="8" transform="rotate(45 220 132)" fill="#14181b" stroke="none"/>
+        <path d="M178,178 l0,-9 M178,178 l8,5 M178,178 l-8,5"/>
+        <path d="M108,150 l0,-9 M108,150 l8,5 M108,150 l-8,5"/>
+      </g>
+      <!-- selected district emphasis -->
+      <path d="M146,128 L200,146 L236,168 L214,218 L152,206 Z" fill="none" stroke="#b4622a" stroke-width="3"/>
+      <text x="160" y="180" font-size="10" font-weight="700" fill="#fff" letter-spacing="1">KOPPAL</text>
+    </g>
+    <text x="258" y="906" font-size="9" fill="#78848c">◆ Solar   ✳ Wind   ⌃⌃ PSP   ┄ Transmission &amp; RoW</text>
+
+    <!-- panel -->
+    <rect x="638" y="484" width="424" height="446" fill="#fff" stroke="#c9d1d6"/>
+    <text x="652" y="506" font-size="9.5" letter-spacing="2" fill="#78848c">DISTRICT PANEL · 5 col · scrolls independently</text>
+    <text x="652" y="538" font-size="24" font-weight="600" fill="#14181b">Koppal</text>
+    <rect x="652" y="550" width="150" height="18" fill="#1f4f4a"/>
+    <text x="661" y="563" font-size="9.5" fill="#fff" letter-spacing="1">CORE OPERATING DISTRICT</text>
+    <text x="816" y="563" font-size="9.5" fill="#78848c">Kalaburagi Division</text>
+    <g font-size="10" font-weight="700" fill="#14181b">
+      <text x="652" y="596">1 · RESOURCE PROFILE</text>
+      <text x="652" y="646">2 · LAND CHARACTER</text>
+      <text x="652" y="712">3 · APPROVALS CHARACTER</text>
+      <text x="652" y="778">4 · EVACUATION CHARACTER</text>
+      <text x="652" y="830">5 · WHAT WE DO HERE</text>
+    </g>
+    <g fill="#e4e9ec">
+      <rect x="652" y="604" width="390" height="6"/><rect x="652" y="614" width="300" height="6"/>
+      <rect x="652" y="654" width="390" height="6"/><rect x="652" y="664" width="390" height="6"/>
+      <rect x="652" y="674" width="390" height="6"/><rect x="652" y="684" width="250" height="6"/>
+      <rect x="652" y="720" width="390" height="6"/><rect x="652" y="730" width="390" height="6"/>
+      <rect x="652" y="740" width="330" height="6"/>
+      <rect x="652" y="786" width="390" height="6"/><rect x="652" y="796" width="280" height="6"/>
+      <rect x="652" y="838" width="390" height="6"/><rect x="652" y="848" width="210" height="6"/>
+    </g>
+    <rect x="652" y="864" width="390" height="40" fill="#fdf6f1" stroke="#b4622a"/>
+    <rect x="652" y="864" width="3" height="40" fill="#b4622a"/>
+    <text x="666" y="880" font-size="10" font-weight="700" fill="#b4622a">6 · WATCH-OUTS</text>
+    <text x="666" y="896" font-size="9.5" fill="#3d474e">Named local failure modes — the trust engine of the page</text>
+    <rect x="652" y="908" width="230" height="14" fill="#14181b"/>
+    <text x="662" y="919" font-size="9" fill="#fff">Request a briefing on Koppal</text>
+
+    <!-- Z4 MATRIX -->
+    <rect x="40" y="958" width="1040" height="150" fill="#fff" stroke="#c9d1d6"/>
+    <text x="58" y="980" font-size="10" letter-spacing="3" fill="#78848c">Z4 · COVERAGE MATRIX — semantic &lt;table&gt; · sortable · sticky header · a11y fallback + SEO workhorse</text>
+    <line x1="58" y1="992" x2="1062" y2="992" stroke="#14181b" stroke-width="1.5"/>
+    <g font-size="9.5" fill="#78848c"><text x="62" y="1006">DISTRICT</text><text x="240" y="1006">DIVISION</text><text x="420" y="1006">TIER</text><text x="600" y="1006">LAYERS</text><text x="820" y="1006">DOSSIER</text></g>
+    <g stroke="#e4e9ec">
+      <line x1="58" y1="1014" x2="1062" y2="1014"/><line x1="58" y1="1038" x2="1062" y2="1038"/>
+      <line x1="58" y1="1062" x2="1062" y2="1062"/><line x1="58" y1="1086" x2="1062" y2="1086"/>
+    </g>
+    <rect x="58" y="1014" width="1004" height="24" fill="#f1f4f6"/>
+    <text x="62" y="1030" font-size="10" font-weight="700" fill="#14181b">Koppal</text>
+    <text x="240" y="1030" font-size="10" fill="#3d474e">Kalaburagi</text>
+    <rect x="420" y="1021" width="11" height="11" fill="#1f4f4a"/><text x="438" y="1030" font-size="10" fill="#3d474e">Core</text>
+    <text x="600" y="1030" font-size="10" fill="#3d474e">Solar · Wind · Transmission</text>
+    <text x="820" y="1030" font-size="10" fill="#b4622a">Read →</text>
+    <text x="62" y="1054" font-size="10" fill="#3d474e">Gadag</text><text x="240" y="1054" font-size="10" fill="#3d474e">Belagavi</text>
+    <rect x="420" y="1045" width="11" height="11" fill="#1f4f4a"/><text x="438" y="1054" font-size="10" fill="#3d474e">Core</text>
+    <text x="600" y="1054" font-size="10" fill="#3d474e">Solar · Wind</text><text x="820" y="1054" font-size="10" fill="#b4622a">Read →</text>
+    <text x="62" y="1078" font-size="10" fill="#3d474e">Udupi</text><text x="240" y="1078" font-size="10" fill="#3d474e">Mysuru</text>
+    <rect x="420" y="1069" width="11" height="11" fill="#e8ecee" stroke="#c9d1d6"/><text x="438" y="1078" font-size="10" fill="#78848c">Not claimed</text>
+    <text x="600" y="1078" font-size="10" fill="#78848c">Coastal — no utility-scale resource</text>
+    <text x="58" y="1102" font-size="9.5" font-style="italic" fill="#78848c">↑ Row hover pulses the matching district on the sticky map above (cross-modal link)</text>
+
+    <!-- Z5 -->
+    <rect x="40" y="1120" width="1040" height="150" fill="#fbfcfc" stroke="#c9d1d6"/>
+    <text x="58" y="1142" font-size="10" letter-spacing="3" fill="#78848c">Z5 · GROUND INTELLIGENCE — 3 FEATURED DOSSIERS</text>
+    <g>
+      <rect x="58" y="1152" width="320" height="104" fill="#fff" stroke="#c9d1d6"/>
+      <rect x="59" y="1153" width="318" height="52" fill="url(#hatch)"/>
+      <text x="70" y="1224" font-size="12" font-weight="700" fill="#14181b">Koppal</text>
+      <rect x="70" y="1232" width="240" height="5" fill="#e4e9ec"/><rect x="70" y="1242" width="180" height="5" fill="#e4e9ec"/>
+      <rect x="400" y="1152" width="320" height="104" fill="#fff" stroke="#c9d1d6"/>
+      <rect x="401" y="1153" width="318" height="52" fill="url(#hatch)"/>
+      <text x="412" y="1224" font-size="12" font-weight="700" fill="#14181b">Gadag</text>
+      <rect x="412" y="1232" width="240" height="5" fill="#e4e9ec"/><rect x="412" y="1242" width="180" height="5" fill="#e4e9ec"/>
+      <rect x="742" y="1152" width="320" height="104" fill="#fff" stroke="#c9d1d6"/>
+      <rect x="743" y="1153" width="318" height="52" fill="url(#hatch)"/>
+      <text x="754" y="1224" font-size="12" font-weight="700" fill="#14181b">Vijayapura</text>
+      <rect x="754" y="1232" width="240" height="5" fill="#e4e9ec"/><rect x="754" y="1242" width="180" height="5" fill="#e4e9ec"/>
+    </g>
+
+    <!-- Z6 / Z7 -->
+    <rect x="40" y="1282" width="510" height="90" fill="#fff" stroke="#c9d1d6"/>
+    <text x="58" y="1304" font-size="10" letter-spacing="3" fill="#78848c">Z6 · SERVICES IN CONTEXT — 3×2</text>
+    <g fill="#f1f4f6" stroke="#e4e9ec"><rect x="58" y="1314" width="150" height="22"/><rect x="222" y="1314" width="150" height="22"/><rect x="386" y="1314" width="146" height="22"/>
+    <rect x="58" y="1342" width="150" height="22"/><rect x="222" y="1342" width="150" height="22"/><rect x="386" y="1342" width="146" height="22"/></g>
+    <rect x="570" y="1282" width="510" height="90" fill="#fff" stroke="#c9d1d6"/>
+    <text x="588" y="1304" font-size="10" letter-spacing="3" fill="#78848c">Z7 · METHOD — 5 STAGES</text>
+    <line x1="600" y1="1338" x2="1055" y2="1338" stroke="#c9d1d6" marker-end="url(#ar)"/>
+    <g fill="#fff" stroke="#14181b">
+      <circle cx="606" cy="1338" r="7"/><circle cx="716" cy="1338" r="7"/><circle cx="826" cy="1338" r="7"/><circle cx="936" cy="1338" r="7"/><circle cx="1040" cy="1338" r="7"/>
+    </g>
+
+    <!-- Z8 -->
+    <rect x="40" y="1384" width="1040" height="96" fill="#f7f9fa" stroke="#c9d1d6"/>
+    <text x="58" y="1406" font-size="10" letter-spacing="3" fill="#b4622a">Z8 · HONEST LIMITS — WHERE WE DON'T OPERATE  ·  the section that earns the page its trust</text>
+    <g fill="#e4e9ec"><rect x="58" y="1418" width="620" height="7"/><rect x="58" y="1432" width="660" height="7"/><rect x="58" y="1446" width="480" height="7"/><rect x="58" y="1460" width="560" height="7"/></g>
+    <g transform="translate(880,1400) scale(0.2)">
+      <path d="M120,10 L200,4 L246,34 L262,86 L272,150 L256,214 L232,268 L206,320 L166,340 L124,330 L96,286 L70,232 L52,168 L58,104 L82,50 Z" fill="#f1f4f6" stroke="#c9d1d6" stroke-width="4"/>
+      <path d="M152,206 L214,218 L196,252 L206,320 L166,340 L146,300 Z" fill="#c9d1d6"/>
+      <path d="M92,246 L146,258 L146,300 L124,330 L96,286 Z" fill="#c9d1d6"/>
+    </g>
+
+    <!-- Z9 -->
+    <rect x="40" y="1492" width="1040" height="56" fill="#14181b"/>
+    <text x="58" y="1516" font-size="10" letter-spacing="3" fill="#78848c">Z9 · CONVERSION</text>
+    <text x="58" y="1536" font-size="15" font-weight="600" fill="#fff">Request a district briefing</text>
+    <rect x="900" y="1508" width="162" height="30" fill="#fff"/>
+    <text x="922" y="1527" font-size="11" fill="#14181b">Start a conversation</text>
+  </svg>
+
+  <div class="legend">
+    <span><i class="sw" style="background:var(--t1)"></i>Tier 1 · Core Operating</span>
+    <span><i class="sw" style="background:var(--t2)"></i>Tier 2 · Active Coverage</span>
+    <span><i class="sw" style="background:var(--t3)"></i>Tier 3 · Statewide Capability</span>
+    <span><i class="sw" style="background:var(--t0)"></i>Tier 0 · Not claimed (non-interactive)</span>
+    <span><i class="sw" style="background:var(--accent)"></i>Selected / attention</span>
+  </div>
+  <p class="cap">The Karnataka outline shown is a schematic placeholder for layout purposes only — the production map is generated at build time from a verified 31-district boundary file including Vijayanagara.</p>
+</section>
+
+<!-- ============ 2. MAP MODULE DETAIL ============ -->
+<section>
+  <h2>Diagram 02</h2>
+  <h3>Map module — scroll behaviour and column responsibilities</h3>
+  <p class="note">The single most important layout decision on the page: the map is sticky inside the module while the panel scrolls. Dossiers run to 700 words; if the map scrolled away, the visitor loses the spatial context that makes the text mean anything, and has to scroll back up to change district.</p>
+
+  <svg viewBox="0 0 1120 420" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="20" width="1080" height="380" fill="#fbfcfc" stroke="#c9d1d6"/>
+    <!-- rail -->
+    <rect x="40" y="44" width="150" height="330" fill="#fff" stroke="#c9d1d6"/>
+    <text x="52" y="66" font-size="10" font-weight="700" fill="#14181b">FILTER RAIL</text>
+    <text x="52" y="84" font-size="9.5" fill="#78848c">sticky · 2 col</text>
+    <text x="52" y="110" font-size="9.5" fill="#3d474e">• 5 layer toggles</text>
+    <text x="52" y="128" font-size="9.5" fill="#3d474e">• 4 tier toggles</text>
+    <text x="52" y="146" font-size="9.5" fill="#3d474e">• 1 division select</text>
+    <text x="52" y="164" font-size="9.5" fill="#3d474e">• live result count</text>
+    <text x="52" y="196" font-size="9" fill="#78848c">writes to URL</text>
+    <text x="52" y="210" font-size="9" fill="#78848c">?layer=…&amp;tier=…</text>
+    <text x="52" y="238" font-size="9" font-style="italic" fill="#b4622a">shareable filtered</text>
+    <text x="52" y="250" font-size="9" font-style="italic" fill="#b4622a">views = free</text>
+    <text x="52" y="262" font-size="9" font-style="italic" fill="#b4622a">qualified distribution</text>
+
+    <!-- map col -->
+    <rect x="204" y="44" width="330" height="330" fill="#fff" stroke="#14181b" stroke-width="2"/>
+    <text x="216" y="66" font-size="10" font-weight="700" fill="#14181b">MAP CANVAS — position:sticky; top:96px</text>
+    <text x="216" y="82" font-size="9.5" fill="#78848c">stays fixed while the panel to its right scrolls</text>
+    <rect x="216" y="94" width="306" height="230" fill="#f7f9fa" stroke="#e4e9ec"/>
+    <text x="292" y="216" font-size="11" fill="#78848c">[ 860 × 1080 inline SVG ]</text>
+    <text x="266" y="234" font-size="9.5" fill="#78848c">conic conformal, centred 76.5°E 15°N</text>
+    <text x="216" y="344" font-size="9" fill="#78848c">Glyph legend beneath · no pan · no zoom (deliberate)</text>
+    <line x1="204" y1="374" x2="534" y2="374" stroke="#b4622a" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="216" y="392" font-size="9" fill="#b4622a">sticky boundary — releases here, does not follow into Z4</text>
+
+    <!-- panel col -->
+    <rect x="548" y="44" width="532" height="330" fill="#fff" stroke="#c9d1d6"/>
+    <text x="562" y="66" font-size="10" font-weight="700" fill="#14181b">DISTRICT PANEL — scrolls independently</text>
+    <g fill="#f1f4f6" stroke="#e4e9ec">
+      <rect x="562" y="80" width="504" height="34"/><rect x="562" y="120" width="504" height="42"/>
+      <rect x="562" y="168" width="504" height="52"/><rect x="562" y="226" width="504" height="46"/>
+      <rect x="562" y="278" width="504" height="40"/>
+    </g>
+    <g font-size="9.5" fill="#3d474e">
+      <text x="572" y="101">Header · name · division · tier badge  (cross-fades in place, no motion)</text>
+      <text x="572" y="145">Resource profile</text>
+      <text x="572" y="197">Land character</text>
+      <text x="572" y="253">Approvals character</text>
+      <text x="572" y="302">Evacuation character</text>
+    </g>
+    <rect x="562" y="324" width="504" height="36" fill="#fdf6f1" stroke="#b4622a"/>
+    <rect x="562" y="324" width="3" height="36" fill="#b4622a"/>
+    <text x="576" y="347" font-size="9.5" fill="#b4622a">Watch-outs — border draws downward on scroll-into-view</text>
+    <text x="900" y="392" font-size="9" font-style="italic" fill="#78848c">60 ms stagger on content swap · 320 ms total</text>
+  </svg>
+</section>
+
+<!-- ============ 3. INTERACTION STATE MACHINE ============ -->
+<section>
+  <h2>Diagram 03</h2>
+  <h3>District interaction state machine</h3>
+  <p class="note">Hover must be pure CSS. A React state update per <code>mousemove</code> across 31 paths is the most likely performance bug in this build and will make the map feel sticky. React owns selection only.</p>
+
+  <svg viewBox="0 0 1120 400" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="a2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#78848c"/></marker></defs>
+
+    <rect x="40" y="150" width="150" height="66" fill="#fff" stroke="#14181b" stroke-width="1.5"/>
+    <text x="60" y="178" font-size="12" font-weight="700" fill="#14181b">REST</text>
+    <text x="60" y="196" font-size="9" fill="#78848c">tier fill · no elevation</text>
+
+    <rect x="290" y="40" width="180" height="80" fill="#f7f9fa" stroke="#c9d1d6"/>
+    <text x="308" y="66" font-size="12" font-weight="700" fill="#14181b">HOVER</text>
+    <text x="308" y="84" font-size="9" fill="#3d474e">fill +8% · stroke accent 1.5px</text>
+    <text x="308" y="98" font-size="9" fill="#3d474e">lift 2px · neighbours → 55%</text>
+    <text x="308" y="112" font-size="9" fill="#b4622a">160 ms ease-out · CSS ONLY</text>
+
+    <rect x="290" y="150" width="180" height="66" fill="#f7f9fa" stroke="#c9d1d6"/>
+    <text x="308" y="176" font-size="12" font-weight="700" fill="#14181b">FOCUS</text>
+    <text x="308" y="193" font-size="9" fill="#3d474e">hover visuals + 2px offset ring</text>
+    <text x="308" y="207" font-size="9" fill="#b4622a">arrow keys = geographic order</text>
+
+    <rect x="290" y="250" width="180" height="80" fill="#f1f4f6" stroke="#c9d1d6"/>
+    <text x="308" y="276" font-size="12" font-weight="700" fill="#14181b">FILTERED OUT</text>
+    <text x="308" y="294" font-size="9" fill="#3d474e">opacity 25% · silhouette kept</text>
+    <text x="308" y="308" font-size="9" fill="#3d474e">pointer-events:none · aria-hidden</text>
+    <text x="308" y="322" font-size="9" fill="#b4622a">220 ms — never disappears</text>
+
+    <rect x="580" y="150" width="190" height="80" fill="#14181b"/>
+    <text x="600" y="178" font-size="12" font-weight="700" fill="#fff">SELECTED</text>
+    <text x="600" y="196" font-size="9" fill="#c9d1d6">brand fill · 2px stroke · stays lifted</text>
+    <text x="600" y="210" font-size="9" fill="#c9d1d6">panel populates · URL updates</text>
+    <text x="600" y="224" font-size="9" fill="#b4622a">240 ms ease-out · React state</text>
+
+    <rect x="860" y="150" width="200" height="80" fill="#fff" stroke="#c9d1d6"/>
+    <text x="880" y="178" font-size="12" font-weight="700" fill="#14181b">PANEL SWAP</text>
+    <text x="880" y="196" font-size="9" fill="#3d474e">out: fade + lift 8px · 120 ms</text>
+    <text x="880" y="210" font-size="9" fill="#3d474e">in: fade from 8px below · 200 ms</text>
+    <text x="880" y="224" font-size="9" fill="#3d474e">60 ms stagger across sections</text>
+
+    <g stroke="#78848c" fill="none" marker-end="url(#a2)">
+      <path d="M190,168 C240,168 250,90 288,82"/>
+      <path d="M190,183 L286,183"/>
+      <path d="M190,198 C240,198 250,280 288,288"/>
+      <path d="M470,86 C520,86 530,170 578,180"/>
+      <path d="M470,183 L576,183"/>
+      <path d="M770,190 L856,190"/>
+    </g>
+    <text x="212" y="120" font-size="8.5" fill="#78848c">pointerenter</text>
+    <text x="212" y="178" font-size="8.5" fill="#78848c">Tab</text>
+    <text x="200" y="252" font-size="8.5" fill="#78848c">layer/tier toggle</text>
+    <text x="498" y="130" font-size="8.5" fill="#78848c">click</text>
+    <text x="498" y="178" font-size="8.5" fill="#78848c">Enter / Space</text>
+
+    <rect x="580" y="280" width="480" height="52" fill="#fdf6f1" stroke="#b4622a"/>
+    <text x="596" y="302" font-size="10" font-weight="700" fill="#b4622a">TIER 0 — terminal state</text>
+    <text x="596" y="320" font-size="9.5" fill="#3d474e">Non-interactive. Tooltip only: "Coastal — no utility-scale resource. Not a market we claim."</text>
+
+    <rect x="40" y="280" width="150" height="52" fill="#fff" stroke="#c9d1d6" stroke-dasharray="4 3"/>
+    <text x="56" y="302" font-size="9.5" font-weight="700" fill="#78848c">prefers-reduced-</text>
+    <text x="56" y="316" font-size="9.5" font-weight="700" fill="#78848c">motion → 0 ms, opacity only</text>
+  </svg>
+</section>
+
+<!-- ============ 4. MOBILE ============ -->
+<section>
+  <h2>Diagram 04</h2>
+  <h3>Mobile — &lt;768px · list-first, map-second</h3>
+  <p class="note">At 375px wide, Yadgir gets a tap target of roughly 18×22px against a 44px minimum. The desktop map does not survive the transition, so it is demoted to a non-interactive orientation graphic and the district list becomes the primary instrument.</p>
+
+  <div class="grid2">
+  <svg viewBox="0 0 520 760" xmlns="http://www.w3.org/2000/svg">
+    <rect x="90" y="16" width="340" height="728" rx="22" fill="#fff" stroke="#14181b" stroke-width="2"/>
+    <rect x="90" y="16" width="340" height="34" rx="22" fill="#f1f4f6"/>
+    <text x="106" y="38" font-size="10" font-weight="700" fill="#14181b">BOLAMUDI</text>
+    <text x="400" y="38" font-size="14" fill="#14181b">☰</text>
+
+    <text x="106" y="76" font-size="9" letter-spacing="2.5" fill="#b4622a">KARNATAKA</text>
+    <text x="106" y="104" font-size="22" font-weight="600" fill="#14181b">We know this</text>
+    <text x="106" y="128" font-size="22" font-weight="600" fill="#14181b">ground.</text>
+    <g fill="#e4e9ec"><rect x="106" y="142" width="290" height="6"/><rect x="106" y="154" width="250" height="6"/></g>
+    <rect x="106" y="170" width="130" height="30" fill="#14181b"/><text x="122" y="189" font-size="10" fill="#fff">Explore</text>
+    <rect x="246" y="170" width="150" height="30" fill="none" stroke="#14181b"/><text x="262" y="189" font-size="10" fill="#14181b">Request briefing</text>
+
+    <line x1="90" y1="216" x2="430" y2="216" stroke="#14181b" stroke-width="1.5"/>
+    <text x="106" y="234" font-size="8.5" letter-spacing="2" fill="#78848c">Z3M · COVERAGE</text>
+
+    <!-- chip scroller -->
+    <g>
+      <rect x="106" y="244" width="52" height="24" rx="12" fill="#14181b"/><text x="120" y="260" font-size="9.5" fill="#fff">Solar</text>
+      <rect x="164" y="244" width="52" height="24" rx="12" fill="#14181b"/><text x="180" y="260" font-size="9.5" fill="#fff">Wind</text>
+      <rect x="222" y="244" width="56" height="24" rx="12" fill="#fff" stroke="#c9d1d6"/><text x="236" y="260" font-size="9.5" fill="#3d474e">Hybrid</text>
+      <rect x="284" y="244" width="46" height="24" rx="12" fill="#fff" stroke="#c9d1d6"/><text x="298" y="260" font-size="9.5" fill="#3d474e">PSP</text>
+      <rect x="336" y="244" width="80" height="24" rx="12" fill="#fff" stroke="#c9d1d6"/><text x="348" y="260" font-size="9.5" fill="#3d474e">Transmission</text>
+    </g>
+    <text x="418" y="262" font-size="11" fill="#78848c">›</text>
+    <text x="106" y="282" font-size="8" font-style="italic" fill="#78848c">horizontal scroll, no wrap</text>
+
+    <!-- segmented -->
+    <rect x="106" y="290" width="290" height="26" fill="#f1f4f6" stroke="#c9d1d6"/>
+    <rect x="107" y="291" width="72" height="24" fill="#14181b"/>
+    <g font-size="9.5"><text x="126" y="307" fill="#fff">All</text><text x="196" y="307" fill="#3d474e">Core</text><text x="264" y="307" fill="#3d474e">Active</text><text x="336" y="307" fill="#3d474e">Wide</text></g>
+
+    <!-- collapsed map -->
+    <rect x="106" y="326" width="290" height="150" fill="#f7f9fa" stroke="#c9d1d6"/>
+    <g transform="translate(196,332) scale(0.4)">
+      <path d="M120,10 L200,4 L246,34 L262,86 L272,150 L256,214 L232,268 L206,320 L166,340 L124,330 L96,286 L70,232 L52,168 L58,104 L82,50 Z" fill="#fff" stroke="#14181b" stroke-width="4"/>
+      <path d="M110,52 L150,72 L146,128 L92,120 L82,74 Z" fill="#1f4f4a"/>
+      <path d="M150,72 L214,60 L206,84 L228,110 L200,146 L146,128 Z" fill="#1f4f4a"/>
+      <path d="M146,128 L200,146 L236,168 L214,218 L152,206 Z" fill="#1f4f4a"/>
+      <path d="M228,110 L262,86 L272,150 L236,168 L200,146 Z" fill="#5d8f89"/>
+      <path d="M152,206 L214,218 L196,252 L206,320 L166,340 L146,300 Z" fill="#e8ecee"/>
+    </g>
+    <text x="112" y="466" font-size="8.5" fill="#78848c">orientation only — not interactive</text>
+    <text x="330" y="466" font-size="9" fill="#b4622a">Open full map ↗</text>
+
+    <!-- list -->
+    <text x="106" y="496" font-size="9" font-weight="700" letter-spacing="1.5" fill="#78848c">KALABURAGI DIVISION</text>
+    <line x1="106" y1="502" x2="396" y2="502" stroke="#14181b"/>
+    <g font-size="11">
+      <rect x="106" y="506" width="290" height="40" fill="#fff"/>
+      <circle cx="118" cy="526" r="5" fill="#1f4f4a"/><text x="134" y="524" font-weight="700" fill="#14181b">Koppal</text>
+      <text x="134" y="538" font-size="8.5" fill="#78848c">Solar · Wind · Transmission</text><text x="382" y="530" fill="#78848c">›</text>
+      <line x1="106" y1="546" x2="396" y2="546" stroke="#e4e9ec"/>
+      <rect x="106" y="546" width="290" height="40" fill="#fff"/>
+      <circle cx="118" cy="566" r="5" fill="#1f4f4a"/><text x="134" y="564" font-weight="700" fill="#14181b">Raichur</text>
+      <text x="134" y="578" font-size="8.5" fill="#78848c">Solar</text><text x="382" y="570" fill="#78848c">›</text>
+      <line x1="106" y1="586" x2="396" y2="586" stroke="#e4e9ec"/>
+      <rect x="106" y="586" width="290" height="40" fill="#fff"/>
+      <circle cx="118" cy="606" r="5" fill="#5d8f89"/><text x="134" y="604" font-weight="700" fill="#14181b">Yadgir</text>
+      <text x="134" y="618" font-size="8.5" fill="#78848c">Solar</text><text x="382" y="610" fill="#78848c">›</text>
+      <line x1="106" y1="626" x2="396" y2="626" stroke="#e4e9ec"/>
+    </g>
+    <text x="106" y="646" font-size="9" font-weight="700" letter-spacing="1.5" fill="#78848c">BELAGAVI DIVISION</text>
+    <line x1="106" y1="652" x2="396" y2="652" stroke="#14181b"/>
+    <g font-size="11">
+      <circle cx="118" cy="676" r="5" fill="#1f4f4a"/><text x="134" y="674" font-weight="700" fill="#14181b">Gadag</text>
+      <text x="134" y="688" font-size="8.5" fill="#78848c">Solar · Wind</text><text x="382" y="680" fill="#78848c">›</text>
+    </g>
+    <rect x="90" y="700" width="340" height="44" fill="#14181b"/>
+    <text x="112" y="727" font-size="11" fill="#fff">Request a district briefing</text>
+    <text x="392" y="727" font-size="11" fill="#b4622a">→</text>
+  </svg>
+
+  <svg viewBox="0 0 520 760" xmlns="http://www.w3.org/2000/svg">
+    <rect x="90" y="16" width="340" height="728" rx="22" fill="#f1f4f6" stroke="#14181b" stroke-width="2"/>
+    <text x="106" y="46" font-size="9" letter-spacing="2" fill="#78848c">DIMMED PAGE BEHIND</text>
+    <!-- sheet -->
+    <rect x="90" y="90" width="340" height="654" rx="18" fill="#fff" stroke="#14181b" stroke-width="2"/>
+    <rect x="228" y="102" width="64" height="4" rx="2" fill="#c9d1d6"/>
+    <text x="106" y="106" font-size="13" fill="#78848c">✕</text>
+    <text x="370" y="132" font-size="14" fill="#3d474e">‹</text>
+    <text x="398" y="132" font-size="14" fill="#3d474e">›</text>
+    <text x="106" y="140" font-size="24" font-weight="600" fill="#14181b">Koppal</text>
+    <rect x="106" y="150" width="146" height="18" fill="#1f4f4a"/>
+    <text x="114" y="163" font-size="8.5" fill="#fff" letter-spacing="1">CORE OPERATING DISTRICT</text>
+    <text x="106" y="184" font-size="9.5" fill="#78848c">Kalaburagi Division</text>
+    <text x="290" y="184" font-size="8" font-style="italic" fill="#b4622a">‹ › steps geographically</text>
+
+    <g font-size="9.5" font-weight="700" fill="#14181b">
+      <text x="106" y="216">RESOURCE PROFILE</text>
+      <text x="106" y="286">LAND CHARACTER</text>
+      <text x="106" y="386">APPROVALS CHARACTER</text>
+      <text x="106" y="482">EVACUATION CHARACTER</text>
+      <text x="106" y="560">WHAT WE DO HERE</text>
+    </g>
+    <g fill="#e4e9ec">
+      <rect x="106" y="226" width="290" height="6"/><rect x="106" y="238" width="240" height="6"/>
+      <rect x="106" y="296" width="290" height="6"/><rect x="106" y="308" width="290" height="6"/>
+      <rect x="106" y="320" width="290" height="6"/><rect x="106" y="332" width="200" height="6"/>
+      <rect x="106" y="396" width="290" height="6"/><rect x="106" y="408" width="290" height="6"/>
+      <rect x="106" y="420" width="260" height="6"/>
+      <rect x="106" y="492" width="290" height="6"/><rect x="106" y="504" width="220" height="6"/>
+      <rect x="106" y="570" width="290" height="6"/><rect x="106" y="582" width="190" height="6"/>
+    </g>
+    <rect x="106" y="606" width="290" height="56" fill="#fdf6f1" stroke="#b4622a"/>
+    <rect x="106" y="606" width="3" height="56" fill="#b4622a"/>
+    <text x="120" y="626" font-size="9.5" font-weight="700" fill="#b4622a">WATCH-OUTS</text>
+    <g fill="#e4e9ec"><rect x="120" y="634" width="262" height="6"/><rect x="120" y="646" width="200" height="6"/></g>
+    <rect x="106" y="676" width="290" height="40" fill="#14181b"/>
+    <text x="130" y="701" font-size="11" fill="#fff">Request a briefing on Koppal</text>
+    <text x="106" y="736" font-size="8.5" font-style="italic" fill="#78848c">slides up 280 ms · swipe down or ✕ to dismiss</text>
+  </svg>
+  </div>
+  <p class="cap">Left: mobile coverage section. Right: full-screen district sheet. Tablet (768–1279px) stacks map above panel at full width — the three-column desktop layout is never attempted below 1280px, because the panel drops under 380px and the dossier becomes unreadable.</p>
+</section>
+
+<!-- ============ 5. TIER + CONTENT MODEL ============ -->
+<section>
+  <h2>Diagram 05</h2>
+  <h3>Coverage tiering — the honesty architecture</h3>
+  <p class="note">The grey districts sell the coloured ones. A map that lights up Udupi as brightly as Koppal tells an informed visitor you don't know Karnataka. A map that greys it out with an honest reason tells them you do.</p>
+
+  <svg viewBox="0 0 1120 300" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <rect x="40" y="30" width="250" height="230" fill="#fff" stroke="#14181b" stroke-width="2"/>
+      <rect x="40" y="30" width="250" height="8" fill="#1f4f4a"/>
+      <text x="58" y="66" font-size="11" font-weight="700" fill="#14181b">TIER 1 · CORE OPERATING</text>
+      <text x="58" y="88" font-size="30" font-weight="600" fill="#1f4f4a">8–10</text>
+      <text x="58" y="112" font-size="9.5" fill="#78848c">districts</text>
+      <line x1="58" y1="126" x2="272" y2="126" stroke="#e4e9ec"/>
+      <text x="58" y="146" font-size="9.5" fill="#3d474e">Full brand fill + 6% hatch</text>
+      <text x="58" y="164" font-size="9.5" fill="#3d474e">Labelled on base map</text>
+      <text x="58" y="182" font-size="9.5" fill="#3d474e">400–700 word dossier</text>
+      <text x="58" y="200" font-size="9.5" fill="#3d474e">Gets an SEO spoke page</text>
+      <text x="58" y="218" font-size="9.5" fill="#3d474e">Taluk drill-down in Phase 3</text>
+      <text x="58" y="244" font-size="9" font-style="italic" fill="#b4622a">~7 hrs founder interview time</text>
+
+      <rect x="308" y="30" width="250" height="230" fill="#fff" stroke="#c9d1d6"/>
+      <rect x="308" y="30" width="250" height="8" fill="#5d8f89"/>
+      <text x="326" y="66" font-size="11" font-weight="700" fill="#14181b">TIER 2 · ACTIVE COVERAGE</text>
+      <text x="326" y="88" font-size="30" font-weight="600" fill="#5d8f89">8–10</text>
+      <text x="326" y="112" font-size="9.5" fill="#78848c">districts</text>
+      <line x1="326" y1="126" x2="540" y2="126" stroke="#e4e9ec"/>
+      <text x="326" y="146" font-size="9.5" fill="#3d474e">Mid-tone flat fill</text>
+      <text x="326" y="164" font-size="9.5" fill="#3d474e">Name on hover only</text>
+      <text x="326" y="182" font-size="9.5" fill="#3d474e">150–250 word entry</text>
+      <text x="326" y="200" font-size="9.5" fill="#3d474e">Spoke page if content is real</text>
+
+      <rect x="576" y="30" width="250" height="230" fill="#fff" stroke="#c9d1d6"/>
+      <rect x="576" y="30" width="250" height="8" fill="#b9cfcc"/>
+      <text x="594" y="66" font-size="11" font-weight="700" fill="#14181b">TIER 3 · STATEWIDE</text>
+      <text x="594" y="88" font-size="30" font-weight="600" fill="#8fb0ab">rest</text>
+      <text x="594" y="112" font-size="9.5" fill="#78848c">of RE-relevant districts</text>
+      <line x1="594" y1="126" x2="808" y2="126" stroke="#e4e9ec"/>
+      <text x="594" y="146" font-size="9.5" fill="#3d474e">Light fill, outline only</text>
+      <text x="594" y="164" font-size="9.5" fill="#3d474e">One paragraph + CTA</text>
+      <text x="594" y="182" font-size="9.5" fill="#3d474e">No spoke page</text>
+      <text x="594" y="208" font-size="9" font-style="italic" fill="#b4622a">Thin auto-generated district</text>
+      <text x="594" y="220" font-size="9" font-style="italic" fill="#b4622a">pages = doorway-page risk</text>
+
+      <rect x="844" y="30" width="236" height="230" fill="#f7f9fa" stroke="#c9d1d6" stroke-dasharray="4 3"/>
+      <rect x="844" y="30" width="236" height="8" fill="#c9d1d6"/>
+      <text x="862" y="66" font-size="11" font-weight="700" fill="#78848c">TIER 0 · NOT CLAIMED</text>
+      <text x="862" y="88" font-size="30" font-weight="600" fill="#a8b4bb">grey</text>
+      <text x="862" y="112" font-size="9.5" fill="#78848c">coastal · Malnad · urban</text>
+      <line x1="862" y1="126" x2="1062" y2="126" stroke="#e4e9ec"/>
+      <text x="862" y="146" font-size="9.5" fill="#3d474e">Non-interactive</text>
+      <text x="862" y="164" font-size="9.5" fill="#3d474e">Tooltip states the reason</text>
+      <text x="862" y="182" font-size="9.5" fill="#3d474e">No card, no page</text>
+      <text x="862" y="208" font-size="9" font-weight="700" fill="#b4622a">Do not let anyone delete</text>
+      <text x="862" y="220" font-size="9" font-weight="700" fill="#b4622a">this tier for "looking</text>
+      <text x="862" y="232" font-size="9" font-weight="700" fill="#b4622a">negative". It is the proof.</text>
+    </g>
+  </svg>
+</section>
+
+<!-- ============ 6. SEO CLUSTER ============ -->
+<section>
+  <h2>Diagram 06</h2>
+  <h3>SEO cluster and scalability path</h3>
+  <p class="note">Spoke pages are generated only for districts that carry a genuine dossier. Thirty-one thin auto-generated pages is textbook doorway-page behaviour and puts the whole domain at risk.</p>
+
+  <svg viewBox="0 0 1120 340" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="a3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c9d1d6"/></marker></defs>
+    <rect x="430" y="30" width="260" height="60" fill="#14181b"/>
+    <text x="450" y="56" font-size="13" font-weight="700" fill="#fff">/karnataka</text>
+    <text x="450" y="76" font-size="9" fill="#c9d1d6">HUB · "renewable energy land Karnataka"</text>
+
+    <g stroke="#c9d1d6" fill="none" marker-end="url(#a3)">
+      <path d="M470,90 C400,120 260,130 190,158"/>
+      <path d="M520,90 C480,120 420,130 380,158"/>
+      <path d="M600,90 C640,120 700,130 740,158"/>
+      <path d="M650,90 C720,120 860,130 930,158"/>
+    </g>
+
+    <g>
+      <rect x="60" y="162" width="220" height="56" fill="#fff" stroke="#14181b"/>
+      <text x="76" y="184" font-size="11" font-weight="700" fill="#14181b">/karnataka/koppal</text>
+      <text x="76" y="202" font-size="8.5" fill="#78848c">"solar project land Koppal"</text>
+      <rect x="300" y="162" width="220" height="56" fill="#fff" stroke="#14181b"/>
+      <text x="316" y="184" font-size="11" font-weight="700" fill="#14181b">/karnataka/gadag</text>
+      <text x="316" y="202" font-size="8.5" fill="#78848c">"land aggregation Gadag"</text>
+      <rect x="600" y="162" width="220" height="56" fill="#fff" stroke="#14181b"/>
+      <text x="616" y="184" font-size="11" font-weight="700" fill="#14181b">/karnataka/vijayapura</text>
+      <text x="616" y="202" font-size="8.5" fill="#78848c">"wind project land Vijayapura"</text>
+      <rect x="840" y="162" width="220" height="56" fill="#f7f9fa" stroke="#c9d1d6" stroke-dasharray="4 3"/>
+      <text x="856" y="184" font-size="11" font-weight="700" fill="#78848c">/insights/[topic]</text>
+      <text x="856" y="202" font-size="8.5" fill="#78848c">conversion · RoW · sequencing</text>
+    </g>
+
+    <g stroke="#b4622a" fill="none" stroke-dasharray="3 3" marker-end="url(#a3)">
+      <path d="M280,196 L296,196"/><path d="M296,206 L280,206"/>
+      <path d="M520,196 L596,196"/><path d="M596,206 L520,206"/>
+    </g>
+    <text x="330" y="240" font-size="9" font-style="italic" fill="#b4622a">lateral neighbour links — mirrors how a developer actually thinks (Koppal → Gadag → Ballari)</text>
+
+    <line x1="60" y1="266" x2="1060" y2="266" stroke="#e4e9ec"/>
+    <text x="60" y="290" font-size="9" letter-spacing="2" fill="#78848c">SCALABILITY — ADDITIVE, NO REDESIGN</text>
+    <g font-size="9.5" fill="#3d474e">
+      <text x="60" y="312">P1 launch: static tiers + dossiers</text>
+      <text x="290" y="312">P2 +6mo: tier promotion, BESS layer</text>
+      <text x="560" y="312">P3 +12mo: taluk drill-down (Tier 1 only)</text>
+      <text x="856" y="312">P4 +18mo: anonymised engagements</text>
+    </g>
+    <g fill="#14181b"><circle cx="66" cy="330" r="3"/><circle cx="296" cy="330" r="3"/><circle cx="566" cy="330" r="3"/></g>
+    <circle cx="862" cy="330" r="3" fill="#b4622a"/>
+    <line x1="66" y1="330" x2="862" y2="330" stroke="#e4e9ec"/>
+    <text x="560" y="332" font-size="0" fill="none"></text>
+  </svg>
+  <p class="cap">Phase 4 is the moment this becomes a genuine track-record map — the page you originally wanted. The schema carries a nullable <code>engagements[]</code> field from day one so the transition is additive.</p>
+</section>
+
+</div>
+</body>
+</html>

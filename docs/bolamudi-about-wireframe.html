@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bolamudi Enterprise — About Page Wireframe</title>
+<style>
+:root{
+  --surface:#ffffff;
+  --surface-alt:#f4f4f2;
+  --ink:#16181a;
+  --ink-muted:#6b6f73;
+  --rule:#d8d8d4;
+  --accent:#1f4d3d;
+  --note:#b4531f;
+  --note-bg:#fdf3ec;
+  --img:#e2e2de;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:ui-sans-serif,-apple-system,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  background:#e9e9e6;color:var(--ink);
+  -webkit-font-smoothing:antialiased;padding:24px 16px 80px;
+}
+.page-head{max-width:1320px;margin:0 auto 28px}
+.page-head h1{font-size:20px;letter-spacing:-.01em;font-weight:650}
+.page-head p{font-size:13px;color:var(--ink-muted);margin-top:6px;max-width:70ch;line-height:1.6}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:11px;color:var(--ink-muted)}
+.legend span{display:flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border:1px solid var(--rule)}
+
+.stage{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 392px;gap:28px;align-items:start}
+@media(max-width:1100px){.stage{grid-template-columns:1fr}}
+
+.frame{background:var(--surface);border:1px solid #cfcfca;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.frame-bar{background:#f8f8f6;border-bottom:1px solid var(--rule);padding:8px 14px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);position:sticky;top:0;z-index:5}
+.mobile{width:392px;position:sticky;top:24px}
+.mobile .inner{max-height:calc(100vh - 90px);overflow-y:auto}
+
+/* generic page atoms */
+.sec{padding:56px 56px}
+.sec.alt{background:var(--surface-alt)}
+.sec.inv{background:var(--ink);color:#fff}
+.m .sec{padding:36px 22px}
+
+.label{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:14px}
+.inv .label{color:rgba(255,255,255,.55)}
+.h1{font-size:38px;line-height:1.06;letter-spacing:-.022em;font-weight:600}
+.h2{font-size:23px;line-height:1.18;letter-spacing:-.014em;font-weight:600}
+.h3{font-size:16px;line-height:1.3;font-weight:620;letter-spacing:-.008em}
+.h4{font-size:13px;font-weight:620;letter-spacing:-.004em}
+.deck{font-size:14.5px;line-height:1.6;color:var(--ink-muted);max-width:52ch}
+.body{font-size:12.5px;line-height:1.72;color:var(--ink-muted);max-width:66ch}
+.small{font-size:11px;line-height:1.55;color:var(--ink-muted)}
+.tiny{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted)}
+.m .h1{font-size:26px;line-height:1.14}
+.m .h2{font-size:19px}
+.m .deck{font-size:13.5px}
+.hr{height:1px;background:var(--rule);border:0}
+.inv .hr{background:rgba(255,255,255,.2)}
+.stack>*+*{margin-top:14px}
+
+.imgbox{background:var(--img);position:relative;display:flex;align-items:center;justify-content:center}
+.imgbox::after{content:attr(data-l);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9a9a95;text-align:center;padding:0 16px;line-height:1.6}
+
+.btn{display:inline-block;background:#fff;color:var(--ink);font-size:12px;font-weight:600;padding:13px 22px}
+.linkish{font-size:11.5px;color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:3px}
+
+/* annotation */
+.note{background:var(--note-bg);border-left:2px solid var(--note);padding:9px 12px;font-size:10.5px;line-height:1.55;color:#7a3d18;margin-top:16px}
+.note b{color:var(--note)}
+
+/* section 1 hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:400px}
+.hero-txt{padding:64px 56px;display:flex;flex-direction:column;justify-content:center}
+.kicker-rule{width:56px;height:1px;background:var(--ink);margin-bottom:20px}
+
+/* strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr)}
+.strip>div{padding:0 24px;border-left:1px solid var(--rule)}
+.strip>div:first-child{border-left:0;padding-left:0}
+.strip .fig{font-size:29px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.strip .cap{font-size:10px;line-height:1.5;color:var(--ink-muted);margin-top:9px}
+.m .strip{grid-template-columns:1fr 1fr;gap:22px 0}
+.m .strip>div:nth-child(3){border-left:0;padding-left:0}
+.m .strip>div:nth-child(n+3){padding-top:22px;border-top:1px solid var(--rule)}
+
+/* editorial 5/6 split */
+.split{display:grid;grid-template-columns:5fr 1fr 6fr}
+.m .split{grid-template-columns:1fr;gap:18px}
+
+/* not-list */
+.notlist{margin-top:26px}
+.notrow{border-top:1px solid var(--rule);padding:13px 0;display:grid;grid-template-columns:220px 1fr;gap:20px}
+.m .notrow{grid-template-columns:1fr;gap:4px}
+
+/* domain grid */
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:46px 56px;margin-top:38px}
+.m .dgrid{grid-template-columns:1fr;gap:32px}
+.dblock{border-top:1px solid var(--rule);padding-top:16px}
+.dlist{margin-top:12px;display:flex;flex-direction:column;gap:7px}
+.ditem{font-size:11.5px;line-height:1.5;color:var(--ink-muted);display:grid;grid-template-columns:14px 1fr;gap:8px}
+.ditem::before{content:"";height:1px;background:var(--rule);margin-top:8px}
+
+/* timeline */
+.tl{position:relative;margin-top:52px;padding:0 4px}
+.tl-line{position:absolute;left:0;right:0;top:96px;height:1px;background:var(--rule)}
+.tl-nodes{display:grid;grid-template-columns:repeat(7,1fr);position:relative}
+.tl-n{position:relative;padding-top:0;text-align:left;padding-right:12px}
+.tl-n .dot{width:9px;height:9px;border-radius:50%;position:absolute;top:92px;left:0}
+.dot.led{background:var(--accent)}
+.dot.sup{background:#fff;border:1px solid var(--rule)}
+.tl-n .up{height:92px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:14px}
+.tl-n .dn{padding-top:22px}
+.tl-n.lower .up{visibility:hidden}
+.tl-n:not(.lower) .dn{visibility:hidden;height:0;padding:0}
+.stg{font-size:9.5px;letter-spacing:.1em;color:var(--ink-muted)}
+.stt{font-size:12.5px;font-weight:620;margin-top:4px;letter-spacing:-.005em}
+.std{font-size:10.5px;line-height:1.45;color:var(--ink-muted);margin-top:5px;max-width:20ch}
+.tl-legend{display:flex;gap:22px;margin-top:34px;font-size:10.5px;color:var(--ink-muted);align-items:center}
+.tl-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
+
+/* mobile stepper */
+.step{position:relative;padding-left:26px;margin-top:26px}
+.step::before{content:"";position:absolute;left:4px;top:6px;bottom:-26px;width:1px;background:var(--rule)}
+.step:last-child::before{display:none}
+.step .dot2{position:absolute;left:0;top:4px;width:9px;height:9px;border-radius:50%}
+
+/* leadership */
+.lead{display:grid;grid-template-columns:4fr 1fr 7fr}
+.m .lead{grid-template-columns:1fr;gap:22px}
+.philo{margin-top:20px;display:flex;flex-direction:column;gap:14px}
+.philo p{font-size:12px;line-height:1.72;color:var(--ink-muted)}
+.philo b{color:var(--ink)}
+.captl{margin-top:24px;border-top:1px solid var(--rule)}
+.caprow{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:11.5px;color:var(--ink-muted)}
+.caprow b{color:var(--ink);font-weight:600}
+
+/* values */
+.vrow{display:grid;grid-template-columns:78px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--rule)}
+.vnum{font-size:26px;color:var(--rule);font-weight:600;letter-spacing:-.02em;line-height:1}
+.m .vrow{grid-template-columns:1fr;gap:8px;padding:18px 0}
+.m .vnum{font-size:18px}
+
+/* 3col */
+.c3{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:34px}
+.m .c3{grid-template-columns:1fr;gap:28px}
+.c3>div{border-top:1px solid var(--rule);padding-top:16px}
+
+/* cta */
+.cta{text-align:center;padding:76px 56px}
+.m .cta{padding:52px 22px}
+.cta .h2{max-width:26ch;margin:0 auto}
+.cta .body{max-width:48ch;margin:14px auto 0;color:rgba(255,255,255,.72)}
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>Bolamudi Enterprise — About Page Wireframe</h1>
+  <p>Structural wireframe, token-agnostic. Greyscale + a single placeholder accent so the layout can be judged on hierarchy, rhythm and density rather than colour. Swap in the locked design tokens at build — the CSS variables at the top of this file map 1:1 to the semantic tokens used in the spec. Left frame is desktop (1440), right frame is mobile (390).</p>
+  <div class="legend">
+    <span><i class="sw" style="background:#fff"></i> surface</span>
+    <span><i class="sw" style="background:#f4f4f2"></i> surface-alt</span>
+    <span><i class="sw" style="background:#16181a"></i> ink (inverted band)</span>
+    <span><i class="sw" style="background:#e2e2de"></i> image slot</span>
+    <span><i class="sw" style="background:#1f4d3d;border-color:#1f4d3d"></i> accent (timeline "led")</span>
+    <span><i class="sw" style="background:#fdf3ec;border-color:#b4531f"></i> design note</span>
+  </div>
+</div>
+
+<div class="stage">
+
+<!-- ============ DESKTOP ============ -->
+<div class="frame d">
+  <div class="frame-bar">Desktop · 1440 · 12-col · container 1200</div>
+
+  <!-- 01 HERO -->
+  <div class="hero">
+    <div class="hero-txt">
+      <div class="kicker-rule"></div>
+      <div class="label">About Bolamudi Enterprise</div>
+      <div class="h1">Two decades inside Karnataka's renewable energy development machinery.</div>
+      <div class="deck" style="margin-top:22px">Bolamudi Enterprise is a project development support firm. We handle the land, statutory and liaison work that decides whether a sanctioned renewable project reaches construction — and when.</div>
+      <div class="note"><b>72vh, not 100vh.</b> Section 02 stays visible above the fold, which pulls the scroll and signals depth. <b>No CTA in hero</b> — an About reader is evaluating, not acting; a button here reads as sales pressure.</div>
+    </div>
+    <div class="imgbox" data-l="Hero photograph — Karnataka Deccan terrain, transmission line, low sun. Full-bleed to viewport edge. LCP element: priority load, no motion."></div>
+  </div>
+
+  <!-- 02 STRIP -->
+  <div class="sec alt" style="padding-top:40px;padding-bottom:40px">
+    <div class="strip">
+      <div><div class="fig">20+</div><div class="cap">Years in utility-scale renewable project execution</div></div>
+      <div><div class="fig">4</div><div class="cap">Asset classes — Solar, Wind, Hybrid, Pumped Storage</div></div>
+      <div><div class="fig">Karnataka</div><div class="cap">Statewide revenue district and DISCOM coverage</div></div>
+      <div><div class="fig">Pre-construction</div><div class="cap">Full scope — land, approvals, evacuation, right of way</div></div>
+    </div>
+    <div class="note"><b>Two numbers, two words — not four numbers.</b> Four numbers in a row is the animated-counter pattern. No count-up animation. Built as a 4→6 cell grid so real MW/acreage figures can drop in later without a redesign.</div>
+  </div>
+
+  <!-- 03 POSITION -->
+  <div class="sec">
+    <div class="split">
+      <div>
+        <div class="label">01 — The Position</div>
+        <div class="h2">We occupy the stage most developers underestimate.</div>
+      </div>
+      <div></div>
+      <div>
+        <div class="body">A utility-scale renewable project rarely fails on technology. It fails, or slips by eighteen months, in the pre-construction stage — where land title is imperfect, where a statutory file sits unmoved on a desk, where an evacuation approval is contingent on a bay already allocated, where a corridor crosses forty parcels and thirty-nine owners agree.</div>
+        <div class="body" style="margin-top:14px">That stage is our entire practice. We do not build, and we do not advise on what to build. We take a project from allocation to a construction-ready position.</div>
+        <div class="notlist">
+          <div class="notrow"><div class="h4">Not an EPC contractor</div><div class="small">We do not construct or procure.</div></div>
+          <div class="notrow"><div class="h4">Not a technical or DPR consultant</div><div class="small">We do not size plants, model yield or prepare engineering reports.</div></div>
+          <div class="notrow"><div class="h4">Not a land broker</div><div class="small">Retained by the developer. Not paid by the landowner. No positions held in land we aggregate.</div></div>
+        </div>
+        <div class="note"><b>The third exclusion is the most commercially valuable line on the page.</b> Conflict of interest is the number one unspoken concern about an aggregation partner in India. Answering it unprompted removes an objection from a meeting you may never get.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 DOMAIN -->
+  <div class="sec alt">
+    <div class="label">02 — Domain Command</div>
+    <div class="h2">The work, stated precisely.</div>
+    <div class="body" style="margin-top:14px;max-width:60ch">Development support is a term wide enough to mean nothing. Below is what it means here — the specific instruments, authorities and procedures we work through in Karnataka.</div>
+    <div class="dgrid">
+      <div class="dblock">
+        <div class="h3">Land Aggregation &amp; Title</div>
+        <div class="small" style="margin-top:6px;font-style:italic">Aggregation is a title problem before it is a negotiation problem.</div>
+        <div class="dlist">
+          <div class="ditem"><span></span><span>Village-level, survey-number-wise feasibility screening</span></div>
+          <div class="ditem"><span></span><span>RTC, mutation register and encumbrance chain verification</span></div>
+          <div class="ditem"><span></span><span>Joint measurement and boundary reconciliation</span></div>
+          <div class="ditem"><span></span><span>Purchase, long-lease and hybrid tenure structuring</span></div>
+          <div class="ditem"><span></span><span>Section 109 exemption, Karnataka Land Reforms Act 1961</span></div>
+          <div class="ditem"><span></span><span>Seven-year transfer restriction and downstream project sale</span></div>
+          <div class="ditem"><span></span><span>Gomala, government and inam land grant pathways</span></div>
+        </div>
+      </div>
+      <div class="dblock">
+        <div class="h3">Land Use &amp; Statutory Approvals</div>
+        <div class="small" style="margin-top:6px;font-style:italic">Approvals are sequence-dependent. Filing in the wrong order costs quarters.</div>
+        <div class="dlist">
+          <div class="ditem"><span></span><span>Conversion position incl. deemed/automatic route for RE under Karnataka Land Revenue (Amendment) Rules 2025</span></div>
+          <div class="ditem"><span></span><span>KREDL registration, scrutiny and SLAC allotment route</span></div>
+          <div class="ditem"><span></span><span>Incentive claims under Karnataka RE Policy 2022–27</span></div>
+          <div class="ditem"><span></span><span>District administration and Deputy Commissioner liaison</span></div>
+          <div class="ditem"><span></span><span>Single-window / Udyog Mitra coordination</span></div>
+          <div class="ditem"><span></span><span>Forest, environmental and wildlife clearance interfaces</span></div>
+          <div class="ditem"><span></span><span>Panchayat and local body NOC coordination</span></div>
+        </div>
+      </div>
+      <div class="dblock">
+        <div class="h3">Evacuation &amp; Grid Connectivity</div>
+        <div class="small" style="margin-top:6px;font-style:italic">A project without a confirmed bay is a project without a date.</div>
+        <div class="dlist">
+          <div class="ditem"><span></span><span>Evacuation scheme application and approval through KPTCL</span></div>
+          <div class="ditem"><span></span><span>Substation and bay availability assessment <i>prior to land commitment</i></span></div>
+          <div class="ditem"><span></span><span>ESCOM interface — BESCOM, HESCOM, GESCOM, MESCOM, CESC</span></div>
+          <div class="ditem"><span></span><span>Intra-state and ISTS connectivity, long-term access</span></div>
+          <div class="ditem"><span></span><span>Interconnection and metering point coordination</span></div>
+        </div>
+      </div>
+      <div class="dblock">
+        <div class="h3">Transmission Right of Way</div>
+        <div class="small" style="margin-top:6px;font-style:italic">The corridor is negotiated parcel by parcel, not corridor by corridor.</div>
+        <div class="dlist">
+          <div class="ditem"><span></span><span>Route optimisation against land cost, crop pattern, habitation</span></div>
+          <div class="ditem"><span></span><span>Tower footing and corridor consent from individual owners</span></div>
+          <div class="ditem"><span></span><span>Crop and structure compensation assessment and settlement</span></div>
+          <div class="ditem"><span></span><span>Objection handling and district administration escalation</span></div>
+          <div class="ditem"><span></span><span>Sequencing RoW against the stringing programme</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="note"><b>This section carries the page.</b> No cards, no shadows, no icons — 1px rules over text columns is the grammar of technical documentation, not SaaS. Do not soften a single line item; each abstraction removes a unit of credibility. Every block heading links to its service page. <b>Review every 6 months</b> — a stale statutory reference here is worse than no page.</div>
+  </div>
+
+  <!-- 05 TIMELINE -->
+  <div class="sec">
+    <div class="label">03 — Development Lifecycle</div>
+    <div class="h2">Where we intervene.</div>
+    <div class="tl">
+      <div class="tl-line"></div>
+      <div class="tl-nodes">
+        <div class="tl-n"><span class="dot sup"></span><div class="up"><div class="stg">01</div><div class="stt">Site identification</div><div class="std">Terrain, resource, access and evacuation proximity</div></div><div class="dn"></div></div>
+        <div class="tl-n lower"><span class="dot led"></span><div class="up"></div><div class="dn"><div class="stg">02</div><div class="stt">Land aggregation</div><div class="std">Title verification, negotiation, consolidation</div></div></div>
+        <div class="tl-n"><span class="dot led"></span><div class="up"><div class="stg">03</div><div class="stt">Land use &amp; exemption</div><div class="std">Conversion, S.109, tenure structuring</div></div><div class="dn"></div></div>
+        <div class="tl-n lower"><span class="dot led"></span><div class="up"></div><div class="dn"><div class="stg">04</div><div class="stt">Statutory approvals</div><div class="std">KREDL, SLAC, district administration</div></div></div>
+        <div class="tl-n"><span class="dot led"></span><div class="up"><div class="stg">05</div><div class="stt">Evacuation</div><div class="std">KPTCL scheme, bay allocation, ESCOM</div></div><div class="dn"></div></div>
+        <div class="tl-n lower"><span class="dot led"></span><div class="up"></div><div class="dn"><div class="stg">06</div><div class="stt">Right of way</div><div class="std">Corridor consent, compensation, objections</div></div></div>
+        <div class="tl-n"><span class="dot sup"></span><div class="up"><div class="stg">07</div><div class="stt">Construction &amp; COD</div><div class="std">Continuity, residual approvals, local interface</div></div><div class="dn"></div></div>
+      </div>
+    </div>
+    <div class="tl-legend">
+      <span><i style="background:var(--accent)"></i>Led by Bolamudi</span>
+      <span><i style="background:#fff;border:1px solid var(--rule)"></i>Supported</span>
+    </div>
+    <div class="note"><b>This is the requested "timeline" — reframed.</b> A company-history timeline for a new entity shows one dot marked "Founded." A lifecycle timeline shows process mastery and doubles as a scope diagram. <b>Ceding 2 of 7 stages makes the other 5 believable.</b> Labels alternate above/below the rule because 7 nodes across 1200px gives ~170px each — a single row would wrap to 3 lines and collide.</div>
+  </div>
+
+  <!-- 06 LEADERSHIP -->
+  <div class="sec alt">
+    <div class="lead">
+      <div class="imgbox" style="aspect-ratio:4/5" data-l="Commissioned founder portrait · 4:5 · square corners · on-site or field context · natural light. BLOCKING REQUIREMENT — no stock, no AI, no placeholder silhouette."></div>
+      <div></div>
+      <div>
+        <div class="label">04 — Leadership</div>
+        <div class="h3" style="font-size:21px">[Founder Name — required input]</div>
+        <div class="small" style="margin-top:5px">Founder &amp; Principal</div>
+        <div class="philo">
+          <p><b>On why this practice exists.</b> Twenty years of executing utility-scale solar, wind, hybrid and pumped storage projects in Karnataka taught me one thing repeatedly: the difference between a project that commissions on schedule and one that slips two years is almost never engineering. It is land, statute and relationships, handled early and handled properly.</p>
+          <p><b>On how the work is done.</b> Development support is not a document exercise. It is field work — village visits, survey records, taluk offices, individual landowners, and the same officials over years rather than weeks. It cannot be delegated to someone learning it on your project. Every engagement here is led by me personally.</p>
+          <p><b>On what I will not do.</b> I will not commit to an aggregation timeline before title and owner consent have been tested on the ground. I will not report a statutory position I have not confirmed at source. A developer told the truth late has lost a year; a developer told the truth early has lost a week.</p>
+        </div>
+        <div class="captl">
+          <div class="caprow"><b>[20XX–20XX]</b><span>Wind — site development, micro-siting support, land and right of way</span></div>
+          <div class="caprow"><b>[20XX–20XX]</b><span>Utility-scale solar — park-scale aggregation and statutory approvals</span></div>
+          <div class="caprow"><b>[20XX–20XX]</b><span>Hybrid and evacuation-constrained projects — connectivity and corridor</span></div>
+          <div class="caprow"><b>[20XX–Present]</b><span>Pumped storage and large-footprint development support</span></div>
+        </div>
+        <div class="note"><b>Leadership sits at 06, not 02.</b> Opening with a person makes the page read as a CV and invites evaluation of an individual. Opening with capability makes it read as a firm. By the time the portrait appears, competence is already accepted — the founder confirms rather than persuades. <b>Second timeline:</b> capability eras, no employer or project named — duration and breadth without claiming credit that belongs elsewhere.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 VALUES -->
+  <div class="sec">
+    <div class="label">05 — Core Values</div>
+    <div class="h2">Operating commitments.</div>
+    <div style="margin-top:30px">
+      <div class="vrow"><div class="vnum">01</div><div><div class="h4">Verified before reported.</div><div class="small" style="margin-top:6px">No status reaches a client that has not been confirmed at source. We do not relay assurances we have not tested.</div></div></div>
+      <div class="vrow"><div class="vnum">02</div><div><div class="h4">Land first, promises second.</div><div class="small" style="margin-top:6px">No aggregation timeline is committed until title and owner consent have been tested in the field. Optimistic land schedules are the most expensive error in Indian renewable development.</div></div></div>
+      <div class="vrow"><div class="vnum">03</div><div><div class="h4">The landowner is a stakeholder, not an obstacle.</div><div class="small" style="margin-top:6px">Fair, transparent, documented dealing at village level. Every acre acquired badly becomes a litigation, an agitation or a stalled tower three years later — and it becomes the developer's problem, not the aggregator's.</div></div></div>
+      <div class="vrow"><div class="vnum">04</div><div><div class="h4">Compliance over speed.</div><div class="small" style="margin-top:6px">We will not take a route that clears a file faster and leaves a title or statutory defect behind. Defects surface at diligence, refinancing or sale, when they cost the most.</div></div></div>
+      <div class="vrow"><div class="vnum">05</div><div><div class="h4">One principal, one accountable owner.</div><div class="small" style="margin-top:6px">The person who assessed your site is the person in the taluk office and the person on your call. No handoffs, no account-management layer.</div></div></div>
+    </div>
+    <div class="note"><b>Numbered editorial list, no icons, no card grid.</b> Icon-and-card value grids are the most templated pattern on the web. <b>Value 03 is the strategic centrepiece</b> — it frames landowner fairness as the developer's risk mitigation, not as CSR. Value 04 names diligence, refinancing and sale: written for the investor in the room, not the engineer.</div>
+  </div>
+
+  <!-- 08 WHY -->
+  <div class="sec alt">
+    <div class="label">06 — Why Bolamudi</div>
+    <div class="h2">Three honest reasons, and one honest answer.</div>
+    <div class="c3">
+      <div><div class="h4">Against a large consultancy</div><div class="small" style="margin-top:9px">Large firms sell with partners and deliver with associates. On development support the value is entirely in the relationships and field knowledge of the person doing it. Here, the person who sells the work is the person who does the work.</div></div>
+      <div><div class="h4">Against an in-house team</div><div class="small" style="margin-top:9px">An internal development team is built for a pipeline, not a project. For a developer entering Karnataka, twenty years of district-level relationships cannot be hired in a quarter and cannot be justified as permanent overhead.</div></div>
+      <div><div class="h4">Against a local aggregator</div><div class="small" style="margin-top:9px">A land aggregator solves land and stops. Land solved in isolation from evacuation, statutory sequence and right of way produces a site you own and cannot build on. The stages are interdependent and are handled here as one scope.</div></div>
+    </div>
+    <hr class="hr" style="margin:44px 0 26px">
+    <div class="split">
+      <div><div class="h3">On continuity and single-principal risk</div></div>
+      <div></div>
+      <div>
+        <div class="body">The reasonable question about a principal-led practice is what happens if the principal is unavailable or already committed. We answer it directly rather than leave it unasked.</div>
+        <div class="body" style="margin-top:12px">Engagements are accepted against declared capacity — if a project cannot be given proper attention in the window you need, we say so before contracting rather than after. Field execution is supported by an established network of district-level associates who have worked with us for years, under our direction and accountability. Every engagement maintains a documented file — title chain, application status, authority correspondence, contact map — held with the client, so project knowledge sits with your organisation and not only in our heads.</div>
+      </div>
+    </div>
+    <div class="note"><b>Name the objection before the reader does.</b> Every buyer thinks "what if this one person is unavailable" within ten seconds. Hiding from it doesn't remove the thought — it removes your chance to answer. Three <i>mechanisms</i> offered, not reassurance. Client-held documentation directly answers the investor's key-man concern. <b>Testimonial slot goes directly beneath this section</b> when you have one.</div>
+  </div>
+
+  <!-- 09 ENGAGE -->
+  <div class="sec">
+    <div class="label">07 — How We Engage</div>
+    <div class="h2">Three ways engagements are structured.</div>
+    <div class="c3">
+      <div><div class="h4">Pre-acquisition assessment</div><div class="small" style="margin-top:9px">A bounded, short-duration review before you commit capital to a site.</div><div class="dlist" style="margin-top:12px"><div class="ditem"><span></span><span>Evacuation and bay availability check</span></div><div class="ditem"><span></span><span>Title and classification screening across target survey numbers</span></div><div class="ditem"><span></span><span>Statutory pathway and realistic timeline</span></div><div class="ditem"><span></span><span>Go / no-go position</span></div></div></div>
+      <div><div class="h4">Stage mandate</div><div class="small" style="margin-top:9px">Retained for a defined stage — land, approvals, evacuation or right of way.</div><div class="dlist" style="margin-top:12px"><div class="ditem"><span></span><span>Defined deliverable and completion criteria</span></div><div class="ditem"><span></span><span>Fixed reporting cadence</span></div><div class="ditem"><span></span><span>Priced against scope, not time</span></div></div></div>
+      <div><div class="h4">Full development support</div><div class="small" style="margin-top:9px">Retained from site identification to construction-ready handover.</div><div class="dlist" style="margin-top:12px"><div class="ditem"><span></span><span>All lifecycle stages 02–06</span></div><div class="ditem"><span></span><span>Single accountable point of contact</span></div><div class="ditem"><span></span><span>Continuous status file held with the client</span></div></div></div>
+    </div>
+    <div class="body" style="margin-top:34px">Commercial terms are discussed against a specific site and a specific timeline. We do not quote development support against a brief.</div>
+    <div class="note"><b>Pre-acquisition assessment first is the key commercial move.</b> No developer hands a full mandate to a firm with no visible track record — but he will pay for a bounded evacuation-and-title check on a site he's about to buy. That is your realistic entry product; make it the easiest thing to ask for. The closing line qualifies before pricing, which is what senior firms do.</div>
+  </div>
+
+  <!-- 10 CTA -->
+  <div class="sec inv cta">
+    <div class="label">Contact</div>
+    <div class="h2">If you are assessing a site in Karnataka, start with the questions that decide the project.</div>
+    <div class="body">Is the land clean, is the bay available, and is the corridor realistic. We will tell you before you commit capital, not after.</div>
+    <div style="margin-top:28px"><span class="btn">Start a site discussion</span></div>
+    <div style="margin-top:16px"><span class="linkish">View development support services</span></div>
+  </div>
+</div>
+
+<!-- ============ MOBILE ============ -->
+<div class="mobile">
+ <div class="frame m">
+  <div class="frame-bar">Mobile · 390 · 4-col</div>
+  <div class="inner">
+
+    <div class="imgbox" style="height:210px" data-l="Hero image first — consistent LCP element across breakpoints"></div>
+    <div class="sec">
+      <div class="kicker-rule"></div>
+      <div class="label">About Bolamudi Enterprise</div>
+      <div class="h1">Two decades inside Karnataka's renewable energy development machinery.</div>
+      <div class="deck" style="margin-top:16px">Bolamudi Enterprise is a project development support firm. We handle the land, statutory and liaison work that decides whether a sanctioned project reaches construction.</div>
+      <div class="note">Deck drops its compound second clause — mobile readers parse compound clauses poorly at this width.</div>
+    </div>
+
+    <div class="sec alt">
+      <div class="strip">
+        <div><div class="fig" style="font-size:22px">20+</div><div class="cap">Years in utility-scale RE execution</div></div>
+        <div><div class="fig" style="font-size:22px">4</div><div class="cap">Solar, Wind, Hybrid, Pumped Storage</div></div>
+        <div><div class="fig" style="font-size:17px">Karnataka</div><div class="cap">Statewide district and DISCOM coverage</div></div>
+        <div><div class="fig" style="font-size:17px">Pre-construction</div><div class="cap">Land, approvals, evacuation, RoW</div></div>
+      </div>
+      <div class="note">2×2 grid, never horizontal scroll. Half a credibility strip is worse than none.</div>
+    </div>
+
+    <div class="sec">
+      <div class="label">01 — The Position</div>
+      <div class="h2">We occupy the stage most developers underestimate.</div>
+      <div class="body" style="margin-top:14px">A utility-scale renewable project rarely fails on technology. It fails, or slips by eighteen months, in the pre-construction stage — imperfect title, an unmoved statutory file, an evacuation approval contingent on an allocated bay, a corridor where thirty-nine of forty owners agree.</div>
+      <div class="notlist">
+        <div class="notrow"><div class="h4">Not an EPC contractor</div><div class="small">We do not construct or procure.</div></div>
+        <div class="notrow"><div class="h4">Not a technical or DPR consultant</div><div class="small">We do not size plants or model yield.</div></div>
+        <div class="notrow"><div class="h4">Not a land broker</div><div class="small">Retained by the developer. Not paid by the landowner.</div></div>
+      </div>
+    </div>
+
+    <div class="sec alt">
+      <div class="label">02 — Domain Command</div>
+      <div class="h2">The work, stated precisely.</div>
+      <div class="dgrid">
+        <div class="dblock">
+          <div class="h3">Land Aggregation &amp; Title</div>
+          <div class="dlist">
+            <div class="ditem"><span></span><span>Survey-number-wise feasibility screening</span></div>
+            <div class="ditem"><span></span><span>RTC, mutation and encumbrance chain verification</span></div>
+            <div class="ditem"><span></span><span>Section 109 exemption, KLR Act 1961</span></div>
+            <div class="ditem"><span></span><span>Seven-year transfer restriction</span></div>
+            <div class="ditem"><span></span><span>Gomala and government land grant pathways</span></div>
+          </div>
+        </div>
+        <div class="dblock">
+          <div class="h3">Land Use &amp; Statutory Approvals</div>
+          <div class="dlist">
+            <div class="ditem"><span></span><span>Deemed conversion route for RE, 2025 Rules</span></div>
+            <div class="ditem"><span></span><span>KREDL registration and SLAC allotment</span></div>
+            <div class="ditem"><span></span><span>Karnataka RE Policy 2022–27 incentives</span></div>
+            <div class="ditem"><span></span><span>DC office and district administration liaison</span></div>
+          </div>
+        </div>
+        <div class="dblock">
+          <div class="h3">Evacuation &amp; Connectivity</div>
+          <div class="dlist">
+            <div class="ditem"><span></span><span>KPTCL evacuation scheme approval</span></div>
+            <div class="ditem"><span></span><span>Bay availability check before land commitment</span></div>
+            <div class="ditem"><span></span><span>ESCOM interface and ISTS connectivity</span></div>
+          </div>
+        </div>
+        <div class="dblock">
+          <div class="h3">Transmission Right of Way</div>
+          <div class="dlist">
+            <div class="ditem"><span></span><span>Route optimisation and corridor consent</span></div>
+            <div class="ditem"><span></span><span>Crop and structure compensation settlement</span></div>
+            <div class="ditem"><span></span><span>Objection handling and escalation</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="note"><b>Lists stay fully expanded — no accordions.</b> The lists are the proof; hiding proof behind a tap costs more than a long scroll ever will.</div>
+    </div>
+
+    <div class="sec">
+      <div class="label">03 — Development Lifecycle</div>
+      <div class="h2">Where we intervene.</div>
+      <div style="margin-top:12px">
+        <div class="step"><span class="dot2" style="background:#fff;border:1px solid var(--rule)"></span><div class="stg">01</div><div class="stt">Site identification</div><div class="std" style="max-width:none">Terrain, resource, access, evacuation proximity</div></div>
+        <div class="step"><span class="dot2" style="background:var(--accent)"></span><div class="stg">02</div><div class="stt">Land aggregation</div><div class="std" style="max-width:none">Title verification, negotiation, consolidation</div></div>
+        <div class="step"><span class="dot2" style="background:var(--accent)"></span><div class="stg">03</div><div class="stt">Land use &amp; exemption</div><div class="std" style="max-width:none">Conversion, S.109, tenure structuring</div></div>
+        <div class="step"><span class="dot2" style="background:var(--accent)"></span><div class="stg">04</div><div class="stt">Statutory approvals</div><div class="std" style="max-width:none">KREDL, SLAC, district administration</div></div>
+        <div class="step"><span class="dot2" style="background:var(--accent)"></span><div class="stg">05</div><div class="stt">Evacuation &amp; connectivity</div><div class="std" style="max-width:none">KPTCL scheme, bay allocation, ESCOM</div></div>
+        <div class="step"><span class="dot2" style="background:var(--accent)"></span><div class="stg">06</div><div class="stt">Transmission right of way</div><div class="std" style="max-width:none">Corridor consent, compensation, objections</div></div>
+        <div class="step"><span class="dot2" style="background:#fff;border:1px solid var(--rule)"></span><div class="stg">07</div><div class="stt">Construction &amp; COD</div><div class="std" style="max-width:none">Continuity, residual approvals, local interface</div></div>
+      </div>
+      <div class="note"><b>Vertical stepper, never horizontal scroll.</b> A horizontal timeline hides stages 04–07 — which is exactly where your value sits. Users routinely never discover off-screen content.</div>
+    </div>
+
+    <div class="sec alt">
+      <div class="imgbox" style="aspect-ratio:4/5" data-l="Founder portrait 4:5 — commissioned, blocking requirement"></div>
+      <div style="margin-top:20px">
+        <div class="label">04 — Leadership</div>
+        <div class="h3" style="font-size:18px">[Founder Name]</div>
+        <div class="small" style="margin-top:4px">Founder &amp; Principal</div>
+        <div class="philo">
+          <p><b>On why this practice exists.</b> Twenty years of executing utility-scale solar, wind, hybrid and pumped storage projects in Karnataka taught me one thing: the difference between commissioning on schedule and slipping two years is almost never engineering.</p>
+          <p><b>On how the work is done.</b> It is field work — village visits, survey records, taluk offices, the same officials over years. Every engagement here is led by me personally.</p>
+          <p><b>On what I will not do.</b> I will not commit to an aggregation timeline before title and consent are tested on the ground. I will not report a statutory position I have not confirmed at source.</p>
+        </div>
+        <div class="captl">
+          <div class="caprow" style="grid-template-columns:1fr;gap:3px"><b>[20XX–20XX]</b><span>Wind — micro-siting support, land and RoW</span></div>
+          <div class="caprow" style="grid-template-columns:1fr;gap:3px"><b>[20XX–20XX]</b><span>Utility-scale solar — aggregation and approvals</span></div>
+          <div class="caprow" style="grid-template-columns:1fr;gap:3px"><b>[20XX–20XX]</b><span>Hybrid — connectivity and corridor work</span></div>
+          <div class="caprow" style="grid-template-columns:1fr;gap:3px"><b>[20XX–Present]</b><span>Pumped storage development support</span></div>
+        </div>
+        <div class="note">Bold paragraph lead-ins retained on mobile — they are the only scan anchors in a long text block.</div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="label">05 — Core Values</div>
+      <div class="h2">Operating commitments.</div>
+      <div style="margin-top:20px">
+        <div class="vrow"><div class="vnum">01</div><div><div class="h4">Verified before reported.</div><div class="small" style="margin-top:5px">No status reaches a client that has not been confirmed at source.</div></div></div>
+        <div class="vrow"><div class="vnum">02</div><div><div class="h4">Land first, promises second.</div><div class="small" style="margin-top:5px">No aggregation timeline is committed until title and owner consent are tested in the field.</div></div></div>
+        <div class="vrow"><div class="vnum">03</div><div><div class="h4">The landowner is a stakeholder, not an obstacle.</div><div class="small" style="margin-top:5px">Every acre acquired badly becomes a litigation or a stalled tower three years later — and it becomes the developer's problem.</div></div></div>
+        <div class="vrow"><div class="vnum">04</div><div><div class="h4">Compliance over speed.</div><div class="small" style="margin-top:5px">Defects surface at diligence, refinancing or sale, when they cost the most.</div></div></div>
+        <div class="vrow"><div class="vnum">05</div><div><div class="h4">One principal, one accountable owner.</div><div class="small" style="margin-top:5px">No handoffs, no account-management layer.</div></div></div>
+      </div>
+    </div>
+
+    <div class="sec alt">
+      <div class="label">06 — Why Bolamudi</div>
+      <div class="h2">Three honest reasons, and one honest answer.</div>
+      <div class="c3">
+        <div><div class="h4">Against a large consultancy</div><div class="small" style="margin-top:8px">They sell with partners and deliver with associates. Here, the person who sells the work does the work.</div></div>
+        <div><div class="h4">Against an in-house team</div><div class="small" style="margin-top:8px">Twenty years of district relationships cannot be hired in a quarter or justified as permanent overhead.</div></div>
+        <div><div class="h4">Against a local aggregator</div><div class="small" style="margin-top:8px">Land solved in isolation from evacuation and RoW produces a site you own and cannot build on.</div></div>
+      </div>
+      <hr class="hr" style="margin:28px 0 20px">
+      <div class="h3">On continuity and single-principal risk</div>
+      <div class="body" style="margin-top:10px">Engagements are accepted against declared capacity. Field execution is supported by district-level associates under our direction and accountability. Every engagement maintains a documented file — title chain, application status, authority correspondence — held with the client, so project knowledge sits with your organisation.</div>
+    </div>
+
+    <div class="sec">
+      <div class="label">07 — How We Engage</div>
+      <div class="h2">Three ways engagements are structured.</div>
+      <div class="c3">
+        <div><div class="h4">Pre-acquisition assessment</div><div class="small" style="margin-top:8px">Bounded review before you commit capital.</div><div class="dlist" style="margin-top:10px"><div class="ditem"><span></span><span>Evacuation and bay availability check</span></div><div class="ditem"><span></span><span>Title and classification screening</span></div><div class="ditem"><span></span><span>Go / no-go position</span></div></div></div>
+        <div><div class="h4">Stage mandate</div><div class="small" style="margin-top:8px">Retained for a defined stage.</div><div class="dlist" style="margin-top:10px"><div class="ditem"><span></span><span>Defined deliverable and completion criteria</span></div><div class="ditem"><span></span><span>Priced against scope, not time</span></div></div></div>
+        <div><div class="h4">Full development support</div><div class="small" style="margin-top:8px">Site identification to construction-ready handover.</div><div class="dlist" style="margin-top:10px"><div class="ditem"><span></span><span>Lifecycle stages 02–06</span></div><div class="ditem"><span></span><span>Status file held with the client</span></div></div></div>
+      </div>
+      <div class="body" style="margin-top:24px">Commercial terms are discussed against a specific site and timeline. We do not quote against a brief.</div>
+    </div>
+
+    <div class="sec inv cta">
+      <div class="label">Contact</div>
+      <div class="h2">If you are assessing a site in Karnataka, start with the questions that decide the project.</div>
+      <div class="body">Is the land clean, is the bay available, and is the corridor realistic.</div>
+      <div style="margin-top:22px"><span class="btn" style="display:block">Start a site discussion</span></div>
+      <div style="margin-top:14px"><span class="linkish">View development support services</span></div>
+    </div>
+
+  </div>
+ </div>
+</div>
+
+</div>
+</body>
+</html>

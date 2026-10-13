@@ -1,0 +1,44 @@
+/* =====================================================================
+   Bolamudi design tokens: the one place for colours, fonts and widths.
+   Pages, buttons, icons, photo overlays and the Karnataka map all read
+   these, so changing a value here changes it everywhere.
+
+   Colours that are also used faded (photo overlays, text on dark bands)
+   are written as red green blue numbers, with the hex in a comment.
+   Solid use: var(--forest-900)   Faded use: rgba(var(--forest-900-rgb), .5)
+   (Fonts: also update FONTS_URL in config.py when changing a family.)
+   ===================================================================== */
+:root{
+  /* brand */
+  --forest-900-rgb:11, 31, 25;    /* #0B1F19 */
+  --forest-800-rgb:20, 52, 43;    /* #14342B */
+  --forest-700-rgb:27, 77, 62;    /* #1B4D3E */
+  --forest-900:rgb(var(--forest-900-rgb)); --forest-800:rgb(var(--forest-800-rgb)); --forest-700:rgb(var(--forest-700-rgb));
+  --forest-100:#E8EFEA;
+  --gold-600:#856318; --gold-500:#C39A3E; --gold-focus:#A8791F;
+  --gold-200-rgb:232, 217, 168;   /* #E8D9A8 */
+  --gold-200:rgb(var(--gold-200-rgb));
+  /* neutrals */
+  --ink-900:#16181A; --ink-600:#5A5E5C; --ink-400:#6E736F;
+  --line:#E2E4E0;
+  --surface-1-rgb:247, 247, 244;  /* #F7F7F4: light section background */
+  --surface-1:rgb(var(--surface-1-rgb));
+  --canvas-rgb:255, 255, 255;     /* #FFFFFF: page background */
+  --canvas:rgb(var(--canvas-rgb));
+  --white-rgb:255, 255, 255;      /* #FFFFFF: text and buttons on dark bands */
+  --white:rgb(var(--white-rgb));
+  --card-hover:#FCFBF7; --quiet-line:#D5E2D9; --field-line:#7F8983;
+  /* white text on dark bands, at reduced strength */
+  --on-dark-82:rgba(var(--white-rgb), .82);
+  --on-dark-78:rgba(var(--white-rgb), .78);
+  --on-dark-70:rgba(var(--white-rgb), .7);
+  --on-dark-60:rgba(var(--white-rgb), .6);
+  /* Karnataka map (img/karnataka-map.svg) */
+  --map-sea:#E4EEF0; --map-coast:#B9CDD1; --map-land:#F1EFE8;
+  /* type */
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Source Sans 3','Segoe UI',Arial,sans-serif;
+  --mono:'IBM Plex Mono','Consolas',monospace;
+  /* layout */
+  --container:1200px;
+}

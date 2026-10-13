@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bolamudi Enterprise — Services Page Wireframe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B1B2B; --slate:#1E293B; --graphite:#475569; --mist:#94A3B8;
+  --hairline:#E2DDD6; --hairline-dk:#C9C1B6; --bone:#F7F5F2; --white:#fff;
+  --lat:#B4622D; --lat-dk:#8F4C22; --lat-soft:rgba(180,98,45,.12);
+  --ok:#15803D; --risk:#B4622D; --blocked:#991B1B;
+  --f-disp:'Inter Tight',system-ui,sans-serif;
+  --f-body:'Inter',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0f1115;font-family:var(--f-body);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* ── prototype chrome ─────────────────────────────── */
+.chrome{position:sticky;top:0;z-index:200;background:#15181e;border-bottom:1px solid #262a33;padding:12px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.chrome .brand{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:#6b7280;text-transform:uppercase}
+.chrome .brand b{color:#e5e7eb;font-weight:500}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;padding:7px 13px;border:1px solid #2c313b;background:transparent;color:#9aa3b0;cursor:pointer;border-radius:2px;transition:.15s}
+.tab:hover{border-color:#454c59;color:#e5e7eb}
+.tab.on{background:var(--lat);border-color:var(--lat);color:#fff}
+.chrome .note{font-family:var(--f-mono);font-size:10px;color:#565d6b;margin-left:auto;letter-spacing:.05em}
+.stage{padding:34px 20px 80px}
+.view{display:none}
+.view.on{display:block}
+.canvas{max-width:1440px;margin:0 auto;background:var(--bone);box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.phone-row{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;align-items:flex-start}
+.phone{width:390px;flex:0 0 390px;background:var(--bone);box-shadow:0 24px 70px rgba(0,0,0,.55);position:relative;overflow:hidden;border-radius:8px}
+.phone-cap{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6b7280;text-align:center;margin-bottom:10px}
+.anno{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;color:var(--lat);background:var(--lat-soft);border-left:2px solid var(--lat);padding:6px 10px;margin:0 0 2px}
+
+/* ── tokens ───────────────────────────────────────── */
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;font-weight:500}
+.lat{color:var(--lat)}
+h1,h2,h3,h4{font-family:var(--f-disp);font-weight:600}
+.wrap{max-width:1280px;margin:0 auto;padding:0 56px}
+.sec{padding:120px 0}
+.sec-sm{padding:88px 0}
+.bone{background:var(--bone)}
+.inkbg{background:var(--ink);color:#fff}
+.tint{background:linear-gradient(0deg,rgba(11,27,43,.045),rgba(11,27,43,.045)),var(--bone)}
+.rule{height:1px;background:var(--hairline);border:0}
+.rule-dk{height:1px;background:rgba(255,255,255,.14);border:0}
+.latrule{width:56px;height:3px;background:var(--lat);margin:22px 0}
+
+.btn{display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 24px;border-radius:2px;font-size:15px;font-weight:500;font-family:var(--f-body);border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;text-decoration:none;transition:.16s}
+.btn:hover{background:var(--slate)}
+.btn-lat{background:var(--lat);border-color:var(--lat)}
+.btn-lat:hover{background:var(--lat-dk);border-color:var(--lat-dk)}
+.btn-ghost{background:transparent;border:0;color:inherit;padding:0 2px;height:48px;text-decoration:none;display:inline-flex;align-items:center;font-size:15px;font-weight:500;border-bottom:1px solid currentColor;opacity:.9}
+.btn-ghost:hover{opacity:1}
+
+/* ── hero ─────────────────────────────────────────── */
+.hero{position:relative;min-height:640px;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+.terrain{position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 78% 22%, #3d4a52 0%, #22303b 45%, #0e1c28 100%);
+}
+.terrain::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,transparent 0 52%, rgba(90,62,42,.55) 52%, rgba(58,40,28,.85) 62%, rgba(24,18,14,.95) 100%),
+  repeating-linear-gradient(94deg, rgba(255,255,255,.02) 0 3px, transparent 3px 9px);
+}
+.pylon{position:absolute;bottom:26%;opacity:.5}
+.scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,27,43,.94) 0%,rgba(11,27,43,.86) 38%,rgba(11,27,43,.28) 100%)}
+.hero-in{position:relative;width:100%;padding-bottom:0}
+.hero h1{font-size:56px;line-height:1.06;letter-spacing:-.022em;color:#fff;max-width:15ch}
+.hero p.lead{font-size:19px;line-height:1.62;color:rgba(255,255,255,.76);max-width:60ch;margin-top:24px}
+.hero-cta{display:flex;gap:26px;align-items:center;margin-top:38px;flex-wrap:wrap}
+.statrail{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.16);margin-top:64px}
+.statrail div{padding:22px 0 26px;border-right:1px solid rgba(255,255,255,.12)}
+.statrail div:last-child{border-right:0}
+.statrail .v{font-family:var(--f-mono);font-size:20px;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.statrail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:7px}
+
+/* ── nav ──────────────────────────────────────────── */
+.nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;height:80px;border-bottom:1px solid rgba(255,255,255,.13)}
+.logo{font-family:var(--f-disp);font-size:19px;font-weight:600;color:#fff;letter-spacing:-.01em}
+.logo span{color:var(--lat)}
+.navlinks{display:flex;gap:34px;align-items:center}
+.navlinks a{font-size:14.5px;color:rgba(255,255,255,.82);text-decoration:none;font-weight:500}
+.navlinks a.act{color:#fff;border-bottom:2px solid var(--lat);padding-bottom:5px}
+.navbtn{border:1px solid rgba(255,255,255,.35);height:42px;padding:0 20px;display:inline-flex;align-items:center;font-size:14px;color:#fff;border-radius:2px}
+
+/* ── thesis ───────────────────────────────────────── */
+.thesis{max-width:760px;margin:0 auto;text-align:center}
+.thesis p{font-family:var(--f-disp);font-size:25px;line-height:1.55;letter-spacing:-.012em;color:var(--ink)}
+.thesis .latrule{margin:32px auto 0}
+
+/* ── section head ─────────────────────────────────── */
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:52px}
+.sh h2{font-size:37px;line-height:1.18;letter-spacing:-.018em;max-width:20ch}
+.sh .sub{font-size:16px;line-height:1.65;color:var(--graphite);max-width:44ch;padding-bottom:5px}
+.eyebrow{display:block;margin-bottom:16px}
+
+/* ── capability cards ─────────────────────────────── */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+.card{background:var(--white);padding:34px 30px 30px;position:relative;transition:.18s;display:flex;flex-direction:column;min-height:288px}
+.card::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;background:var(--lat);transform:scaleX(0);transform-origin:left;transition:transform .18s cubic-bezier(.16,1,.3,1)}
+.card:hover::before{transform:scaleX(1)}
+.card:hover{background:#FCFBFA}
+.card .idx{font-family:var(--f-mono);font-size:11px;color:var(--lat);letter-spacing:.1em;margin-bottom:20px}
+.ic{width:26px;height:26px;stroke:var(--ink);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-bottom:16px}
+.card h3{font-size:21px;letter-spacing:-.01em;margin-bottom:10px}
+.card .desc{font-size:14.5px;line-height:1.62;color:var(--graphite)}
+.card .prob{margin-top:auto;padding-top:20px;border-top:1px solid var(--hairline)}
+.card .prob .lbl{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--lat);display:block;margin-bottom:7px}
+.card .prob p{font-size:13.5px;line-height:1.55;color:var(--slate)}
+.card .go{font-family:var(--f-body);font-size:13.5px;font-weight:500;color:var(--ink);margin-top:18px;display:inline-block;border-bottom:1px solid var(--hairline-dk);padding-bottom:2px}
+.card.util{background:var(--bone);justify-content:center}
+.card.util h4{font-size:17px;margin-bottom:10px}
+.card.util p{font-size:13.5px;line-height:1.6;color:var(--graphite)}
+
+/* ── development sequence ─────────────────────────── */
+.seq{position:relative;margin-top:66px}
+.seqline{position:absolute;top:5px;left:6%;right:6%;height:1px;background:rgba(180,98,45,.42)}
+.seqgrid{display:grid;grid-template-columns:repeat(5,1fr);position:relative}
+.seqcol{padding-right:26px;position:relative}
+.node{width:11px;height:11px;background:var(--ink);border:1.5px solid var(--lat);margin-bottom:26px;position:relative;z-index:2}
+.seqcol .st{font-family:var(--f-disp);font-size:16px;font-weight:600;color:#fff;line-height:1.3;letter-spacing:-.005em}
+.seqcol .wk{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;color:var(--lat);margin-top:9px}
+.seqcol ul{list-style:none;margin-top:22px;border-top:1px solid rgba(255,255,255,.13);padding-top:16px}
+.seqcol li{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.7);padding:7px 0}
+.seqcol li b{font-weight:500;color:#fff;border-bottom:1px solid rgba(255,255,255,.3)}
+
+/* ── sectors ──────────────────────────────────────── */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.sect{background:var(--white);border:1px solid var(--hairline);transition:.18s}
+.sect:hover{border-color:var(--ink)}
+.duo{aspect-ratio:4/5;position:relative;overflow:hidden}
+.duo .lbl{position:absolute;left:14px;bottom:12px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.72);text-transform:uppercase;z-index:3}
+.duo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,27,43,.15),rgba(11,27,43,.62))}
+.d1{background:radial-gradient(90% 70% at 30% 25%,#5c6a6e,#2a3a42 60%,#16242e)}
+.d2{background:radial-gradient(90% 70% at 65% 20%,#66727a,#31414c 58%,#18262f)}
+.d3{background:radial-gradient(90% 70% at 45% 35%,#6c6a5f,#3a3a34 60%,#1d2429)}
+.d4{background:radial-gradient(90% 75% at 40% 60%,#4a6068,#26383f 58%,#12212a)}
+.sect .body{padding:22px 22px 26px}
+.sect .body .ic{width:22px;height:22px;margin-bottom:12px}
+.sect h3{font-size:19px;margin-bottom:9px}
+.sect p{font-size:13.5px;line-height:1.6;color:var(--graphite)}
+.sect .go{font-size:13px;font-weight:500;margin-top:16px;display:inline-block;border-bottom:1px solid var(--hairline-dk);padding-bottom:2px}
+
+/* ── engagement ───────────────────────────────────── */
+.grid3b{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+.eng{background:var(--white);padding:32px 28px}
+.eng .tag{display:inline-block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--hairline-dk);color:var(--graphite);padding:4px 8px;margin-bottom:18px}
+.eng h3{font-size:20px;margin-bottom:12px}
+.eng p{font-size:14px;line-height:1.62;color:var(--graphite)}
+.eng .basis{margin-top:20px;padding-top:16px;border-top:1px solid var(--hairline);font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;color:var(--ink)}
+.engfoot{margin-top:26px;font-size:14.5px;color:var(--slate);border-left:3px solid var(--lat);padding-left:18px;line-height:1.6}
+
+/* ── credibility ──────────────────────────────────── */
+.split{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:center}
+.portrait{aspect-ratio:4/5;background:radial-gradient(80% 60% at 40% 30%,#6a6055,#3c352e 55%,#1c1916);position:relative}
+.portrait .cap{position:absolute;left:16px;bottom:14px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.6);text-transform:uppercase}
+.split h2{font-size:36px;letter-spacing:-.018em;line-height:1.16;margin-bottom:24px}
+.split p{font-size:16.5px;line-height:1.7;color:var(--graphite);margin-bottom:16px;max-width:60ch}
+.pills{display:grid;grid-template-columns:repeat(2,1fr);margin-top:34px;border-top:1px solid var(--hairline)}
+.pills div{padding:15px 0;border-bottom:1px solid var(--hairline);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.pills div:nth-child(odd){padding-right:20px}
+
+/* ── regulatory band ──────────────────────────────── */
+.regs{display:grid;grid-template-columns:1fr 1fr;column-gap:64px}
+.reg{display:grid;grid-template-columns:180px 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--hairline);align-items:baseline}
+.reg .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;color:var(--lat);text-transform:uppercase}
+.reg .v{font-size:14px;line-height:1.55;color:var(--slate)}
+
+/* ── faq ──────────────────────────────────────────── */
+.faq{max-width:860px}
+.q{border-bottom:1px solid var(--hairline);padding:22px 0;display:flex;justify-content:space-between;gap:30px;align-items:flex-start;cursor:pointer}
+.q h3{font-size:18px;font-weight:600;letter-spacing:-.008em}
+.q .pm{font-family:var(--f-mono);font-size:17px;color:var(--lat);line-height:1}
+.qa{padding:0 0 24px;border-bottom:1px solid var(--hairline);font-size:15px;line-height:1.72;color:var(--graphite);max-width:70ch}
+
+/* ── closing cta ──────────────────────────────────── */
+.close{text-align:center;padding:150px 0}
+.close h2{font-size:42px;letter-spacing:-.022em;color:#fff;max-width:19ch;margin:0 auto}
+.close p{font-size:17px;line-height:1.66;color:rgba(255,255,255,.72);max-width:56ch;margin:22px auto 0}
+.close .row{display:flex;gap:26px;justify-content:center;align-items:center;margin-top:38px}
+
+/* ── child page ───────────────────────────────────── */
+.crumb{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);padding:26px 0}
+.crumb b{color:#fff;font-weight:400}
+.phead{padding-bottom:96px}
+.phead h1{font-size:50px;line-height:1.08;letter-spacing:-.022em;color:#fff;max-width:16ch}
+.phead p{font-size:18.5px;line-height:1.62;color:rgba(255,255,255,.74);max-width:58ch;margin-top:22px}
+.two{display:grid;grid-template-columns:4fr 8fr;gap:64px}
+.stick{position:sticky;top:40px;align-self:start}
+.m .stick{position:static}
+.stick .mono{color:var(--lat);display:block;margin-bottom:12px}
+.stick p{font-size:13.5px;line-height:1.6;color:var(--graphite)}
+.prose p{font-size:17px;line-height:1.75;color:var(--slate);margin-bottom:20px;max-width:66ch}
+.fails{margin-top:34px;border-top:1px solid var(--hairline)}
+.fails li{list-style:none;padding:14px 0 14px 26px;border-bottom:1px solid var(--hairline);font-size:14.5px;line-height:1.55;color:var(--slate);position:relative}
+.fails li::before{content:"";position:absolute;left:0;top:20px;width:8px;height:8px;background:var(--lat)}
+.solution{max-width:760px}
+.solution p{font-family:var(--f-disp);font-size:23px;line-height:1.56;letter-spacing:-.012em;color:var(--ink)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:44px;padding-top:32px;border-top:1px solid var(--hairline)}
+.pillars .p{font-size:14.5px;line-height:1.6;color:var(--graphite)}
+.pillars .p b{display:block;font-family:var(--f-disp);font-size:16px;color:var(--ink);margin-bottom:8px;font-weight:600}
+.scale{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.scale div{padding:34px 0;border-right:1px solid var(--hairline)}
+.scale div:last-child{border-right:0}
+.scale .v{font-family:var(--f-mono);font-size:32px;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.scale .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);margin-top:10px}
+
+.stagerow{display:grid;grid-template-columns:64px 1fr;gap:26px;padding:28px 0;border-bottom:1px solid var(--hairline);align-items:start}
+.stagerow .n{font-family:var(--f-mono);font-size:12px;color:var(--lat);letter-spacing:.08em;padding-top:4px}
+.stagerow h3{font-size:19px;margin-bottom:9px;letter-spacing:-.008em}
+.stagerow p{font-size:14.8px;line-height:1.66;color:var(--graphite);max-width:64ch}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--lat);color:var(--lat);padding:4px 8px;margin-top:13px}
+
+.delv{border:1px solid var(--hairline);background:var(--white);padding:44px}
+.delgrp{margin-bottom:34px}
+.delgrp:last-child{margin-bottom:0}
+.delgrp .h{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.delgrp .h h3{font-size:17px}
+.delgrp .fmt{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;border:1px solid var(--hairline-dk);color:var(--graphite);padding:3px 7px}
+.delgrp ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.delgrp li{position:relative;padding:9px 0 9px 28px;font-size:14.5px;line-height:1.5;color:var(--slate);border-bottom:1px solid var(--hairline)}
+.delgrp li::before{content:"";position:absolute;left:0;top:13px;width:12px;height:12px;border:1.5px solid var(--lat)}
+.delgrp li::after{content:"";position:absolute;left:3.5px;top:16.5px;width:5px;height:2.5px;border-left:1.5px solid var(--lat);border-bottom:1.5px solid var(--lat);transform:rotate(-45deg)}
+
+.applic{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+.applic a{background:var(--white);padding:26px 22px;text-decoration:none;display:block;transition:.16s}
+.applic a:hover{background:#FCFBFA}
+.applic .ic{width:22px;height:22px;margin-bottom:14px}
+.applic h4{font-family:var(--f-disp);font-size:17px;margin-bottom:8px}
+.applic p{font-size:13.3px;line-height:1.58;color:var(--graphite)}
+
+/* ── mobile ───────────────────────────────────────── */
+.m{font-size:16px}
+.m .wrap{padding:0 22px;max-width:none}
+.m .sec{padding:64px 0}
+.m .sec-sm{padding:52px 0}
+.m .nav{height:62px}
+.m .logo{font-size:17px}
+.m .hero{min-height:0;padding-bottom:0}
+.m .hero h1{font-size:32px;line-height:1.13;max-width:none}
+.m .hero p.lead{font-size:15.5px;margin-top:16px}
+.m .hero-in{padding-top:54px}
+.m .hero-cta{margin-top:28px;gap:18px;flex-direction:column;align-items:stretch}
+.m .btn{width:100%;justify-content:center;height:52px}
+.m .statrail{grid-template-columns:1fr 1fr;margin-top:44px}
+.m .statrail div{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.m .statrail div:nth-child(2n){border-right:0;padding-left:18px}
+.m .statrail .v{font-size:16px}
+.m .thesis p{font-size:19px;text-align:left}
+.m .thesis{text-align:left}
+.m .thesis .latrule{margin:24px 0 0}
+.m .sh{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:30px}
+.m .sh h2{font-size:26px;max-width:none}
+.m .sh .sub{font-size:15px;max-width:none}
+.m .grid3,.m .grid3b{grid-template-columns:1fr}
+.m .card{min-height:0;padding:26px 22px}
+.m .grid4{grid-template-columns:1fr;gap:16px}
+.m .duo{aspect-ratio:16/9}
+.m .split{grid-template-columns:1fr;gap:30px}
+.m .split h2{font-size:26px}
+.m .split p{font-size:15.5px}
+.m .pills{grid-template-columns:1fr}
+.m .regs{grid-template-columns:1fr}
+.m .reg{grid-template-columns:1fr;gap:6px}
+.m .close{padding:80px 0}
+.m .close h2{font-size:28px}
+.m .close p{font-size:15.5px}
+.m .close .row{flex-direction:column;gap:14px}
+.m .two{grid-template-columns:1fr;gap:28px}
+.m .prose p{font-size:16px}
+.m .solution p{font-size:19px}
+.m .pillars{grid-template-columns:1fr;gap:22px}
+.m .scale{grid-template-columns:1fr 1fr}
+.m .scale div{padding:22px 0;border-bottom:1px solid var(--hairline)}
+.m .scale div:nth-child(2n){border-right:0;padding-left:18px}
+.m .scale .v{font-size:24px}
+.m .stagerow{grid-template-columns:1fr;gap:10px}
+.m .delv{padding:24px 20px}
+.m .delgrp ul{grid-template-columns:1fr}
+.m .applic{grid-template-columns:1fr}
+.m .phead h1{font-size:30px}
+.m .phead p{font-size:16px}
+.m .phead{padding-bottom:56px}
+.m .faq{max-width:none}
+.m .q h3{font-size:16px}
+
+/* mobile vertical sequence */
+.vseq{margin-top:36px;position:relative;padding-left:26px}
+.vseq::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:rgba(180,98,45,.42)}
+.vstep{position:relative;padding-bottom:30px}
+.vstep::before{content:"";position:absolute;left:-26px;top:5px;width:11px;height:11px;background:var(--ink);border:1.5px solid var(--lat)}
+.vstep .st{font-family:var(--f-disp);font-size:16.5px;font-weight:600;color:#fff}
+.vstep .wk{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;color:var(--lat);margin-top:6px}
+.vstep ul{list-style:none;margin-top:12px}
+.vstep li{font-size:13.5px;color:rgba(255,255,255,.7);padding:4px 0}
+.vstep li b{color:#fff;font-weight:500;border-bottom:1px solid rgba(255,255,255,.3)}
+
+/* mobile sticky bar */
+.mbar{position:sticky;bottom:0;display:grid;grid-template-columns:1fr 76px;border-top:1px solid rgba(255,255,255,.16);z-index:40}
+.mbar a{height:58px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:15px;font-weight:500}
+.mbar .a1{background:var(--lat);color:#fff}
+.mbar .a2{background:var(--ink);color:#fff;border-left:1px solid rgba(255,255,255,.18)}
+.mnav{display:flex;align-items:center;justify-content:space-between;height:62px;border-bottom:1px solid rgba(255,255,255,.13)}
+.burger{width:22px;height:14px;position:relative}
+.burger i{position:absolute;left:0;right:0;height:1.5px;background:#fff}
+.burger i:nth-child(1){top:0}.burger i:nth-child(2){top:6px}.burger i:nth-child(3){top:12px}
+</style>
+</head>
+<body>
+
+<div class="chrome">
+  <div class="brand">Bolamudi Enterprise · <b>Services Page Wireframe v1.0</b></div>
+  <div class="tabs">
+    <button class="tab on" data-v="hub-d">Hub · Desktop</button>
+    <button class="tab" data-v="hub-m">Hub · Mobile</button>
+    <button class="tab" data-v="svc-d">Service Page · Desktop</button>
+    <button class="tab" data-v="svc-m">Service Page · Mobile</button>
+  </div>
+  <div class="note">Image areas shown as graded placeholders — see spec §6.5</div>
+</div>
+
+<div class="stage">
+
+<!-- ══════════════════════════════════════════════════ HUB · DESKTOP -->
+<div class="view on" id="hub-d">
+<div class="canvas">
+
+  <!-- S1 HERO -->
+  <section class="hero">
+    <div class="terrain"></div>
+    <div class="scrim"></div>
+    <div class="hero-in">
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo">BOLAMUDI<span>.</span></div>
+          <div class="navlinks">
+            <a href="#">About</a><a href="#" class="act">Services</a><a href="#">Sectors</a><a href="#">Approach</a><a href="#">Contact</a>
+            <span class="navbtn">Discuss a project</span>
+          </div>
+        </div>
+        <div style="padding-top:104px">
+          <span class="mono lat eyebrow">Services</span>
+          <h1>Land, approvals and grid access for Karnataka's utility-scale renewable projects.</h1>
+          <p class="lead">Twenty years of executing solar, wind, hybrid and pumped storage development across Karnataka's revenue districts — from first survey number to corridor clearance.</p>
+          <div class="hero-cta">
+            <a class="btn btn-lat" href="#">Discuss a project</a>
+            <a class="btn-ghost" style="color:#fff" href="#">Download capability statement</a>
+          </div>
+        </div>
+        <div class="statrail">
+          <div><div class="v">20+</div><div class="k">Years on Karnataka ground</div></div>
+          <div><div class="v">09</div><div class="k">Revenue districts</div></div>
+          <div><div class="v">100 MW+</div><div class="k">Utility-scale only</div></div>
+          <div><div class="v">04</div><div class="k">Solar · Wind · Hybrid · PSP</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S2 THESIS -->
+  <section class="sec-sm bone">
+    <div class="wrap"><div class="thesis">
+      <p>Renewable projects in Karnataka do not fail on technology. They fail on land title, on a file waiting at a Taluk office, and on one landowner in the middle of a forty-kilometre corridor. We remove those three failures — documented, submitted through official channels, and handed over in a form your lender's counsel can audit.</p>
+      <div class="latrule"></div>
+    </div></div>
+  </section>
+
+  <!-- S3 CAPABILITIES -->
+  <section class="sec bone" style="padding-top:0">
+    <div class="wrap">
+      <div class="sh">
+        <div><span class="mono lat eyebrow">Capabilities</span><h2>Five things we do, and the failure each one prevents.</h2></div>
+        <div class="sub">Every mandate has a written scope, a named deliverable list and a milestone schedule. Nothing here is advisory-only.</div>
+      </div>
+      <div class="grid3">
+
+        <div class="card">
+          <div class="idx">01</div>
+          <svg class="ic" viewBox="0 0 24 24"><path d="M2 22 8 2l6 8 4-3 4 15z"/><path d="M2 22h20"/><path d="M8 2v20"/></svg>
+          <h3>Land Aggregation</h3>
+          <p class="desc">Contiguous, title-clean, registered land — assembled parcel by parcel and handed over in lender format.</p>
+          <div class="prob"><span class="lbl">The problem it solves</span><p>Projects don't fail on the last parcel. They fail on the parcel nobody checked properly.</p></div>
+          <span class="go">Explore →</span>
+        </div>
+
+        <div class="card">
+          <div class="idx">02</div>
+          <svg class="ic" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+          <h3>Government Liaison</h3>
+          <p class="desc">Continuous, documented follow-through with the departments that actually decide.</p>
+          <div class="prob"><span class="lbl">The problem it solves</span><p>Files don't get rejected. They wait — and your COD date moves with them.</p></div>
+          <span class="go">Explore →</span>
+        </div>
+
+        <div class="card">
+          <div class="idx">03</div>
+          <svg class="ic" viewBox="0 0 24 24"><path d="M5 22h14"/><path d="M5 18h14v-2H5z"/><path d="M9 16V9a3 3 0 0 1 6 0v7"/><path d="M12 6V2"/></svg>
+          <h3>Statutory Approvals</h3>
+          <p class="desc">A project-specific statutory register, owned from application through to compliance calendar.</p>
+          <div class="prob"><span class="lbl">The problem it solves</span><p>The approval list you're working from is probably wrong for your project.</p></div>
+          <span class="go">Explore →</span>
+        </div>
+
+        <div class="card">
+          <div class="idx">04</div>
+          <svg class="ic" viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M6 22 12 6l6 16"/><path d="M8 14h8"/><path d="M9.5 10h5"/><path d="M4 6h16"/></svg>
+          <h3>Transmission Right of Way</h3>
+          <p class="desc">Corridor walked, optimised, compensated and cleared — span by span, on record.</p>
+          <div class="prob"><span class="lbl">The problem it solves</span><p>One orchard in the middle of a 40 km corridor can hold an entire commissioned project.</p></div>
+          <span class="go">Explore →</span>
+        </div>
+
+        <div class="card">
+          <div class="idx">05</div>
+          <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="6"/><rect x="14" y="15" width="7" height="6"/><path d="M6.5 9v5a4 4 0 0 0 4 4H14"/></svg>
+          <h3>Project Development Support</h3>
+          <p class="desc">The Karnataka-side development desk — one interface, one register, one weekly report.</p>
+          <div class="prob"><span class="lbl">The problem it solves</span><p>Slippage gets discovered in the review meeting, not before it.</p></div>
+          <span class="go">Explore →</span>
+        </div>
+
+        <div class="card util">
+          <div class="idx">—</div>
+          <h4>How we're engaged</h4>
+          <p>Feasibility mandate, development retainer, or a scope mandate for a single defined outcome. No undefined success fees.</p>
+          <span class="go" style="margin-top:16px">Engagement models →</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 DEVELOPMENT SEQUENCE -->
+  <section class="sec inkbg">
+    <div class="wrap">
+      <div class="sh" style="align-items:flex-end">
+        <div><span class="mono lat eyebrow">Methodology</span><h2 style="color:#fff">The development sequence — and where each capability sits in it.</h2></div>
+        <div class="sub" style="color:rgba(255,255,255,.66)">Indicative weeks from mandate. Capabilities overlap deliberately; the handoffs are where projects usually lose time.</div>
+      </div>
+      <div class="seq">
+        <div class="seqline"></div>
+        <div class="seqgrid">
+          <div class="seqcol"><div class="node"></div><div class="st">Site<br>Selection</div><div class="wk">WK 0–6</div>
+            <ul><li><b>Land Aggregation</b> — screening &amp; terrain</li><li>Resource &amp; evacuation distance</li></ul></div>
+          <div class="seqcol"><div class="node"></div><div class="st">Land<br>Control</div><div class="wk">WK 4–28</div>
+            <ul><li><b>Land Aggregation</b> — title, execution, registration</li><li><b>Government Liaison</b> — s.109, conversion</li></ul></div>
+          <div class="seqcol"><div class="node"></div><div class="st">Statutory<br>Clearance</div><div class="wk">WK 12–40</div>
+            <ul><li><b>Statutory Approvals</b> — register to closure</li><li><b>Government Liaison</b> — SLSWCC / departments</li></ul></div>
+          <div class="seqcol"><div class="node"></div><div class="st">Grid &amp;<br>Evacuation</div><div class="wk">WK 20–52</div>
+            <ul><li><b>Transmission ROW</b> — walk-down to clearance</li><li><b>Statutory Approvals</b> — connectivity &amp; GNA</li></ul></div>
+          <div class="seqcol"><div class="node"></div><div class="st">Construction<br>Readiness</div><div class="wk">WK 40–COD</div>
+            <ul><li><b>Project Development Support</b> — CP tracking, diligence</li><li>Handover to EPC</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 SECTORS -->
+  <section class="sec bone">
+    <div class="wrap">
+      <div class="sh">
+        <div><span class="mono lat eyebrow">Sectors</span><h2>Four asset classes. The land problem is different in each.</h2></div>
+        <div class="sub">The five capabilities are constant. How they're applied is not — the constraint that binds a wind project is not the one that binds a solar project.</div>
+      </div>
+      <div class="grid4">
+        <div class="sect"><div class="duo d1"><span class="lbl">Photo — array on red soil, wide</span></div><div class="body">
+          <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>
+          <h3>Solar</h3><p>4–5 acres per MW, and contiguity matters more than price.</p><span class="go">Solar →</span></div></div>
+        <div class="sect"><div class="duo d2"><span class="lbl">Photo — ridge turbines at distance</span></div><div class="body">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M9.8 4.4a2 2 0 1 1 3.4 2L9 13"/><path d="M20 10.2a2 2 0 1 1-1.2 3.5L11 12"/><path d="M8.5 20.5a2 2 0 1 1-2.6-2.9L12 12"/></svg>
+          <h3>Wind</h3><p>Small footprints, hard access. The crane path is the real land problem.</p><span class="go">Wind →</span></div></div>
+        <div class="sect"><div class="duo d3"><span class="lbl">Photo — turbine over array, hybrid site</span></div><div class="body">
+          <svg class="ic" viewBox="0 0 24 24"><circle cx="8" cy="8" r="5"/><circle cx="16" cy="16" r="5"/></svg>
+          <h3>Hybrid</h3><p>Two resource regimes, one land polygon, one evacuation point.</p><span class="go">Hybrid →</span></div></div>
+        <div class="sect"><div class="duo d4"><span class="lbl">Photo — reservoir &amp; head, Ghats terrain</span></div><div class="body">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M2 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>
+          <h3>Pumped Storage</h3><p>Head differential, geotechnics and forest overlap, screened before the DPR.</p><span class="go">Pumped Storage →</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 ENGAGEMENT -->
+  <section class="sec-sm bone" style="padding-top:0">
+    <div class="wrap">
+      <div class="sh"><div><span class="mono lat eyebrow">Engagement</span><h2>Three ways we're engaged.</h2></div>
+      <div class="sub">Scope, deliverables and milestones are written before work starts. Always.</div></div>
+      <div class="grid3b">
+        <div class="eng"><span class="tag">Pre-bid</span><h3>Feasibility Mandate</h3><p>Site screening, land feasibility read, statutory register and indicative risk — before you commit to a bid or a site.</p><div class="basis">FIXED FEE · 4–6 WEEKS</div></div>
+        <div class="eng"><span class="tag">LOA → Financial close</span><h3>Development Retainer</h3><p>The full Karnataka-side desk across land, statutory, grid and district matters, with a weekly milestone register.</p><div class="basis">MONTHLY RETAINER + MILESTONE</div></div>
+        <div class="eng"><span class="tag">Single outcome</span><h3>Scope Mandate</h3><p>One defined outcome — corridor clearance, or land aggregated to registration and mutation.</p><div class="basis">PER ACRE / PER KM · MILESTONE-LINKED</div></div>
+      </div>
+      <p class="engfoot">We do not work on undefined success fees. Every mandate has a written scope, a deliverable list and a milestone schedule.</p>
+    </div>
+  </section>
+
+  <!-- S7 CREDIBILITY -->
+  <section class="sec tint">
+    <div class="wrap"><div class="split">
+      <div class="portrait"><span class="cap">Photo — founder on site / survey instrument on red soil</span></div>
+      <div>
+        <span class="mono lat eyebrow">Experience</span>
+        <h2>Twenty years on Karnataka ground.</h2>
+        <p>Bolamudi Enterprise is led by a project development professional with over twenty years of experience executing utility-scale solar, wind, hybrid and pumped storage projects across Karnataka — through land aggregation, revenue and energy department processes, transmission corridors and district administrations.</p>
+        <p>That work was done inside one of India's established renewable energy developers. The relationships are with departments and districts, not with a former employer's letterhead.</p>
+        <div class="pills"><div>Utility-scale only</div><div>Karnataka-focused</div><div>Documented process</div><div>Lender-format handover</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- S8 REGULATORY -->
+  <section class="sec bone">
+    <div class="wrap">
+      <div class="sh"><div><span class="mono lat eyebrow">Operating context</span><h2>The regime we file in, every week.</h2></div>
+      <div class="sub">Current as of August 2026. Reviewed six-monthly — thresholds and rates change.</div></div>
+      <div class="regs">
+        <div><div class="reg"><span class="k">KREDL</span><span class="v">State nodal agency under the Karnataka Renewable Energy Policy 2022–27.</span></div>
+        <div class="reg"><span class="k">KLR Act s.109</span><span class="v">Company acquisition of agricultural land; threshold raised to four hectares under the 2025 amendment, with a seven-year transfer restriction.</span></div>
+        <div class="reg"><span class="k">Land Revenue Rules 2025</span><span class="v">Forms 21B / 21C affidavits, 30-day deemed conversion, and an automatic conversion route for renewable energy projects.</span></div>
+        <div class="reg"><span class="k">KUM · SLSWCC</span><span class="v">Single-window clearance for ₹15 Cr–₹500 Cr; State High Level Clearance Committee above ₹500 Cr.</span></div></div>
+        <div><div class="reg"><span class="k">MoP RoW Guidelines</span><span class="v">14 June 2024 — 200% of land value at tower base, 30% across the corridor, for lines 66 kV and above. Determined by the Deputy Commissioner.</span></div>
+        <div class="reg"><span class="k">CERC GNA</span><span class="v">Stage-I and Stage-II connectivity, GNA within six months of Stage-II, ₹10 lakh/MW connectivity bank guarantee for renewable stations.</span></div>
+        <div class="reg"><span class="k">KSPCB · CEIG</span><span class="v">Consent to Establish and Operate; electrical inspectorate charging approval before energisation.</span></div>
+        <div class="reg"><span class="k">CEA</span><span class="v">DPR concurrence pathway for pumped storage, on the critical path throughout.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S9 FAQ -->
+  <section class="sec-sm bone" style="padding-top:0">
+    <div class="wrap">
+      <div class="sh"><div><span class="mono lat eyebrow">Questions</span><h2>The things developers actually ask.</h2></div></div>
+      <div class="faq">
+        <div class="q"><h3>What happens if a landowner refuses to sell?</h3><span class="pm">−</span></div>
+        <div class="qa">We identify hold-out risk during consent mapping, before the array boundary is fixed — not after 80% acquisition. Where a parcel inside the boundary cannot be acquired, we model the layout and evacuation cost of designing around it and present both options with numbers. We do not apply pressure, and we do not misrepresent a parcel's status in the register.</div>
+        <div class="q"><h3>Do you buy land in your own name?</h3><span class="pm">+</span></div>
+        <div class="q"><h3>How do you charge?</h3><span class="pm">+</span></div>
+        <div class="q"><h3>Do you take on projects below 50 MW?</h3><span class="pm">+</span></div>
+        <div class="q"><h3>Do you provide the title opinion yourself?</h3><span class="pm">+</span></div>
+        <div class="q"><h3>Who owns the documentation you produce?</h3><span class="pm">+</span></div>
+        <div class="q"><h3>What is your typical timeline from mandate to registered land?</h3><span class="pm">+</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S10 CLOSE -->
+  <section class="inkbg"><div class="wrap"><div class="close">
+    <h2>Send us your project. We'll tell you where it will stall.</h2>
+    <p>Share a polygon, a capacity target or an approval schedule. You'll get a written read from someone who has done this in the district you're asking about.</p>
+    <div class="row"><a class="btn btn-lat" href="#">Discuss a project</a><a class="btn-ghost" style="color:#fff" href="#">+91 XXXXX XXXXX</a></div>
+  </div></div></section>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ HUB · MOBILE -->
+<div class="view" id="hub-m">
+<div class="phone-row">
+
+  <div>
+    <div class="phone-cap">Hub — top of page</div>
+    <div class="phone m">
+      <section class="hero"><div class="terrain"></div><div class="scrim"></div>
+      <div class="hero-in"><div class="wrap">
+        <div class="mnav"><div class="logo">BOLAMUDI<span>.</span></div><div class="burger"><i></i><i></i><i></i></div></div>
+        <div style="padding-top:44px">
+          <span class="mono lat eyebrow">Services</span>
+          <h1>Land, approvals and grid access for Karnataka's utility-scale renewable projects.</h1>
+          <p class="lead">Twenty years of executing solar, wind, hybrid and pumped storage development across Karnataka's revenue districts.</p>
+          <div class="hero-cta"><a class="btn btn-lat" href="#">Discuss a project</a><a class="btn-ghost" style="color:#fff;justify-content:center" href="#">Download capability statement</a></div>
+        </div>
+        <div class="statrail">
+          <div><div class="v">20+</div><div class="k">Years</div></div>
+          <div><div class="v">09</div><div class="k">Districts</div></div>
+          <div><div class="v">100 MW+</div><div class="k">Utility-scale only</div></div>
+          <div><div class="v">04</div><div class="k">Asset classes</div></div>
+        </div>
+      </div></div></section>
+      <div class="anno">Hero 68vh · H1 32px · stat rail wraps 2×2 · CTAs full-width, 52px</div>
+      <section class="sec-sm bone"><div class="wrap"><div class="thesis">
+        <p>Renewable projects in Karnataka do not fail on technology. They fail on land title, on a file waiting at a Taluk office, and on one landowner in the middle of a forty-kilometre corridor.</p>
+        <div class="latrule"></div>
+      </div></div></section>
+      <section class="sec bone" style="padding-top:0"><div class="wrap">
+        <div class="sh"><div><span class="mono lat eyebrow">Capabilities</span><h2>Five things we do, and the failure each one prevents.</h2></div></div>
+        <div class="grid3">
+          <div class="card"><div class="idx">01</div>
+            <svg class="ic" viewBox="0 0 24 24"><path d="M2 22 8 2l6 8 4-3 4 15z"/><path d="M2 22h20"/><path d="M8 2v20"/></svg>
+            <h3>Land Aggregation</h3><p class="desc">Contiguous, title-clean, registered land — assembled parcel by parcel.</p>
+            <div class="prob"><span class="lbl">The problem it solves</span><p>Projects don't fail on the last parcel. They fail on the parcel nobody checked properly.</p></div>
+            <span class="go">Explore →</span></div>
+          <div class="card"><div class="idx">02</div>
+            <svg class="ic" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+            <h3>Government Liaison</h3><p class="desc">Continuous, documented follow-through with the departments that decide.</p>
+            <div class="prob"><span class="lbl">The problem it solves</span><p>Files don't get rejected. They wait — and your COD date moves with them.</p></div>
+            <span class="go">Explore →</span></div>
+        </div>
+      </div></section>
+      <div class="anno">Cards single-column, full content retained — "problem it solves" is never truncated on mobile</div>
+      <div class="mbar"><a class="a1" href="#">Discuss a project</a><a class="a2" href="tel:">☏</a></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="phone-cap">Hub — development sequence &amp; below</div>
+    <div class="phone m">
+      <section class="sec inkbg"><div class="wrap">
+        <div class="sh"><div><span class="mono lat eyebrow">Methodology</span><h2 style="color:#fff">The development sequence.</h2></div>
+        <div class="sub" style="color:rgba(255,255,255,.66)">Indicative weeks from mandate.</div></div>
+        <div class="vseq">
+          <div class="vstep"><div class="st">Site Selection</div><div class="wk">WK 0–6</div><ul><li><b>Land Aggregation</b> — screening &amp; terrain</li></ul></div>
+          <div class="vstep"><div class="st">Land Control</div><div class="wk">WK 4–28</div><ul><li><b>Land Aggregation</b> — title, registration</li><li><b>Government Liaison</b> — s.109, conversion</li></ul></div>
+          <div class="vstep"><div class="st">Statutory Clearance</div><div class="wk">WK 12–40</div><ul><li><b>Statutory Approvals</b> — register to closure</li><li><b>Government Liaison</b> — SLSWCC</li></ul></div>
+          <div class="vstep"><div class="st">Grid &amp; Evacuation</div><div class="wk">WK 20–52</div><ul><li><b>Transmission ROW</b> — walk-down to clearance</li><li><b>Statutory Approvals</b> — connectivity &amp; GNA</li></ul></div>
+          <div class="vstep" style="padding-bottom:0"><div class="st">Construction Readiness</div><div class="wk">WK 40–COD</div><ul><li><b>Project Development Support</b> — CP tracking</li></ul></div>
+        </div>
+      </div></section>
+      <div class="anno">Horizontal rail rotates to a vertical rail — NOT a swipe carousel. All five stages remain scannable.</div>
+      <section class="sec bone"><div class="wrap">
+        <div class="sh"><div><span class="mono lat eyebrow">Sectors</span><h2>Four asset classes.</h2></div></div>
+        <div class="grid4">
+          <div class="sect"><div class="duo d1"><span class="lbl">Photo — array on red soil</span></div><div class="body"><h3>Solar</h3><p>4–5 acres per MW, and contiguity matters more than price.</p><span class="go">Solar →</span></div></div>
+          <div class="sect"><div class="duo d2"><span class="lbl">Photo — ridge turbines</span></div><div class="body"><h3>Wind</h3><p>Small footprints, hard access. The crane path is the real land problem.</p><span class="go">Wind →</span></div></div>
+        </div>
+      </div></section>
+      <div class="anno">Sector tiles switch from 4:5 portrait to 16:9 — a portrait crop wastes a full screen on mobile</div>
+      <section class="inkbg"><div class="wrap"><div class="close">
+        <h2>Send us your project. We'll tell you where it will stall.</h2>
+        <p>Share a polygon, a capacity target or an approval schedule.</p>
+        <div class="row"><a class="btn btn-lat" href="#">Discuss a project</a><a class="btn-ghost" style="color:#fff;justify-content:center" href="#">+91 XXXXX XXXXX</a></div>
+      </div></div></section>
+      <div class="mbar"><a class="a1" href="#">Discuss a project</a><a class="a2" href="tel:">☏</a></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ SERVICE · DESKTOP -->
+<div class="view" id="svc-d">
+<div class="canvas">
+
+  <section class="inkbg">
+    <div class="wrap">
+      <div class="nav" style="border-bottom-color:rgba(255,255,255,.13)">
+        <div class="logo">BOLAMUDI<span>.</span></div>
+        <div class="navlinks"><a href="#">About</a><a href="#" class="act">Services</a><a href="#">Sectors</a><a href="#">Approach</a><a href="#">Contact</a><span class="navbtn">Discuss a project</span></div>
+      </div>
+      <div class="crumb">Home / Services / <b>Land Aggregation</b></div>
+      <div class="phead" style="padding-top:34px">
+        <span class="mono lat eyebrow">Services / 01</span>
+        <h1>Land Aggregation</h1>
+        <p>Contiguous, encumbrance-free, connectivity-viable land — assembled parcel by parcel and handed over in a condition that survives lender diligence.</p>
+        <div style="margin-top:34px"><a class="btn btn-lat" href="#">Request a land feasibility read</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C2 PROBLEM -->
+  <section class="sec bone">
+    <div class="wrap"><div class="two">
+      <div class="stick"><span class="mono lat">The problem</span><p>Written in the buyer's language and naming specific failure modes. Generic problem statements signal you have never done this.</p></div>
+      <div class="prose">
+        <p>A 300 MW solar project needs roughly 1,200 to 1,500 acres. In Karnataka that is almost never one seller. It is 80 to 200 khatedars across four or five villages, with fragmented holdings, undivided family shares, minors' interests, tenancy exposure, grant and inam restrictions, and RTC entries that do not match who is actually farming the land.</p>
+        <p>Most developers discover this in the wrong order. Parcels are tied up on the strength of a broker's assurance, advances are paid, and the title problem surfaces during lender due diligence — eight weeks before financial close, when the cost of a gap in the chain is the entire drawdown schedule.</p>
+        <p>The second failure is geometric. Parcels get bought where they are available, not where the array needs them, and the project ends up with a polygon it cannot build on efficiently or evacuate from economically.</p>
+        <ul class="fails">
+          <li>A 30-year title flow with an unresolved partition or an unrecorded mutation</li>
+          <li>Hold-out parcels sitting inside the array boundary, discovered after 80% acquisition</li>
+          <li>Land tied up at a price set before anyone benchmarked guidance value</li>
+          <li>Section 109 permission or conversion started after registration instead of before</li>
+          <li>A land file that a lender's counsel cannot audit</li>
+        </ul>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- C3 SOLUTION -->
+  <section class="sec-sm tint">
+    <div class="wrap">
+      <span class="mono lat eyebrow">The solution</span>
+      <div class="solution"><p>We assemble contiguous, encumbrance-free, connectivity-viable land and hand it over in a condition that survives lender diligence. Title is verified before money moves, not after.</p></div>
+      <div class="pillars">
+        <div class="p"><b>One register, from first contact</b>Every parcel enters the register on day one and stays in it through registration, khata and mutation.</div>
+        <div class="p"><b>Diligence before money</b>Title flow, encumbrance and restriction checks complete before any advance is released.</div>
+        <div class="p"><b>Geometry, not opportunism</b>Acquisition sequenced against the array boundary and evacuation route, not against what happens to be available.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C4 SCALE -->
+  <section class="bone" style="padding:0"><div class="wrap"><div class="scale">
+    <div><div class="v">1,200+</div><div class="k">Acres aggregated</div></div>
+    <div><div class="v">06</div><div class="k">Districts</div></div>
+    <div><div class="v">180+</div><div class="k">Khatedars engaged</div></div>
+    <div><div class="v">30 YR</div><div class="k">Title flow, every parcel</div></div>
+  </div></div></section>
+
+  <!-- C5 PROCESS -->
+  <section class="sec bone">
+    <div class="wrap"><div class="two">
+      <div class="stick"><span class="mono lat">The process</span><p>Eight stages. Statute references shown as chips — the device that makes the page feel produced by people who handle these documents.</p></div>
+      <div>
+        <div class="stagerow"><div class="n">01</div><div><h3>Site screening &amp; terrain assessment</h3><p>Polygon shortlisting against resource, slope, evacuation distance, forest and wildlife buffers, water bodies, habitations and existing infrastructure.</p></div></div>
+        <div class="stagerow"><div class="n">02</div><div><h3>Survey number mapping</h3><p>Village cadastral overlay; Bhoomi RTC pull for every survey number in the polygon; tippan / Mojini sketch reconciled to ground.</p><span class="chip">Bhoomi RTC · Mojini</span></div></div>
+        <div class="stagerow"><div class="n">03</div><div><h3>Title due diligence</h3><p>Title chain, encumbrance certificate, mutation register chain, partition status, minors' interest, PTCL / inam / grant restrictions and tenancy exposure. Conducted with empanelled counsel.</p><span class="chip">30-year flow</span></div></div>
+        <div class="stagerow"><div class="n">04</div><div><h3>Owner engagement &amp; rate discovery</h3><p>Village-level engagement, guidance value versus prevailing market benchmarking, consent mapping, and early identification of hold-out risk inside the array boundary.</p></div></div>
+        <div class="stagerow"><div class="n">05</div><div><h3>Agreement execution</h3><p>Registered Agreement to Sale or lease deed, power of attorney where appropriate, advance schedule tied to documentary milestones.</p></div></div>
+        <div class="stagerow"><div class="n">06</div><div><h3>Statutory pathway</h3><p>Section 109 permission where the acquirer is a company — threshold raised to four hectares under the 2025 amendment; conversion via the Deputy Commissioner or the automatic conversion route available to renewable energy projects under the 2025 Land Revenue Rules.</p><span class="chip">KLR Act s.109 · LR Rules 2025</span></div></div>
+        <div class="stagerow"><div class="n">07</div><div><h3>Registration &amp; mutation</h3><p>Sub-registrar execution, khata transfer, mutation into the SPV's name, and updated RTC reflecting the project entity.</p></div></div>
+        <div class="stagerow" style="border-bottom:0"><div class="n">08</div><div><h3>Handover</h3><p>Consolidated land dossier issued to developer and lender in audit format.</p></div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- C6 DELIVERABLES -->
+  <section class="sec tint">
+    <div class="wrap">
+      <div class="sh"><div><span class="mono lat eyebrow">Deliverables</span><h2>What you receive, named.</h2></div>
+      <div class="sub">Physical artefacts, not activity descriptions. This is the section that converts.</div></div>
+      <div class="delv">
+        <div class="delgrp"><div class="h"><h3>Spatial</h3><span class="fmt">SHP / KML / PDF</span></div>
+          <ul><li>Village-wise project polygon with survey-number-level GIS layer</li><li>Array-boundary overlay — acquired, consented, in-progress, at-risk</li></ul></div>
+        <div class="delgrp"><div class="h"><h3>Register &amp; diligence</h3><span class="fmt">XLSX / PDF</span></div>
+          <ul><li>Parcel register — survey no., extent, khatedar, RTC, encumbrance, consent, execution status</li><li>30-year title opinion pack per parcel</li><li>Risk log for restricted, disputed and hold-out parcels</li></ul></div>
+        <div class="delgrp"><div class="h"><h3>Executed documents</h3><span class="fmt">PDF · lender format</span></div>
+          <ul><li>Registered Agreements to Sale / lease deeds</li><li>Section 109 permission order</li><li>Conversion order or deemed-conversion acknowledgement</li><li>Registered sale deeds, khata certificates, mutated RTCs in SPV name</li><li>Land Due Diligence Handover File</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C7 SECTOR APPLICABILITY -->
+  <section class="sec-sm bone">
+    <div class="wrap">
+      <div class="sh"><div><span class="mono lat eyebrow">Applicability</span><h2>How land aggregation differs by asset class.</h2></div></div>
+      <div class="applic">
+        <a href="#"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><h4>Solar</h4><p>Contiguity is the binding constraint, not rate. 4–5 acres per MW in one block.</p></a>
+        <a href="#"><svg class="ic" viewBox="0 0 24 24"><path d="M9.8 4.4a2 2 0 1 1 3.4 2L9 13"/><path d="M20 10.2a2 2 0 1 1-1.2 3.5L11 12"/><path d="M8.5 20.5a2 2 0 1 1-2.6-2.9L12 12"/></svg><h4>Wind</h4><p>Crane paths and access roads across owners with no turbine on their land.</p></a>
+        <a href="#"><svg class="ic" viewBox="0 0 24 24"><circle cx="8" cy="8" r="5"/><circle cx="16" cy="16" r="5"/></svg><h4>Hybrid</h4><p>Aggregate against the combined layout from the start, not solved twice.</p></a>
+        <a href="#"><svg class="ic" viewBox="0 0 24 24"><path d="M2 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg><h4>Pumped Storage</h4><p>Revenue, forest and private holdings on three different legal tracks.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- C9 CTA -->
+  <section class="inkbg"><div class="wrap"><div class="close" style="padding:130px 0">
+    <h2>Send us your polygon or your capacity target.</h2>
+    <p>We'll return a land feasibility read — village coverage, likely title complexity, indicative rate band and aggregation risk — within 10 working days.</p>
+    <div class="row"><a class="btn btn-lat" href="#">Request a land feasibility read</a><a class="btn-ghost" style="color:#fff" href="#">Download the land diligence checklist</a></div>
+  </div></div></section>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ SERVICE · MOBILE -->
+<div class="view" id="svc-m">
+<div class="phone-row">
+
+  <div>
+    <div class="phone-cap">Service page — hero, problem, solution</div>
+    <div class="phone m">
+      <section class="inkbg"><div class="wrap">
+        <div class="mnav"><div class="logo">BOLAMUDI<span>.</span></div><div class="burger"><i></i><i></i><i></i></div></div>
+        <div class="crumb" style="padding:18px 0">Services / <b>Land Aggregation</b></div>
+        <div class="phead">
+          <span class="mono lat eyebrow">Services / 01</span>
+          <h1>Land Aggregation</h1>
+          <p>Contiguous, encumbrance-free, connectivity-viable land — assembled parcel by parcel.</p>
+          <div style="margin-top:26px"><a class="btn btn-lat" href="#">Request a feasibility read</a></div>
+        </div>
+      </div></section>
+      <section class="sec bone"><div class="wrap"><div class="two">
+        <div class="stick"><span class="mono lat">The problem</span></div>
+        <div class="prose">
+          <p>A 300 MW solar project needs roughly 1,200 to 1,500 acres. In Karnataka that is almost never one seller. It is 80 to 200 khatedars across four or five villages.</p>
+          <p>Most developers discover this in the wrong order. The title problem surfaces during lender due diligence — eight weeks before financial close.</p>
+          <ul class="fails">
+            <li>A 30-year title flow with an unresolved partition</li>
+            <li>Hold-out parcels inside the array boundary, found after 80% acquisition</li>
+            <li>Section 109 or conversion started after registration instead of before</li>
+          </ul>
+        </div>
+      </div></div></section>
+      <div class="anno">Sticky left label collapses above content — no two-column compression</div>
+      <section class="sec-sm tint"><div class="wrap">
+        <span class="mono lat eyebrow">The solution</span>
+        <div class="solution"><p>We assemble land that survives lender diligence. Title is verified before money moves, not after.</p></div>
+        <div class="pillars">
+          <div class="p"><b>One register, from first contact</b>Every parcel tracked through to mutation.</div>
+          <div class="p"><b>Diligence before money</b>Checks complete before any advance is released.</div>
+        </div>
+      </div></section>
+      <section class="bone" style="padding:0"><div class="wrap"><div class="scale">
+        <div><div class="v">1,200+</div><div class="k">Acres</div></div>
+        <div><div class="v">06</div><div class="k">Districts</div></div>
+        <div><div class="v">180+</div><div class="k">Khatedars</div></div>
+        <div><div class="v">30 YR</div><div class="k">Title flow</div></div>
+      </div></div></section>
+      <div class="mbar"><a class="a1" href="#">Discuss a project</a><a class="a2" href="tel:">☏</a></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="phone-cap">Service page — process &amp; deliverables</div>
+    <div class="phone m">
+      <section class="sec bone"><div class="wrap">
+        <span class="mono lat eyebrow">The process</span>
+        <div style="margin-top:22px">
+          <div class="stagerow"><div class="n">01</div><div><h3>Site screening &amp; terrain assessment</h3><p>Polygon shortlisting against resource, slope, evacuation distance, forest buffers and habitations.</p></div></div>
+          <div class="stagerow"><div class="n">02</div><div><h3>Survey number mapping</h3><p>Village cadastral overlay; Bhoomi RTC pull for every survey number; sketch reconciled to ground.</p><span class="chip">Bhoomi RTC · Mojini</span></div></div>
+          <div class="stagerow"><div class="n">03</div><div><h3>Title due diligence</h3><p>Title chain, encumbrance, mutation chain, partition status, PTCL / inam restrictions, tenancy exposure.</p><span class="chip">30-year flow</span></div></div>
+          <div class="stagerow"><div class="n">06</div><div><h3>Statutory pathway</h3><p>Section 109 permission where the acquirer is a company; conversion via the DC or the automatic route for renewable projects.</p><span class="chip">KLR Act s.109</span></div></div>
+        </div>
+      </div></section>
+      <div class="anno">Stage number sits above the title, not beside it — a 64px gutter wastes 16% of a 390px screen</div>
+      <section class="sec tint"><div class="wrap">
+        <div class="sh"><div><span class="mono lat eyebrow">Deliverables</span><h2>What you receive, named.</h2></div></div>
+        <div class="delv">
+          <div class="delgrp"><div class="h"><h3>Spatial</h3><span class="fmt">SHP / KML</span></div>
+            <ul><li>Village-wise polygon with survey-number GIS layer</li><li>Array-boundary overlay by parcel status</li></ul></div>
+          <div class="delgrp"><div class="h"><h3>Register &amp; diligence</h3><span class="fmt">XLSX / PDF</span></div>
+            <ul><li>Parcel register with full status columns</li><li>30-year title opinion pack per parcel</li><li>Risk log for restricted and hold-out parcels</li></ul></div>
+        </div>
+      </div></section>
+      <div class="anno">Deliverables reflow to a single stacked list — never a horizontal-scroll table</div>
+      <section class="inkbg"><div class="wrap"><div class="close">
+        <h2>Send us your polygon or capacity target.</h2>
+        <p>A land feasibility read within 10 working days.</p>
+        <div class="row"><a class="btn btn-lat" href="#">Request a feasibility read</a></div>
+      </div></div></section>
+      <div class="mbar"><a class="a1" href="#">Discuss a project</a><a class="a2" href="tel:">☏</a></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+    document.querySelectorAll('.view').forEach(function(x){x.classList.remove('on')});
+    t.classList.add('on');
+    document.getElementById(t.dataset.v).classList.add('on');
+    window.scrollTo({top:0,behavior:'instant'});
+  });
+});
+</script>
+</body>
+</html>

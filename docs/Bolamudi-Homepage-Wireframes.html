@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bolamudi Enterprise — Home page wireframes</title>
+<style>
+  :root{
+    --ink:#16181A; --ink6:#5A5E5C; --ink4:#8C918E;
+    --line:#D8DAD6; --line2:#EDEEEB;
+    --canvas:#FFFFFF; --surf:#F7F7F4; --page:#EAEAE6;
+    --forest:#14342B; --forest9:#0B1F19; --forest1:#E8EFEA;
+    --gold:#C39A3E; --gold6:#856318;
+    --note:#7A5CC4; --noteBg:#F1EDFA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--page);color:var(--ink);font-family:ui-sans-serif,-apple-system,"Segoe UI",Inter,sans-serif;font-size:14px;line-height:1.5;padding:32px 24px 80px}
+  .shell{max-width:1560px;margin:0 auto}
+  .doc-head{max-width:900px;margin:0 auto 40px}
+  .doc-head h1{font-family:Georgia,"Source Serif 4",serif;font-size:32px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+  .doc-head p{color:var(--ink6);font-size:15px;max-width:70ch}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;font-size:12px;color:var(--ink6)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .sw{width:14px;height:14px;border:1px solid var(--line);border-radius:2px;display:inline-block}
+
+  .cols{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:40px;align-items:start}
+  @media(max-width:1200px){.cols{grid-template-columns:1fr}}
+  .colhead{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+
+  /* frames */
+  .frame{background:var(--canvas);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .mobile{width:390px;max-width:100%;margin:0 auto;border:8px solid #2A2C2A;border-radius:24px;background:var(--canvas);overflow:hidden}
+
+  /* wireframe primitives */
+  .sec{position:relative;padding:44px 40px;border-bottom:1px dashed var(--line)}
+  .sec.surf{background:var(--surf)}
+  .sec.dark{background:var(--forest);color:#fff}
+  .sec.dark9{background:var(--forest9);color:#fff}
+  .sec.tight{padding:26px 40px}
+  .m .sec{padding:28px 20px}
+  .m .sec.tight{padding:18px 20px}
+
+  .tag{position:absolute;top:6px;left:6px;font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.08em;background:var(--noteBg);color:var(--note);border:1px solid #DCD3F2;border-radius:2px;padding:1px 6px}
+  .sec.dark .tag,.sec.dark9 .tag{background:rgba(255,255,255,.12);color:#E8D9A8;border-color:rgba(232,217,168,.35)}
+
+  .eyebrow{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold6);margin-bottom:10px}
+  .sec.dark .eyebrow,.sec.dark9 .eyebrow{color:#E8D9A8}
+  .h1w{height:18px;background:var(--ink);opacity:.85;border-radius:2px;margin-bottom:9px}
+  .sec.dark .h1w{background:#fff;opacity:.92}
+  .h2w{height:13px;background:var(--ink);opacity:.8;border-radius:2px;margin-bottom:8px}
+  .sec.dark .h2w,.sec.dark9 .h2w{background:#fff;opacity:.9}
+  .txt{height:7px;background:var(--ink);opacity:.22;border-radius:2px;margin-bottom:6px}
+  .sec.dark .txt,.sec.dark9 .txt{background:#fff;opacity:.34}
+  .lbl{font-size:11px;color:var(--ink6);font-weight:500}
+  .sec.dark .lbl{color:rgba(255,255,255,.8)}
+  .cap{font-size:10px;color:var(--ink4);font-family:ui-monospace,monospace}
+  .sec.dark .cap{color:rgba(255,255,255,.55)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;height:30px;padding:0 16px;border-radius:2px;background:var(--forest);color:#fff;font-size:11px;font-weight:500}
+  .btn.ghost{background:transparent;border:1px solid var(--forest);color:var(--forest)}
+  .sec.dark .btn,.sec.dark9 .btn{background:#fff;color:var(--forest)}
+  .sec.dark .btn.ghost{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+  .card{border:1px solid var(--line);border-radius:4px;padding:16px;background:var(--canvas)}
+  .card .ic{width:18px;height:18px;border:1.5px solid var(--gold);border-radius:2px;margin-bottom:12px}
+  .card .foot{border-top:1px solid var(--line2);margin-top:14px;padding-top:9px;font-size:10px;color:var(--gold6)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .g57{display:grid;grid-template-columns:5fr 7fr;gap:32px}
+  .g75{display:grid;grid-template-columns:7fr 5fr;gap:32px}
+  .g48{display:grid;grid-template-columns:4fr 8fr;gap:32px}
+  .m .grid3,.m .grid4,.m .g57,.m .g75,.m .g48{grid-template-columns:1fr;gap:12px}
+  .m .grid2{grid-template-columns:1fr 1fr;gap:10px}
+
+  .img{background:repeating-linear-gradient(45deg,#E4E5E1 0 8px,#EDEEEB 8px 16px);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink4);font-size:10px;font-family:ui-monospace,monospace;letter-spacing:.06em}
+  .sec.dark .img{background:repeating-linear-gradient(45deg,rgba(255,255,255,.08) 0 8px,rgba(255,255,255,.04) 8px 16px);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.5)}
+
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;background:var(--forest9);color:#fff}
+  .navlinks{display:flex;gap:20px;font-size:11px;color:rgba(255,255,255,.85)}
+  .logo{display:flex;align-items:center;gap:8px}
+  .logo .mark{width:26px;height:26px;border:1.5px solid var(--gold);border-radius:2px}
+  .logo .wm{font-family:Georgia,serif;font-size:14px;letter-spacing:.01em}
+
+  .strip4{display:grid;grid-template-columns:repeat(4,1fr)}
+  .strip4>div{padding:0 18px;border-left:1px solid var(--line)}
+  .strip4>div:first-child{border-left:0;padding-left:0}
+  .m .strip4{grid-template-columns:1fr 1fr;gap:16px 0}
+  .m .strip4>div{padding:0 12px}
+  .m .strip4>div:nth-child(odd){border-left:0;padding-left:0}
+
+  .tl{position:relative;margin-top:28px}
+  .tl .rule{position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(232,217,168,.35)}
+  .tl .stages{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+  .tl .st{text-align:left;padding:0 4px}
+  .tl .node{width:9px;height:9px;background:var(--gold);border-radius:50%;margin:14px 0}
+  .tl .st:nth-child(even){padding-top:56px}
+  .tl .st:nth-child(even) .node{position:absolute;top:calc(50% - 4px)}
+
+  .vtl{border-left:1px solid rgba(232,217,168,.4);padding-left:16px;margin-left:4px}
+  .vtl .vs{position:relative;padding-bottom:18px}
+  .vtl .vs::before{content:"";position:absolute;left:-21px;top:4px;width:9px;height:9px;background:var(--gold);border-radius:50%}
+
+  .row{border-top:1px solid var(--gold);padding:14px 0}
+  .panel{border:1px solid var(--line);border-top:2px solid var(--gold);background:var(--canvas);padding:16px}
+  .li{display:flex;gap:8px;align-items:center;margin-bottom:7px}
+  .li i{width:4px;height:4px;background:var(--gold);border-radius:50%;flex:none;display:block}
+  .li span{height:6px;background:var(--ink);opacity:.24;border-radius:2px;flex:1}
+
+  .field{border:1px solid var(--line);border-radius:3px;height:30px;margin-bottom:10px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:var(--ink4);background:#fff}
+  .field.ta{height:64px;align-items:flex-start;padding-top:8px}
+  .formcard{background:#fff;border-radius:4px;padding:20px}
+
+  .acc{border-bottom:1px solid var(--line);padding:12px 0;display:flex;justify-content:space-between;align-items:center}
+  .acc .q{height:8px;background:var(--ink);opacity:.6;border-radius:2px;width:70%}
+  .acc .ch{color:var(--ink4);font-size:11px}
+
+  .stickybar{background:var(--forest);display:flex;gap:8px;padding:10px 16px}
+  .stickybar .btn{flex:1;background:rgba(255,255,255,.14);color:#fff}
+  .stickybar .btn.p{background:#fff;color:var(--forest)}
+
+  .rail{position:absolute;right:10px;top:40px;bottom:40px;width:2px;background:var(--line)}
+  .rail .on{position:absolute;top:30%;width:2px;height:40px;background:var(--gold)}
+
+  /* annotations panel */
+  .notes{position:sticky;top:24px}
+  .note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--note);border-radius:0 4px 4px 0;padding:12px 14px;margin-bottom:10px}
+  .note h4{font-size:12px;font-weight:600;margin-bottom:5px;display:flex;gap:8px;align-items:baseline}
+  .note h4 b{font-family:ui-monospace,monospace;font-size:10px;color:var(--note);font-weight:500}
+  .note p{font-size:12px;color:var(--ink6);line-height:1.55}
+  .m-wrap{margin-top:44px}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<div class="doc-head">
+  <h1>Bolamudi Enterprise — home page wireframes</h1>
+  <p>Greybox layout at two breakpoints. Grey bars are text blocks, hatched areas are imagery, purple chips are section IDs keyed to the specification document. Colour is indicative only — this shows structure, hierarchy and rhythm, not visual design.</p>
+  <div class="legend">
+    <span><i class="sw" style="background:#fff"></i> canvas</span>
+    <span><i class="sw" style="background:#F7F7F4"></i> surface-1</span>
+    <span><i class="sw" style="background:#14342B;border-color:#14342B"></i> forest-800</span>
+    <span><i class="sw" style="background:#0B1F19;border-color:#0B1F19"></i> forest-900</span>
+    <span><i class="sw" style="background:#C39A3E;border-color:#C39A3E"></i> gold accent / rules</span>
+    <span><i class="sw" style="background:repeating-linear-gradient(45deg,#E4E5E1 0 4px,#EDEEEB 4px 8px)"></i> photography</span>
+  </div>
+</div>
+
+<div class="cols">
+<div>
+  <div class="colhead">Desktop — 1440px, 1200px container, 12 col</div>
+  <div class="frame" style="position:relative">
+    <div class="rail"><div class="on"></div></div>
+
+    <!-- header -->
+    <div class="navbar">
+      <div class="logo"><div class="mark"></div><div class="wm">Bolamudi <span style="font-size:9px;letter-spacing:.2em;opacity:.7">ENTERPRISE</span></div></div>
+      <div class="navlinks"><span>Services ▾</span><span>Approach</span><span>Karnataka</span><span>Insights</span><span>About</span><span>Contact</span></div>
+      <div class="btn" style="background:#fff;color:#14342B">Request consultation</div>
+    </div>
+
+    <!-- 1 hero -->
+    <div class="sec dark" style="padding:64px 40px 56px;position:relative">
+      <div class="tag">01 · HERO</div>
+      <div class="img" style="position:absolute;inset:0;border:0;opacity:.5">HERO PHOTOGRAPH — LAND PARCEL, LOW SUN, SURVEY MARKER</div>
+      <div style="position:relative;width:58%">
+        <div class="eyebrow">Karnataka · renewable energy project development</div>
+        <div class="h1w" style="width:96%"></div><div class="h1w" style="width:78%"></div><div class="h1w" style="width:52%"></div>
+        <div style="height:12px"></div>
+        <div class="txt" style="width:88%"></div><div class="txt" style="width:92%"></div><div class="txt" style="width:60%"></div>
+        <div class="btns"><div class="btn">Request a consultation</div><div class="btn ghost">How we work</div></div>
+        <div style="margin-top:34px;border-top:1px solid rgba(232,217,168,.5);padding-top:10px" class="cap">LAND AGGREGATION · GOVERNMENT LIAISON · STATUTORY APPROVALS · TRANSMISSION ROW</div>
+      </div>
+    </div>
+
+    <!-- 2 strip -->
+    <div class="sec tight">
+      <div class="tag">02 · POSITIONING STRIP</div>
+      <div class="strip4" style="margin-top:10px">
+        <div><div class="ic" style="width:18px;height:18px;border:1.5px solid var(--gold);border-radius:2px;margin-bottom:10px"></div><div class="lbl">Land aggregation</div><div class="txt" style="width:90%;margin-top:8px"></div></div>
+        <div><div class="ic" style="width:18px;height:18px;border:1.5px solid var(--gold);border-radius:2px;margin-bottom:10px"></div><div class="lbl">Government liaison</div><div class="txt" style="width:85%;margin-top:8px"></div></div>
+        <div><div class="ic" style="width:18px;height:18px;border:1.5px solid var(--gold);border-radius:2px;margin-bottom:10px"></div><div class="lbl">Statutory approvals</div><div class="txt" style="width:92%;margin-top:8px"></div></div>
+        <div><div class="ic" style="width:18px;height:18px;border:1.5px solid var(--gold);border-radius:2px;margin-bottom:10px"></div><div class="lbl">Transmission RoW</div><div class="txt" style="width:80%;margin-top:8px"></div></div>
+      </div>
+    </div>
+
+    <!-- 3 bottleneck -->
+    <div class="sec surf">
+      <div class="tag">03 · THE BOTTLENECK</div>
+      <div class="g75">
+        <div>
+          <div class="eyebrow">The development bottleneck</div>
+          <div class="h2w" style="width:70%"></div>
+          <div style="height:10px"></div>
+          <div class="txt" style="width:96%"></div><div class="txt" style="width:99%"></div><div class="txt" style="width:64%"></div>
+          <div style="height:8px"></div>
+          <div class="txt" style="width:97%"></div><div class="txt" style="width:70%"></div>
+          <div style="margin-top:22px">
+            <div class="row" style="border-top-color:var(--line)"><div class="cap" style="color:var(--gold6)">01</div><div class="lbl" style="margin:4px 0 6px">Title that does not survive diligence</div><div class="txt" style="width:88%"></div></div>
+            <div class="row" style="border-top-color:var(--line)"><div class="cap" style="color:var(--gold6)">02</div><div class="lbl" style="margin:4px 0 6px">Approvals treated as parallel when they are sequential</div><div class="txt" style="width:80%"></div></div>
+            <div class="row" style="border-top-color:var(--line)"><div class="cap" style="color:var(--gold6)">03</div><div class="lbl" style="margin:4px 0 6px">Right of way negotiated after the route is fixed</div><div class="txt" style="width:86%"></div></div>
+          </div>
+        </div>
+        <div style="display:flex"><div style="width:6px;background:var(--gold)"></div><div class="img" style="flex:1;min-height:300px;border-left:0">CADASTRAL MAP · 4:3</div></div>
+      </div>
+    </div>
+
+    <!-- 4 services -->
+    <div class="sec">
+      <div class="tag">04 · SERVICES</div>
+      <div style="text-align:center;max-width:520px;margin:0 auto 26px">
+        <div class="eyebrow">Capabilities</div>
+        <div class="h2w" style="width:80%;margin:0 auto 8px"></div>
+        <div class="txt" style="width:90%;margin:0 auto 5px"></div><div class="txt" style="width:64%;margin:0 auto"></div>
+      </div>
+      <div class="grid3">
+        <div class="card"><div class="ic"></div><div class="lbl">Land aggregation</div><div class="txt" style="width:96%;margin-top:9px"></div><div class="txt" style="width:88%"></div><div class="txt" style="width:70%"></div><div class="foot">Explore service →</div></div>
+        <div class="card"><div class="ic"></div><div class="lbl">Government liaison</div><div class="txt" style="width:94%;margin-top:9px"></div><div class="txt" style="width:90%"></div><div class="txt" style="width:62%"></div><div class="foot">Explore service →</div></div>
+        <div class="card"><div class="ic"></div><div class="lbl">Statutory approvals</div><div class="txt" style="width:97%;margin-top:9px"></div><div class="txt" style="width:86%"></div><div class="txt" style="width:74%"></div><div class="foot">Explore service →</div></div>
+        <div class="card"><div class="ic"></div><div class="lbl">Transmission right of way</div><div class="txt" style="width:92%;margin-top:9px"></div><div class="txt" style="width:95%"></div><div class="txt" style="width:58%"></div><div class="foot">Explore service →</div></div>
+        <div class="card"><div class="ic"></div><div class="lbl">Renewable project facilitation</div><div class="txt" style="width:90%;margin-top:9px"></div><div class="txt" style="width:88%"></div><div class="txt" style="width:66%"></div><div class="foot">Explore service →</div></div>
+        <div class="card"><div class="ic"></div><div class="lbl">Project development support</div><div class="txt" style="width:96%;margin-top:9px"></div><div class="txt" style="width:82%"></div><div class="txt" style="width:70%"></div><div class="foot">Explore service →</div></div>
+      </div>
+    </div>
+
+    <!-- 5 lifecycle -->
+    <div class="sec dark">
+      <div class="tag">05 · DEVELOPMENT LIFECYCLE</div>
+      <div style="max-width:600px">
+        <div class="eyebrow">Our approach</div>
+        <div class="h2w" style="width:62%"></div>
+        <div style="height:8px"></div>
+        <div class="txt" style="width:94%"></div><div class="txt" style="width:76%"></div>
+      </div>
+      <div class="tl">
+        <div class="rule"></div>
+        <div class="stages">
+          <div class="st"><div class="cap">01</div><div class="lbl" style="font-size:10px">Site screening</div><div class="node"></div></div>
+          <div class="st"><div class="node"></div><div class="cap">02</div><div class="lbl" style="font-size:10px">Land feasibility</div></div>
+          <div class="st"><div class="cap">03</div><div class="lbl" style="font-size:10px">Aggregation strategy</div><div class="node"></div></div>
+          <div class="st"><div class="node"></div><div class="cap">04</div><div class="lbl" style="font-size:10px">Acquisition &amp; conveyance</div></div>
+          <div class="st"><div class="cap">05</div><div class="lbl" style="font-size:10px">Statutory clearances</div><div class="node"></div></div>
+          <div class="st"><div class="node"></div><div class="cap">06</div><div class="lbl" style="font-size:10px">Transmission &amp; RoW</div></div>
+          <div class="st"><div class="cap">07</div><div class="lbl" style="font-size:10px">Handover &amp; support</div><div class="node"></div></div>
+        </div>
+      </div>
+      <div class="btns"><div class="btn ghost">Read our approach in detail</div></div>
+    </div>
+
+    <!-- 6 karnataka -->
+    <div class="sec">
+      <div class="tag">06 · KARNATAKA COVERAGE</div>
+      <div class="g57">
+        <div>
+          <div class="eyebrow">Where we operate</div>
+          <div class="h2w" style="width:78%"></div>
+          <div style="height:10px"></div>
+          <div class="txt" style="width:96%"></div><div class="txt" style="width:92%"></div><div class="txt" style="width:97%"></div><div class="txt" style="width:58%"></div>
+          <div style="margin-top:22px;border-top:1px solid var(--gold);padding-top:12px">
+            <div class="cap" style="color:var(--gold6)">RESOURCE CORRIDORS</div>
+            <div class="txt" style="width:86%;margin-top:9px"></div><div class="txt" style="width:78%"></div><div class="txt" style="width:52%"></div>
+          </div>
+        </div>
+        <div class="img" style="min-height:300px">INLINE SVG · KARNATAKA DISTRICT MAP</div>
+      </div>
+    </div>
+
+    <!-- 7 approvals -->
+    <div class="sec surf">
+      <div class="tag">07 · STATUTORY APPROVALS</div>
+      <div style="max-width:640px;margin-bottom:24px">
+        <div class="eyebrow">Statutory scope</div>
+        <div class="h2w" style="width:74%"></div>
+        <div style="height:8px"></div>
+        <div class="txt" style="width:96%"></div><div class="txt" style="width:88%"></div>
+      </div>
+      <div class="grid3">
+        <div class="panel"><div class="lbl" style="margin-bottom:12px">District &amp; revenue</div>
+          <div class="li"><i></i><span style="max-width:78%"></span></div><div class="li"><i></i><span style="max-width:60%"></span></div><div class="li"><i></i><span style="max-width:70%"></span></div><div class="li"><i></i><span style="max-width:84%"></span></div><div class="li"><i></i><span style="max-width:66%"></span></div><div class="li"><i></i><span style="max-width:74%"></span></div>
+        </div>
+        <div class="panel"><div class="lbl" style="margin-bottom:12px">State &amp; regulatory</div>
+          <div class="li"><i></i><span style="max-width:62%"></span></div><div class="li"><i></i><span style="max-width:52%"></span></div><div class="li"><i></i><span style="max-width:80%"></span></div><div class="li"><i></i><span style="max-width:68%"></span></div><div class="li"><i></i><span style="max-width:76%"></span></div><div class="li"><i></i><span style="max-width:58%"></span></div>
+        </div>
+        <div class="panel"><div class="lbl" style="margin-bottom:12px">Utility &amp; transmission</div>
+          <div class="li"><i></i><span style="max-width:70%"></span></div><div class="li"><i></i><span style="max-width:62%"></span></div><div class="li"><i></i><span style="max-width:50%"></span></div><div class="li"><i></i><span style="max-width:74%"></span></div><div class="li"><i></i><span style="max-width:66%"></span></div><div class="li"><i></i><span style="max-width:82%"></span></div>
+        </div>
+      </div>
+      <div style="margin-top:20px;background:var(--forest);color:#fff;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+        <div style="flex:1"><div class="lbl" style="color:#fff">Karnataka renewable approvals — a practitioner's guide</div><div class="txt" style="background:#fff;opacity:.3;width:52%;margin-top:8px"></div></div>
+        <div class="btn" style="background:#fff;color:var(--forest);flex:none">Download the guide</div>
+      </div>
+    </div>
+
+    <!-- 8 audiences -->
+    <div class="sec">
+      <div class="tag">08 · WHO WE WORK WITH</div>
+      <div style="margin-bottom:22px"><div class="eyebrow">Who we work with</div><div class="h2w" style="width:46%"></div></div>
+      <div class="grid4">
+        <div class="card" style="background:var(--forest1);border-color:#D5E2D9"><div class="lbl">Renewable energy developers</div><div class="txt" style="width:94%;margin-top:10px"></div><div class="txt" style="width:88%"></div><div class="txt" style="width:60%"></div></div>
+        <div class="card" style="background:var(--forest1);border-color:#D5E2D9"><div class="lbl">Independent power producers</div><div class="txt" style="width:90%;margin-top:10px"></div><div class="txt" style="width:92%"></div><div class="txt" style="width:54%"></div></div>
+        <div class="card" style="background:var(--forest1);border-color:#D5E2D9"><div class="lbl">Infrastructure &amp; EPC contractors</div><div class="txt" style="width:96%;margin-top:10px"></div><div class="txt" style="width:84%"></div><div class="txt" style="width:66%"></div></div>
+        <div class="card" style="background:var(--forest1);border-color:#D5E2D9"><div class="lbl">Investors &amp; diligence teams</div><div class="txt" style="width:92%;margin-top:10px"></div><div class="txt" style="width:88%"></div><div class="txt" style="width:58%"></div></div>
+      </div>
+    </div>
+
+    <!-- 9 why -->
+    <div class="sec surf">
+      <div class="tag">09 · WHY BOLAMUDI</div>
+      <div class="g57">
+        <div>
+          <div class="eyebrow">Why Bolamudi</div>
+          <div class="h2w" style="width:88%"></div><div class="h2w" style="width:52%"></div>
+          <div style="height:10px"></div>
+          <div class="txt" style="width:92%"></div><div class="txt" style="width:74%"></div>
+          <div class="btns"><div class="btn">Request a consultation</div></div>
+        </div>
+        <div>
+          <div class="row"><div class="cap" style="color:var(--gold6)">01</div><div class="lbl" style="margin:4px 0 7px">Single-state specialisation</div><div class="txt" style="width:96%"></div><div class="txt" style="width:72%"></div></div>
+          <div class="row"><div class="cap" style="color:var(--gold6)">02</div><div class="lbl" style="margin:4px 0 7px">Development-side experience</div><div class="txt" style="width:94%"></div><div class="txt" style="width:80%"></div></div>
+          <div class="row"><div class="cap" style="color:var(--gold6)">03</div><div class="lbl" style="margin:4px 0 7px">Continuity from screening to commissioning</div><div class="txt" style="width:90%"></div><div class="txt" style="width:66%"></div></div>
+          <div class="row"><div class="cap" style="color:var(--gold6)">04</div><div class="lbl" style="margin:4px 0 7px">Documented, auditable process</div><div class="txt" style="width:92%"></div><div class="txt" style="width:58%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 leadership -->
+    <div class="sec">
+      <div class="tag">10 · LEADERSHIP</div>
+      <div class="g57">
+        <div><div class="img" style="min-height:290px">FOUNDER PORTRAIT · 4:5 · ON SITE</div><div style="height:4px;background:var(--gold)"></div></div>
+        <div>
+          <div class="eyebrow">Leadership</div>
+          <div class="h2w" style="width:62%"></div>
+          <div style="height:8px"></div>
+          <div class="lbl" style="font-size:13px">[Founder name]</div>
+          <div class="cap" style="color:var(--gold6);margin:3px 0 12px">FOUNDER &amp; MANAGING PARTNER</div>
+          <div class="txt" style="width:97%"></div><div class="txt" style="width:93%"></div><div class="txt" style="width:96%"></div><div class="txt" style="width:60%"></div>
+          <div style="margin-top:18px;border-top:1px solid var(--line);padding-top:14px">
+            <div class="grid2" style="gap:10px 24px">
+              <div><div class="cap" style="color:var(--gold6)">EXPERIENCE</div><div class="txt" style="width:84%;margin-top:6px"></div></div>
+              <div><div class="cap" style="color:var(--gold6)">ASSET CLASSES</div><div class="txt" style="width:90%;margin-top:6px"></div></div>
+              <div><div class="cap" style="color:var(--gold6)">FUNCTIONS</div><div class="txt" style="width:88%;margin-top:6px"></div></div>
+              <div><div class="cap" style="color:var(--gold6)">GEOGRAPHY</div><div class="txt" style="width:70%;margin-top:6px"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 governance -->
+    <div class="sec dark tight" style="text-align:center">
+      <div class="tag">11 · GOVERNANCE &amp; CONDUCT</div>
+      <div style="max-width:620px;margin:0 auto">
+        <div style="width:20px;height:20px;border:1.5px solid #E8D9A8;border-radius:2px;margin:0 auto 14px"></div>
+        <div class="h2w" style="width:44%;margin:0 auto 12px;height:11px"></div>
+        <div class="txt" style="width:94%;margin:0 auto 5px"></div><div class="txt" style="width:88%;margin:0 auto 5px"></div><div class="txt" style="width:56%;margin:0 auto"></div>
+        <div class="cap" style="margin-top:14px;color:#E8D9A8">Read our code of conduct →</div>
+      </div>
+    </div>
+
+    <!-- 12 insights -->
+    <div class="sec">
+      <div class="tag">12 · INSIGHTS <span style="opacity:.7">(phase 2 optional)</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px">
+        <div><div class="eyebrow">Insights</div><div class="h2w" style="width:220px"></div></div>
+        <div class="cap" style="color:var(--gold6)">All insights →</div>
+      </div>
+      <div class="grid3">
+        <div><div class="img" style="height:110px">16:9</div><div class="cap" style="color:var(--gold6);margin:10px 0 6px">APPROVALS</div><div class="txt" style="width:92%"></div><div class="txt" style="width:66%"></div><div class="cap" style="margin-top:8px">12 Aug 2026 · 6 min</div></div>
+        <div><div class="img" style="height:110px">16:9</div><div class="cap" style="color:var(--gold6);margin:10px 0 6px">LAND</div><div class="txt" style="width:96%"></div><div class="txt" style="width:58%"></div><div class="cap" style="margin-top:8px">04 Aug 2026 · 8 min</div></div>
+        <div><div class="img" style="height:110px">16:9</div><div class="cap" style="color:var(--gold6);margin:10px 0 6px">TRANSMISSION</div><div class="txt" style="width:88%"></div><div class="txt" style="width:72%"></div><div class="cap" style="margin-top:8px">28 Jul 2026 · 5 min</div></div>
+      </div>
+    </div>
+
+    <!-- 13 faq -->
+    <div class="sec surf">
+      <div class="tag">13 · FAQ</div>
+      <div class="g48">
+        <div>
+          <div class="eyebrow">FAQ</div>
+          <div class="h2w" style="width:80%"></div>
+          <div style="height:8px"></div>
+          <div class="txt" style="width:90%"></div><div class="txt" style="width:64%"></div>
+          <div class="cap" style="color:var(--gold6);margin-top:14px">Ask a different question →</div>
+          <div class="cap" style="margin-top:24px;opacity:.8">↑ sticky at top:120px</div>
+        </div>
+        <div>
+          <div class="acc" style="border-top:1px solid var(--line)"><div class="q" style="width:56%"></div><div class="ch">▲</div></div>
+          <div style="padding:0 0 14px"><div class="txt" style="width:94%"></div><div class="txt" style="width:88%"></div><div class="txt" style="width:52%"></div></div>
+          <div class="acc"><div class="q" style="width:62%"></div><div class="ch">▼</div></div>
+          <div class="acc"><div class="q" style="width:48%"></div><div class="ch">▼</div></div>
+          <div class="acc"><div class="q" style="width:66%"></div><div class="ch">▼</div></div>
+          <div class="acc"><div class="q" style="width:40%"></div><div class="ch">▼</div></div>
+          <div class="acc"><div class="q" style="width:70%"></div><div class="ch">▼</div></div>
+          <div class="acc"><div class="q" style="width:54%"></div><div class="ch">▼</div></div>
+          <div class="acc"><div class="q" style="width:58%"></div><div class="ch">▼</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14 cta form -->
+    <div class="sec dark9">
+      <div class="tag">14 · CONVERSION · #contact</div>
+      <div class="g57">
+        <div>
+          <div class="h2w" style="width:88%"></div><div class="h2w" style="width:58%"></div>
+          <div style="height:10px"></div>
+          <div class="txt" style="width:94%"></div><div class="txt" style="width:90%"></div><div class="txt" style="width:62%"></div>
+          <div style="margin-top:26px;border-top:1px solid var(--gold);padding-top:16px">
+            <div class="lbl" style="color:#fff;font-size:14px">+91 XXXXX XXXXX</div>
+            <div class="txt" style="width:56%;margin-top:9px"></div>
+            <div class="txt" style="width:70%"></div>
+            <div class="cap" style="margin-top:12px">Response within one business day</div>
+            <div class="cap" style="margin-top:16px">Confidential · No obligation · NDA on request</div>
+          </div>
+        </div>
+        <div class="formcard">
+          <div class="grid2" style="gap:0 12px"><div class="field">Full name *</div><div class="field">Organisation *</div></div>
+          <div class="grid2" style="gap:0 12px"><div class="field">Work email *</div><div class="field">Phone</div></div>
+          <div class="grid2" style="gap:0 12px"><div class="field">Project stage * ▾</div><div class="field">Technology * ▾</div></div>
+          <div class="field">District / location</div>
+          <div class="field ta">How can we help *</div>
+          <div style="display:flex;gap:8px;align-items:flex-start;margin:4px 0 14px"><div style="width:13px;height:13px;border:1px solid var(--line);border-radius:2px;flex:none;margin-top:1px"></div><div class="txt" style="width:80%;margin:0"></div></div>
+          <div class="btn" style="width:100%;background:var(--forest);color:#fff">Send enquiry</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="sec dark9 tight" style="border-bottom:0">
+      <div class="tag">15 · FOOTER</div>
+      <div style="display:grid;grid-template-columns:4fr 3fr 3fr 2fr;gap:28px;margin-top:12px">
+        <div><div class="logo" style="margin-bottom:12px"><div class="mark" style="border-color:#E8D9A8"></div><div class="wm">Bolamudi</div></div><div class="txt" style="width:88%"></div><div class="txt" style="width:70%"></div><div class="cap" style="margin-top:12px">CIN / GSTIN</div></div>
+        <div><div class="cap" style="color:#E8D9A8;margin-bottom:10px">SERVICES</div><div class="txt" style="width:70%"></div><div class="txt" style="width:64%"></div><div class="txt" style="width:76%"></div><div class="txt" style="width:60%"></div><div class="txt" style="width:72%"></div><div class="txt" style="width:66%"></div></div>
+        <div><div class="cap" style="color:#E8D9A8;margin-bottom:10px">COMPANY</div><div class="txt" style="width:52%"></div><div class="txt" style="width:64%"></div><div class="txt" style="width:70%"></div><div class="txt" style="width:56%"></div><div class="txt" style="width:60%"></div></div>
+        <div><div class="cap" style="color:#E8D9A8;margin-bottom:10px">GET IN TOUCH</div><div class="txt" style="width:90%"></div><div class="txt" style="width:80%"></div><div class="btn" style="margin-top:10px;width:100%;font-size:10px;padding:0 8px">Request consultation</div></div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.14);margin-top:22px;padding-top:12px;display:flex;justify-content:space-between" class="cap"><span>© 2026 Bolamudi Enterprise</span><span>Privacy · Terms · Disclaimer</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- annotations -->
+<div>
+  <div class="colhead">Annotations</div>
+  <div class="notes">
+    <div class="note"><h4><b>01</b> Hero holds one idea only</h4><p>Content occupies columns 1–7; columns 8–12 stay empty so the photograph reads. Height capped at 820px — an uncapped 100vh hero is a wall of nothing on a 27" display. H1 is the LCP element, not the image.</p></div>
+    <div class="note"><h4><b>02</b> Vertical rules, not cards</h4><p>Hairline dividers make the strip read as a technical spec sheet. Four items, not six — six creates a cramped row. Remaining two services appear in full at 04.</p></div>
+    <div class="note"><h4><b>03</b> Problem before solution</h4><p>Contains zero claims about Bolamudi, so nothing here is challengeable. Specificity is the credential. The 12px gold rule on the image ties the section to the brand without adding colour.</p></div>
+    <div class="note"><h4><b>04</b> Six cards = breadth of practice</h4><p>Whole card is one anchor. Hover changes border to gold and slides the arrow 4px. No lift, no shadow, no scale — restraint is the institutional signal.</p></div>
+    <div class="note"><h4><b>05</b> First dark break at ~35% depth</h4><p>Method substitutes for a track record. The connecting rule draws left-to-right once — the site's single signature animation. Alternating above/below is CSS only; DOM order stays 01→07.</p></div>
+    <div class="note"><h4><b>06</b> Geography as evidence</h4><p>List the districts you have actually worked in, not all 31. A short honest list outperforms a full map, which invites "all of them?". Text list must accompany the SVG for keyboard and mobile.</p></div>
+    <div class="note"><h4><b>07</b> The highest-value section</h4><p>Depth no competitor publishes, and the strongest organic-search asset available. No accordions — collapsing this hides the very depth it exists to show, and weakens indexing. The gated guide is the only gate on the site.</p></div>
+    <div class="note"><h4><b>08</b> Deliberately quieter cards</h4><p>Tinted fill, no icons, no hover. Non-interactive elements must not look clickable. The investor card earns equal weight because diligence work is the easiest first mandate to win.</p></div>
+    <div class="note"><h4><b>09</b> Rows, not cards</h4><p>Rows read as a considered argument; cards read as marketing. Every point is a fact or a method — never a quality. "We work only in Karnataka" persuades; "focused" does not.</p></div>
+    <div class="note"><h4><b>10</b> The credibility anchor</h4><p>In a relationship business, in one state, as a new entity, the promoter's 20 years is the entire asset. Anonymity here is what a shell company looks like — Arup, AECOM and Jacobs all name leadership. Fallback structure exists in the spec if overruled.</p></div>
+    <div class="note"><h4><b>11</b> Pre-empts the liaison objection</h4><p>Every institutional buyer with FCPA/UKBA exposure is thinking about it. Plain layout, fade only, no motion — this section must feel matter-of-fact.</p></div>
+    <div class="note"><h4><b>12</b> Three real articles or none</h4><p>Placeholder posts do more damage than an absent section. Cut to phase 2 if genuine content is not ready at launch.</p></div>
+    <div class="note"><h4><b>13</b> Objections plus long-tail search</h4><p>Sticky left column keeps context while the accordion runs long. FAQPage JSON-LD generated from the same data source that renders the accordion, so they cannot drift.</p></div>
+    <div class="note"><h4><b>14</b> Eight fields on purpose</h4><p>Against conversion orthodoxy, and correct here: a single senior practice cannot process volume, and a bare-email lead cannot be triaged. The two selects let the first reply be intelligent. Success replaces the form in place — no thank-you page.</p></div>
+    <div class="note"><h4><b>15</b> Registration numbers in the footer</h4><p>CIN and GSTIN are a disproportionately strong legitimacy signal for a new entity. Cheap to add, and the first thing a diligence-minded visitor looks for.</p></div>
+    <div class="note" style="border-left-color:var(--gold)"><h4><b>RAIL</b> Section progress, ≥1440px only</h4><p>A 9,600px page needs to feel navigable rather than endless. aria-hidden — it duplicates the nav. Hidden below 1440px where there is no spare margin.</p></div>
+  </div>
+</div>
+</div>
+
+<!-- MOBILE -->
+<div class="m-wrap">
+  <div class="cols">
+    <div>
+      <div class="colhead">Mobile — 390px</div>
+      <div class="mobile m">
+        <div class="navbar" style="padding:0 16px;height:52px"><div class="logo"><div class="mark"></div><div class="wm" style="font-size:13px">Bolamudi</div></div><div style="font-size:16px">☰</div></div>
+
+        <div class="sec dark" style="position:relative;padding:36px 20px 30px">
+          <div class="tag">01</div>
+          <div class="img" style="position:absolute;inset:0;border:0;opacity:.45;font-size:9px">HERO PHOTO</div>
+          <div style="position:relative">
+            <div class="eyebrow" style="font-size:9px">Karnataka · renewable energy development</div>
+            <div class="h1w" style="width:96%;height:14px"></div><div class="h1w" style="width:88%;height:14px"></div><div class="h1w" style="width:56%;height:14px"></div>
+            <div style="height:10px"></div>
+            <div class="txt" style="width:96%"></div><div class="txt" style="width:92%"></div><div class="txt" style="width:70%"></div>
+            <div class="btns" style="flex-direction:column"><div class="btn" style="width:100%">Request a consultation</div><div class="btn ghost" style="width:100%">How we work</div></div>
+            <div class="cap" style="margin-top:20px;border-top:1px solid rgba(232,217,168,.5);padding-top:8px;font-size:8px">LAND · LIAISON · APPROVALS · ROW</div>
+          </div>
+        </div>
+
+        <div class="sec tight"><div class="tag">02</div>
+          <div class="strip4" style="margin-top:8px">
+            <div><div style="width:16px;height:16px;border:1.5px solid var(--gold);border-radius:2px;margin-bottom:8px"></div><div class="lbl" style="font-size:10px">Land aggregation</div></div>
+            <div><div style="width:16px;height:16px;border:1.5px solid var(--gold);border-radius:2px;margin-bottom:8px"></div><div class="lbl" style="font-size:10px">Government liaison</div></div>
+            <div><div style="width:16px;height:16px;border:1.5px solid var(--gold);border-radius:2px;margin-bottom:8px"></div><div class="lbl" style="font-size:10px">Statutory approvals</div></div>
+            <div><div style="width:16px;height:16px;border:1.5px solid var(--gold);border-radius:2px;margin-bottom:8px"></div><div class="lbl" style="font-size:10px">Transmission RoW</div></div>
+          </div>
+        </div>
+
+        <div class="sec surf"><div class="tag">03</div>
+          <div class="img" style="height:130px;margin-bottom:16px;border-left:5px solid var(--gold)">CADASTRAL MAP · 16:9</div>
+          <div class="eyebrow" style="font-size:9px">The development bottleneck</div>
+          <div class="h2w" style="width:76%"></div>
+          <div style="height:8px"></div>
+          <div class="txt" style="width:97%"></div><div class="txt" style="width:92%"></div><div class="txt" style="width:60%"></div>
+          <div style="margin-top:16px">
+            <div class="row" style="border-top-color:var(--line)"><div class="cap" style="color:var(--gold6)">01</div><div class="lbl" style="margin:3px 0 5px;font-size:11px">Title that does not survive diligence</div><div class="txt" style="width:86%"></div></div>
+            <div class="row" style="border-top-color:var(--line)"><div class="cap" style="color:var(--gold6)">02</div><div class="lbl" style="margin:3px 0 5px;font-size:11px">Approvals treated as parallel</div><div class="txt" style="width:78%"></div></div>
+            <div class="row" style="border-top-color:var(--line)"><div class="cap" style="color:var(--gold6)">03</div><div class="lbl" style="margin:3px 0 5px;font-size:11px">RoW negotiated after route is fixed</div><div class="txt" style="width:82%"></div></div>
+          </div>
+        </div>
+
+        <div class="sec"><div class="tag">04</div>
+          <div style="text-align:center;margin-bottom:16px"><div class="eyebrow" style="font-size:9px">Capabilities</div><div class="h2w" style="width:86%;margin:0 auto 6px"></div><div class="txt" style="width:74%;margin:0 auto"></div></div>
+          <div style="display:grid;gap:12px">
+            <div class="card"><div class="ic"></div><div class="lbl">Land aggregation</div><div class="txt" style="width:94%;margin-top:8px"></div><div class="txt" style="width:70%"></div><div class="foot">Explore service →</div></div>
+            <div class="card"><div class="ic"></div><div class="lbl">Government liaison</div><div class="txt" style="width:90%;margin-top:8px"></div><div class="txt" style="width:64%"></div><div class="foot">Explore service →</div></div>
+            <div class="cap" style="text-align:center;padding:6px 0">↕ four further cards</div>
+          </div>
+        </div>
+
+        <div class="sec dark"><div class="tag">05</div>
+          <div class="eyebrow" style="font-size:9px">Our approach</div>
+          <div class="h2w" style="width:70%"></div>
+          <div style="height:8px"></div><div class="txt" style="width:94%"></div><div class="txt" style="width:66%"></div>
+          <div class="vtl" style="margin-top:20px">
+            <div class="vs"><div class="cap">01</div><div class="lbl" style="font-size:11px">Site screening</div><div class="txt" style="width:88%;margin-top:5px"></div></div>
+            <div class="vs"><div class="cap">02</div><div class="lbl" style="font-size:11px">Land feasibility</div><div class="txt" style="width:80%;margin-top:5px"></div></div>
+            <div class="vs"><div class="cap">03</div><div class="lbl" style="font-size:11px">Aggregation strategy</div><div class="txt" style="width:84%;margin-top:5px"></div></div>
+            <div class="vs"><div class="cap" style="opacity:.7">04 – 07 ↓</div></div>
+          </div>
+          <div class="btns"><div class="btn ghost" style="width:100%">Read our approach in detail</div></div>
+        </div>
+
+        <div class="sec"><div class="tag">06</div>
+          <div class="eyebrow" style="font-size:9px">Where we operate</div>
+          <div class="h2w" style="width:82%"></div>
+          <div style="height:8px"></div><div class="txt" style="width:96%"></div><div class="txt" style="width:90%"></div><div class="txt" style="width:56%"></div>
+          <div class="img" style="height:210px;margin-top:16px">KARNATAKA MAP · FULL WIDTH</div>
+          <div style="margin-top:14px;border-top:1px solid var(--gold);padding-top:10px"><div class="cap" style="color:var(--gold6)">RESOURCE CORRIDORS — TEXT LIST (replaces hover tooltips)</div><div class="txt" style="width:88%;margin-top:8px"></div><div class="txt" style="width:76%"></div></div>
+        </div>
+
+        <div class="sec surf"><div class="tag">07</div>
+          <div class="eyebrow" style="font-size:9px">Statutory scope</div>
+          <div class="h2w" style="width:80%"></div>
+          <div style="height:8px"></div><div class="txt" style="width:96%"></div><div class="txt" style="width:70%"></div>
+          <div style="display:grid;gap:12px;margin-top:16px">
+            <div class="panel"><div class="lbl" style="margin-bottom:10px">District &amp; revenue</div><div class="li"><i></i><span style="max-width:78%"></span></div><div class="li"><i></i><span style="max-width:60%"></span></div><div class="li"><i></i><span style="max-width:70%"></span></div><div class="li"><i></i><span style="max-width:84%"></span></div></div>
+            <div class="panel"><div class="lbl" style="margin-bottom:10px">State &amp; regulatory</div><div class="li"><i></i><span style="max-width:66%"></span></div><div class="li"><i></i><span style="max-width:78%"></span></div><div class="li"><i></i><span style="max-width:58%"></span></div></div>
+            <div class="cap" style="text-align:center">↕ utility &amp; transmission panel</div>
+          </div>
+          <div style="margin-top:14px;background:var(--forest);color:#fff;padding:14px"><div class="lbl" style="color:#fff;font-size:11px">Karnataka renewable approvals guide</div><div class="btn" style="background:#fff;color:var(--forest);width:100%;margin-top:10px">Download the guide</div></div>
+        </div>
+
+        <div class="sec"><div class="tag">08</div>
+          <div class="eyebrow" style="font-size:9px">Who we work with</div><div class="h2w" style="width:70%;margin-bottom:14px"></div>
+          <div class="grid2">
+            <div class="card" style="background:var(--forest1);border-color:#D5E2D9;padding:12px"><div class="lbl" style="font-size:10px">RE developers</div><div class="txt" style="width:92%;margin-top:8px"></div><div class="txt" style="width:64%"></div></div>
+            <div class="card" style="background:var(--forest1);border-color:#D5E2D9;padding:12px"><div class="lbl" style="font-size:10px">IPPs</div><div class="txt" style="width:88%;margin-top:8px"></div><div class="txt" style="width:70%"></div></div>
+            <div class="card" style="background:var(--forest1);border-color:#D5E2D9;padding:12px"><div class="lbl" style="font-size:10px">EPC contractors</div><div class="txt" style="width:94%;margin-top:8px"></div><div class="txt" style="width:58%"></div></div>
+            <div class="card" style="background:var(--forest1);border-color:#D5E2D9;padding:12px"><div class="lbl" style="font-size:10px">Investors</div><div class="txt" style="width:90%;margin-top:8px"></div><div class="txt" style="width:66%"></div></div>
+          </div>
+        </div>
+
+        <div class="sec surf"><div class="tag">09</div>
+          <div class="eyebrow" style="font-size:9px">Why Bolamudi</div><div class="h2w" style="width:92%"></div><div class="h2w" style="width:56%"></div>
+          <div style="height:8px"></div><div class="txt" style="width:90%"></div><div class="txt" style="width:60%"></div>
+          <div style="margin-top:16px">
+            <div class="row"><div class="cap" style="color:var(--gold6)">01</div><div class="lbl" style="margin:3px 0 5px;font-size:11px">Single-state specialisation</div><div class="txt" style="width:92%"></div><div class="txt" style="width:64%"></div></div>
+            <div class="row"><div class="cap" style="color:var(--gold6)">02</div><div class="lbl" style="margin:3px 0 5px;font-size:11px">Development-side experience</div><div class="txt" style="width:88%"></div><div class="txt" style="width:70%"></div></div>
+            <div class="cap" style="padding-top:10px">↕ 03 – 04</div>
+          </div>
+          <div class="btns"><div class="btn" style="width:100%">Request a consultation</div></div>
+        </div>
+
+        <div class="sec"><div class="tag">10</div>
+          <div style="width:200px"><div class="img" style="height:230px">FOUNDER PORTRAIT 4:5</div><div style="height:4px;background:var(--gold)"></div></div>
+          <div style="height:16px"></div>
+          <div class="eyebrow" style="font-size:9px">Leadership</div>
+          <div class="h2w" style="width:72%"></div>
+          <div style="height:8px"></div>
+          <div class="lbl" style="font-size:12px">[Founder name]</div>
+          <div class="cap" style="color:var(--gold6);margin:3px 0 10px">FOUNDER &amp; MANAGING PARTNER</div>
+          <div class="txt" style="width:96%"></div><div class="txt" style="width:90%"></div><div class="txt" style="width:58%"></div>
+        </div>
+
+        <div class="sec dark tight" style="text-align:center"><div class="tag">11</div>
+          <div style="width:18px;height:18px;border:1.5px solid #E8D9A8;border-radius:2px;margin:0 auto 12px"></div>
+          <div class="h2w" style="width:68%;margin:0 auto 10px;height:10px"></div>
+          <div class="txt" style="width:94%;margin:0 auto 5px"></div><div class="txt" style="width:84%;margin:0 auto 5px"></div><div class="txt" style="width:56%;margin:0 auto"></div>
+          <div class="cap" style="margin-top:12px;color:#E8D9A8">Read our code of conduct →</div>
+        </div>
+
+        <div class="sec"><div class="tag">12</div>
+          <div class="eyebrow" style="font-size:9px">Insights</div><div class="h2w" style="width:56%;margin-bottom:14px"></div>
+          <div class="img" style="height:100px">16:9</div><div class="cap" style="color:var(--gold6);margin:8px 0 5px">APPROVALS</div><div class="txt" style="width:92%"></div><div class="txt" style="width:60%"></div>
+          <div style="height:16px"></div>
+          <div class="img" style="height:100px">16:9</div><div class="cap" style="color:var(--gold6);margin:8px 0 5px">LAND</div><div class="txt" style="width:88%"></div><div class="txt" style="width:66%"></div>
+          <div class="btn ghost" style="width:100%;margin-top:16px">View all insights</div>
+        </div>
+
+        <div class="sec surf"><div class="tag">13</div>
+          <div class="eyebrow" style="font-size:9px">FAQ</div><div class="h2w" style="width:64%"></div>
+          <div style="height:8px"></div><div class="txt" style="width:88%"></div>
+          <div style="margin-top:14px">
+            <div class="acc" style="border-top:1px solid var(--line)"><div class="q" style="width:62%"></div><div class="ch">▲</div></div>
+            <div style="padding:0 0 12px"><div class="txt" style="width:94%"></div><div class="txt" style="width:70%"></div></div>
+            <div class="acc"><div class="q" style="width:54%"></div><div class="ch">▼</div></div>
+            <div class="acc"><div class="q" style="width:66%"></div><div class="ch">▼</div></div>
+            <div class="acc"><div class="q" style="width:46%"></div><div class="ch">▼</div></div>
+            <div class="acc"><div class="q" style="width:60%"></div><div class="ch">▼</div></div>
+          </div>
+        </div>
+
+        <div class="sec dark9"><div class="tag">14</div>
+          <div class="h2w" style="width:92%"></div><div class="h2w" style="width:64%"></div>
+          <div style="height:8px"></div><div class="txt" style="width:96%"></div><div class="txt" style="width:88%"></div><div class="txt" style="width:56%"></div>
+          <div class="formcard" style="margin-top:16px;padding:16px">
+            <div class="field" style="height:36px">Full name *</div>
+            <div class="field" style="height:36px">Organisation *</div>
+            <div class="field" style="height:36px">Work email *</div>
+            <div class="field" style="height:36px">Phone</div>
+            <div class="field" style="height:36px">Project stage * ▾</div>
+            <div class="field" style="height:36px">Technology * ▾</div>
+            <div class="field" style="height:36px">District / location</div>
+            <div class="field ta" style="height:70px">How can we help *</div>
+            <div style="display:flex;gap:8px;align-items:flex-start;margin:2px 0 12px"><div style="width:14px;height:14px;border:1px solid var(--line);border-radius:2px;flex:none"></div><div class="txt" style="width:78%;margin:0"></div></div>
+            <div class="btn" style="width:100%;background:var(--forest);color:#fff;height:44px">Send enquiry</div>
+          </div>
+          <div style="margin-top:18px;border-top:1px solid var(--gold);padding-top:12px">
+            <div class="lbl" style="color:#fff;font-size:13px">+91 XXXXX XXXXX</div>
+            <div class="cap" style="margin-top:8px">Response within one business day</div>
+          </div>
+        </div>
+
+        <div class="sec dark9 tight" style="border-bottom:0"><div class="tag">15</div>
+          <div class="logo" style="margin:10px 0 12px"><div class="mark" style="border-color:#E8D9A8"></div><div class="wm">Bolamudi</div></div>
+          <div class="txt" style="width:86%"></div><div class="txt" style="width:64%"></div>
+          <div style="margin-top:16px;border-top:1px solid rgba(255,255,255,.14);padding:10px 0;display:flex;justify-content:space-between" class="cap"><span>SERVICES</span><span>＋</span></div>
+          <div style="border-top:1px solid rgba(255,255,255,.14);padding:10px 0;display:flex;justify-content:space-between" class="cap"><span>COMPANY</span><span>＋</span></div>
+          <div style="border-top:1px solid rgba(255,255,255,.14);padding:10px 0" class="cap">CIN / GSTIN · © 2026 Bolamudi Enterprise</div>
+        </div>
+
+        <div class="stickybar"><div class="btn">Call</div><div class="btn p">Request consultation</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="colhead">Mobile annotations</div>
+      <div class="notes">
+        <div class="note"><h4><b>M1</b> Hero height is auto, never 100vh</h4><p>Mobile browser chrome makes 100vh unreliable and pushes the CTA below the fold. 72px vertical padding, H1 at 36px, CTAs stacked full width.</p></div>
+        <div class="note"><h4><b>M2</b> Strip stays 2×2</h4><p>Stacking four items to a single column produces four screens of two words each. 2×2 keeps it scannable in one viewport.</p></div>
+        <div class="note"><h4><b>M3</b> Image leads the section</h4><p>Text-then-image inverts on mobile so the section opens with a visual anchor. The gold rule moves from the left edge to a 5px top border.</p></div>
+        <div class="note"><h4><b>M5</b> Timeline goes vertical</h4><p>Horizontal-scroll timelines are consistently ignored on mobile because the scroll affordance is invisible. Vertical is the correct pattern for sequences.</p></div>
+        <div class="note"><h4><b>M6</b> Text list replaces hover</h4><p>Tooltips do not exist on touch. The district list must be visible content, not hover-only information — otherwise mobile users lose the section's entire proof value.</p></div>
+        <div class="note"><h4><b>M10</b> Portrait constrained to 320px</h4><p>A full-bleed face at 390px is overwhelming and reads as a personal site. Left-aligned and capped keeps it professional.</p></div>
+        <div class="note"><h4><b>M14</b> Native selects, 48px inputs</h4><p>Custom dropdowns are a recurring accessibility failure and native pickers are better on touch. Submit is 44px minimum. Phone number sits directly below the form as a fallback path.</p></div>
+        <div class="note"><h4><b>M15</b> Footer columns become accordions</h4><p>Otherwise the footer is 900px tall. Registration numbers stay always-visible.</p></div>
+        <div class="note" style="border-left-color:var(--gold)"><h4><b>BAR</b> Sticky CTA, &lt;768px</h4><p>Appears after the hero, hides when the contact section is in view. A large share of Indian B2B mobile visitors want to call rather than fill a form. Page needs matching bottom padding plus safe-area inset so the bar never covers the footer.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

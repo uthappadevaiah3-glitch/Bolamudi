@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bolamudi Enterprise — Design System v1.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BOLAMUDI ENTERPRISE — DESIGN SYSTEM
+   Layer 1: PRIMITIVE TOKENS (raw values, never used directly in components)
+   ============================================================ */
+:root{
+  /* --- Forest (primary brand — from logo mark) --- */
+  --forest-50:#F1F9F4; --forest-100:#DCF0E5; --forest-200:#B4DCC5; --forest-300:#7DBE99;
+  --forest-400:#4A9B6C; --forest-500:#27794C; --forest-600:#1D5C3A; --forest-700:#16492E;
+  --forest-800:#103823; --forest-900:#0B2818; --forest-950:#06180F;
+  /* --- Gold (accent — from logo mark) --- */
+  --gold-50:#FCF8ED; --gold-100:#F7EFD8; --gold-200:#EEDFAF; --gold-300:#E2C878;
+  --gold-400:#D4B14A; --gold-500:#C29B26; --gold-600:#A6801A; --gold-700:#8C6A12;
+  --gold-800:#6B4F0C; --gold-900:#4A3708;
+  /* --- Neutral (green-tinted graphite, harmonises with forest) --- */
+  --n-0:#FFFFFF; --n-25:#FAFBFA; --n-50:#F5F7F5; --n-100:#EBEEEB; --n-200:#DCE1DD;
+  --n-300:#C0C8C2; --n-400:#98A29B; --n-500:#67736C; --n-600:#525C56; --n-700:#3C4540;
+  --n-800:#272E2A; --n-900:#161B18; --n-950:#0C100E;
+  /* --- Semantic hues --- */
+  --success-600:#0E7A45; --success-100:#D7F2E3; --success-300:#4ADE80;
+  --warning-600:#A16207; --warning-100:#FBEFD4; --warning-300:#FBBF24;
+  --danger-600:#B42318;  --danger-100:#FBE0DE;  --danger-300:#FCA5A5;
+  --info-600:#175CD3;    --info-100:#DBE8FC;    --info-300:#7DBEFF;
+
+  /* --- Type --- */
+  --font-display:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --font-body:'Inter','Helvetica Neue',Arial,sans-serif;
+  --font-mono:'IBM Plex Mono','SF Mono',Consolas,monospace;
+
+  /* --- Spacing (4px base unit) --- */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px;
+  --s-10:40px; --s-12:48px; --s-16:64px; --s-20:80px; --s-24:96px; --s-28:112px;
+  --s-32:128px; --s-40:160px;
+
+  /* --- Radius --- */
+  --r-xs:2px; --r-sm:3px; --r-md:4px; --r-lg:6px; --r-xl:8px; --r-full:999px;
+
+  /* --- Motion --- */
+  --d-instant:100ms; --d-fast:160ms; --d-base:220ms; --d-slow:320ms; --d-reveal:520ms;
+  --e-standard:cubic-bezier(.4,0,.2,1);
+  --e-out:cubic-bezier(.16,1,.3,1);
+  --e-in:cubic-bezier(.4,0,1,1);
+
+  /* --- Layout --- */
+  --container:1200px; --shell-max:1440px;
+}
+
+/* ============================================================
+   Layer 2: SEMANTIC TOKENS — LIGHT THEME (default)
+   Components reference ONLY these. Swapping themes swaps this block.
+   ============================================================ */
+[data-theme="light"]{
+  --bg-canvas:#FFFFFF;
+  --bg-subtle:var(--n-50);
+  --bg-muted:var(--n-100);
+  --bg-inverse:var(--forest-900);
+  --bg-brand:var(--forest-800);
+  --bg-brand-hover:var(--forest-700);
+  --bg-brand-active:var(--forest-900);
+  --bg-brand-subtle:var(--forest-50);
+  --bg-accent-subtle:var(--gold-50);
+  --bg-overlay:rgba(12,16,14,.55);
+
+  --fg-primary:var(--n-900);
+  --fg-secondary:var(--n-700);
+  --fg-muted:var(--n-600);
+  --fg-placeholder:var(--n-500);
+  --fg-disabled:var(--n-400);
+  --fg-onbrand:#FFFFFF;
+  --fg-brand:var(--forest-700);
+  --fg-accent:var(--gold-700);
+  --fg-inverse:#FFFFFF;
+
+  --border-subtle:var(--n-200);
+  --border-default:var(--n-300);
+  --border-control:#7F8983;      /* 3.62:1 on canvas — WCAG 1.4.11 compliant */
+  --border-strong:var(--n-700);
+  --border-brand:var(--forest-700);
+  --border-accent:var(--gold-500);
+
+  --focus-ring:var(--forest-500);
+  --focus-ring-offset:#FFFFFF;
+
+  --success-fg:var(--success-600); --success-bg:var(--success-100);
+  --warning-fg:var(--warning-600); --warning-bg:var(--warning-100);
+  --danger-fg:var(--danger-600);   --danger-bg:var(--danger-100);
+  --info-fg:var(--info-600);       --info-bg:var(--info-100);
+
+  --shadow-xs:0 1px 2px rgba(12,16,14,.06);
+  --shadow-sm:0 1px 3px rgba(12,16,14,.08),0 1px 2px rgba(12,16,14,.04);
+  --shadow-md:0 4px 12px rgba(12,16,14,.08),0 2px 4px rgba(12,16,14,.04);
+  --shadow-lg:0 12px 32px rgba(12,16,14,.12),0 4px 8px rgba(12,16,14,.06);
+  --skeleton:linear-gradient(90deg,var(--n-100) 25%,var(--n-200) 37%,var(--n-100) 63%);
+}
+
+/* ============================================================
+   Layer 2: SEMANTIC TOKENS — DARK THEME
+   NOT a colour inversion. Forest is too dark to serve as a surface AND
+   as an action colour in dark mode, so brand shifts UP the ramp (800 -> 400)
+   and gold takes over as the accessible accent.
+   ============================================================ */
+[data-theme="dark"]{
+  --bg-canvas:#0C100E;
+  --bg-subtle:#161B18;
+  --bg-muted:#1E2521;
+  --bg-inverse:var(--n-50);
+  --bg-brand:var(--forest-400);
+  --bg-brand-hover:var(--forest-300);
+  --bg-brand-active:var(--forest-500);
+  --bg-brand-subtle:rgba(74,155,108,.12);
+  --bg-accent-subtle:rgba(212,177,74,.12);
+  --bg-overlay:rgba(6,24,15,.72);
+
+  --fg-primary:var(--n-50);
+  --fg-secondary:var(--n-300);
+  --fg-muted:var(--n-400);
+  --fg-placeholder:var(--n-400);
+  --fg-disabled:#4E5A54;
+  --fg-onbrand:var(--forest-950);
+  --fg-brand:var(--forest-300);
+  --fg-accent:var(--gold-300);
+  --fg-inverse:var(--n-950);
+
+  --border-subtle:#252D29;
+  --border-default:#333D38;
+  --border-control:#6E7A72;      /* 4.28:1 on canvas */
+  --border-strong:var(--n-400);
+  --border-brand:var(--forest-400);
+  --border-accent:var(--gold-400);
+
+  --focus-ring:var(--gold-400);
+  --focus-ring-offset:#0C100E;
+
+  --success-fg:var(--success-300); --success-bg:rgba(74,222,128,.12);
+  --warning-fg:var(--warning-300); --warning-bg:rgba(251,191,36,.12);
+  --danger-fg:var(--danger-300);   --danger-bg:rgba(252,165,165,.12);
+  --info-fg:var(--info-300);       --info-bg:rgba(125,190,255,.12);
+
+  --shadow-xs:0 1px 2px rgba(0,0,0,.4);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.3);
+  --shadow-md:0 4px 12px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.3);
+  --shadow-lg:0 12px 32px rgba(0,0,0,.6),0 4px 8px rgba(0,0,0,.4);
+  --skeleton:linear-gradient(90deg,#1E2521 25%,#2A322D 37%,#1E2521 63%);
+}
+
+/* ============================================================
+   DOCUMENTATION CHROME (not part of the product design system)
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg-canvas);color:var(--fg-primary);
+  font-family:var(--font-body);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;transition:background var(--d-base) var(--e-standard),color var(--d-base) var(--e-standard)}
+.layout{display:grid;grid-template-columns:264px 1fr;min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border-subtle);
+  padding:var(--s-6);background:var(--bg-subtle)}
+.sidebar h1{font-family:var(--font-display);font-size:16px;font-weight:700;letter-spacing:-.01em;margin:0 0 2px}
+.sidebar .sub{font-size:11px;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:var(--s-6)}
+.sidebar a{display:block;padding:5px 8px;margin-left:-8px;border-radius:var(--r-md);color:var(--fg-muted);
+  text-decoration:none;font-size:13px;transition:all var(--d-fast) var(--e-standard)}
+.sidebar a:hover{color:var(--fg-primary);background:var(--bg-muted)}
+.sidebar .grp{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-disabled);
+  margin:var(--s-5) 0 var(--s-2);font-weight:600}
+main{padding:var(--s-12) var(--s-12) var(--s-40);max-width:1080px}
+.doc-sec{margin-bottom:var(--s-32);scroll-margin-top:24px}
+.doc-sec>h2{font-family:var(--font-display);font-size:30px;font-weight:700;letter-spacing:-.022em;
+  margin:0 0 var(--s-2);padding-bottom:var(--s-4);border-bottom:2px solid var(--fg-primary)}
+.doc-sec>h2 .num{font-family:var(--font-mono);font-size:13px;color:var(--fg-accent);
+  display:block;font-weight:500;letter-spacing:.06em;margin-bottom:6px}
+.doc-sec>.lede{color:var(--fg-secondary);font-size:16px;max-width:68ch;margin:var(--s-4) 0 var(--s-8)}
+h3.sub{font-family:var(--font-display);font-size:19px;font-weight:600;letter-spacing:-.01em;
+  margin:var(--s-12) 0 var(--s-3)}
+h4.sub{font-family:var(--font-display);font-size:14px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--fg-muted);margin:var(--s-8) 0 var(--s-3)}
+p{max-width:70ch}
+.why{border-left:3px solid var(--border-accent);background:var(--bg-accent-subtle);
+  padding:var(--s-3) var(--s-4);border-radius:0 var(--r-md) var(--r-md) 0;font-size:13.5px;
+  color:var(--fg-secondary);margin:var(--s-4) 0;max-width:78ch}
+.why b{color:var(--fg-primary);font-weight:600}
+.warn-box{border-left:3px solid var(--danger-fg);background:var(--danger-bg);
+  padding:var(--s-4);border-radius:0 var(--r-md) var(--r-md) 0;font-size:13.5px;margin:var(--s-4) 0;max-width:78ch}
+.demo{border:1px solid var(--border-subtle);border-radius:var(--r-lg);padding:var(--s-6);
+  background:var(--bg-canvas);margin:var(--s-4) 0}
+.demo.tinted{background:var(--bg-subtle)}
+.row{display:flex;gap:var(--s-3);flex-wrap:wrap;align-items:center}
+.col{display:flex;flex-direction:column;gap:var(--s-3)}
+table.spec{width:100%;border-collapse:collapse;font-size:13px;margin:var(--s-4) 0}
+table.spec th{text-align:left;font-family:var(--font-display);font-size:11px;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--fg-muted);padding:0 var(--s-3) var(--s-2) 0;
+  border-bottom:1px solid var(--border-default);font-weight:600}
+table.spec td{padding:var(--s-2) var(--s-3) var(--s-2) 0;border-bottom:1px solid var(--border-subtle);
+  vertical-align:top;color:var(--fg-secondary)}
+table.spec td:first-child{color:var(--fg-primary);font-weight:500;white-space:nowrap}
+code{font-family:var(--font-mono);font-size:.87em;background:var(--bg-muted);
+  padding:1px 5px;border-radius:var(--r-xs);color:var(--fg-primary)}
+.pass{color:var(--success-fg);font-weight:600}
+.fail{color:var(--danger-fg);font-weight:600}
+.theme-toggle{position:fixed;top:var(--s-5);right:var(--s-5);z-index:100;display:flex;
+  border:1px solid var(--border-control);border-radius:var(--r-full);overflow:hidden;background:var(--bg-canvas)}
+.theme-toggle button{border:0;background:transparent;color:var(--fg-muted);font-family:var(--font-body);
+  font-size:12px;font-weight:500;padding:6px 14px;cursor:pointer;transition:all var(--d-fast) var(--e-standard)}
+.theme-toggle button[aria-pressed="true"]{background:var(--bg-brand);color:var(--fg-onbrand)}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto}main{padding:var(--s-6)}}
+</style>
+<style id="ds">
+/* ---------- Colour swatches (docs) ---------- */
+.ramp{display:grid;grid-template-columns:repeat(11,1fr);border-radius:var(--r-md);overflow:hidden;
+  border:1px solid var(--border-subtle);margin:var(--s-3) 0}
+.ramp div{padding:var(--s-4) 6px var(--s-3);font-family:var(--font-mono);font-size:9.5px;line-height:1.4}
+.ramp div span{display:block;opacity:.72;font-size:9px}
+.token-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:var(--s-3)}
+.token{display:flex;gap:var(--s-3);align-items:center;border:1px solid var(--border-subtle);
+  border-radius:var(--r-md);padding:var(--s-3)}
+.token i{width:34px;height:34px;border-radius:var(--r-sm);border:1px solid var(--border-subtle);flex:0 0 auto}
+.token b{display:block;font-family:var(--font-mono);font-size:11.5px;font-weight:500;color:var(--fg-primary)}
+.token em{font-style:normal;font-size:11px;color:var(--fg-muted)}
+
+/* ---------- Typography specimens (docs) ---------- */
+.spec-type{border-bottom:1px solid var(--border-subtle);padding:var(--s-4) 0;display:grid;
+  grid-template-columns:1fr 200px;gap:var(--s-4);align-items:baseline}
+.spec-type .meta{font-family:var(--font-mono);font-size:11px;color:var(--fg-muted);text-align:right;line-height:1.5}
+.d1{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,5.2vw,64px);line-height:1.04;letter-spacing:-.028em;margin:0}
+.d2{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-.024em;margin:0}
+.h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.2vw,40px);line-height:1.14;letter-spacing:-.02em;margin:0}
+.h2{font-family:var(--font-display);font-weight:600;font-size:clamp(24px,2.4vw,32px);line-height:1.2;letter-spacing:-.016em;margin:0}
+.h3{font-family:var(--font-display);font-weight:600;font-size:24px;line-height:1.28;letter-spacing:-.012em;margin:0}
+.h4{font-family:var(--font-display);font-weight:600;font-size:19px;line-height:1.35;letter-spacing:-.008em;margin:0}
+.h5{font-family:var(--font-display);font-weight:600;font-size:16px;line-height:1.4;margin:0}
+.eyebrow{font-family:var(--font-display);font-weight:600;font-size:12px;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--fg-accent);margin:0}
+.body-lg{font-size:18px;line-height:1.65;margin:0}
+.body-md{font-size:16px;line-height:1.65;margin:0}
+.body-sm{font-size:14px;line-height:1.6;margin:0}
+.caption{font-size:12.5px;line-height:1.5;color:var(--fg-muted);margin:0}
+.data{font-family:var(--font-mono);font-size:14px;font-variant-numeric:tabular-nums;letter-spacing:-.01em;margin:0}
+
+/* ---------- Spacing / grid (docs) ---------- */
+.sp-row{display:flex;align-items:center;gap:var(--s-4);padding:5px 0}
+.sp-row i{background:var(--bg-brand);height:14px;border-radius:2px;display:block}
+.sp-row code{min-width:78px}
+.gridviz{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;background:var(--bg-subtle);
+  border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:var(--s-4)}
+.gridviz span{background:var(--bg-brand-subtle);border:1px solid var(--border-brand);height:52px;
+  border-radius:var(--r-xs);font-family:var(--font-mono);font-size:10px;color:var(--fg-brand);
+  display:flex;align-items:center;justify-content:center}
+
+/* ---------- Elevation (docs) ---------- */
+.elev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--s-5)}
+.elev{background:var(--bg-canvas);border:1px solid var(--border-subtle);border-radius:var(--r-lg);
+  padding:var(--s-5);font-family:var(--font-mono);font-size:11px;text-align:center}
+.radius-grid{display:flex;gap:var(--s-4);flex-wrap:wrap}
+.radius-grid i{width:70px;height:70px;background:var(--bg-brand-subtle);border:1px solid var(--border-brand);
+  display:flex;align-items:flex-end;justify-content:center;font-family:var(--font-mono);font-size:10px;
+  color:var(--fg-brand);padding-bottom:6px}
+/* ============================================================
+   PRODUCTION COMPONENT STYLES
+   ============================================================ */
+
+/* ---------- Focus (global) ---------- */
+.btn:focus-visible,.inp:focus-visible,.chk:focus-visible,.acc-trigger:focus-visible,
+.nav-lnk:focus-visible,a.lnk:focus-visible,.sel:focus-visible,.card-i:focus-visible{
+  outline:2px solid var(--focus-ring);outline-offset:2px;border-radius:var(--r-sm)}
+
+/* ---------- 08 BUTTONS ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--font-display);font-weight:600;letter-spacing:.005em;
+  border-radius:var(--r-sm);border:1px solid transparent;cursor:pointer;
+  text-decoration:none;white-space:nowrap;position:relative;
+  transition:background var(--d-fast) var(--e-standard),border-color var(--d-fast) var(--e-standard),
+             color var(--d-fast) var(--e-standard),box-shadow var(--d-fast) var(--e-standard)}
+.btn-sm{height:36px;padding:0 14px;font-size:13px}
+.btn-md{height:44px;padding:0 20px;font-size:14px}
+.btn-lg{height:52px;padding:0 28px;font-size:15px}
+.btn-icon{width:44px;padding:0}
+.btn-primary{background:var(--bg-brand);color:var(--fg-onbrand)}
+.btn-primary:hover{background:var(--bg-brand-hover);box-shadow:var(--shadow-xs)}
+.btn-primary:active{background:var(--bg-brand-active);box-shadow:none;transform:translateY(.5px)}
+.btn-secondary{background:transparent;color:var(--fg-brand);border-color:var(--border-control)}
+.btn-secondary:hover{background:var(--bg-brand-subtle);border-color:var(--border-brand)}
+.btn-secondary:active{background:var(--bg-muted)}
+.btn-tertiary{background:var(--bg-muted);color:var(--fg-primary)}
+.btn-tertiary:hover{background:var(--border-subtle)}
+.btn-ghost{background:transparent;color:var(--fg-secondary)}
+.btn-ghost:hover{background:var(--bg-muted);color:var(--fg-primary)}
+.btn-danger{background:var(--danger-fg);color:#fff}
+.btn-danger:hover{filter:brightness(.9)}
+[data-theme="dark"] .btn-danger{color:var(--forest-950)}
+.btn-oninverse{background:#fff;color:var(--forest-900)}
+.btn-oninverse:hover{background:var(--gold-100)}
+.btn-oninverse-sec{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-oninverse-sec:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn:disabled,.btn[aria-disabled="true"]{background:var(--bg-muted);color:var(--fg-disabled);
+  border-color:transparent;cursor:not-allowed;box-shadow:none;transform:none}
+.btn[data-loading="true"]{color:transparent;pointer-events:none}
+.btn[data-loading="true"]::after{content:"";position:absolute;width:16px;height:16px;
+  border:2px solid currentColor;border-top-color:transparent;border-radius:50%;
+  color:var(--fg-onbrand);animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+a.lnk{color:var(--fg-brand);font-weight:500;text-decoration:none;
+  border-bottom:1px solid transparent;transition:border-color var(--d-fast) var(--e-standard)}
+a.lnk:hover{border-bottom-color:var(--border-accent)}
+.lnk-arrow{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-display);
+  font-weight:600;font-size:14px;color:var(--fg-brand);text-decoration:none}
+.lnk-arrow i{transition:transform var(--d-fast) var(--e-standard);font-style:normal}
+.lnk-arrow:hover i{transform:translateX(4px)}
+
+/* ---------- 09 INPUTS ---------- */
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:var(--s-5)}
+.field label{font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--fg-primary)}
+.field label .req{color:var(--danger-fg);margin-left:2px}
+.field .hint{font-size:12.5px;color:var(--fg-muted)}
+.field .err{font-size:12.5px;color:var(--danger-fg);display:flex;align-items:center;gap:5px}
+.inp{height:44px;padding:0 12px;font-family:var(--font-body);font-size:15px;color:var(--fg-primary);
+  background:var(--bg-canvas);border:1px solid var(--border-control);border-radius:var(--r-sm);
+  width:100%;transition:border-color var(--d-fast) var(--e-standard),box-shadow var(--d-fast) var(--e-standard)}
+.inp::placeholder{color:var(--fg-placeholder)}
+.inp:hover{border-color:var(--border-strong)}
+.inp:focus{outline:none;border-color:var(--border-brand);box-shadow:0 0 0 3px var(--bg-brand-subtle)}
+.inp:disabled{background:var(--bg-muted);color:var(--fg-disabled);cursor:not-allowed;border-color:var(--border-subtle)}
+textarea.inp{height:auto;min-height:120px;padding:10px 12px;line-height:1.6;resize:vertical}
+.inp[aria-invalid="true"]{border-color:var(--danger-fg)}
+.inp[aria-invalid="true"]:focus{box-shadow:0 0 0 3px var(--danger-bg)}
+.inp[data-valid="true"]{border-color:var(--success-fg)}
+.inp-group{display:flex;align-items:stretch}
+.inp-prefix{display:flex;align-items:center;padding:0 12px;background:var(--bg-subtle);
+  border:1px solid var(--border-control);border-right:0;border-radius:var(--r-sm) 0 0 var(--r-sm);
+  font-family:var(--font-mono);font-size:14px;color:var(--fg-muted)}
+.inp-group .inp{border-radius:0 var(--r-sm) var(--r-sm) 0}
+.sel{appearance:none;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),
+  linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 18px) 19px,calc(100% - 13px) 19px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:38px}
+.chk-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.chk{appearance:none;width:18px;height:18px;flex:0 0 auto;margin-top:2px;
+  border:1px solid var(--border-control);border-radius:var(--r-xs);background:var(--bg-canvas);cursor:pointer;
+  transition:all var(--d-fast) var(--e-standard);position:relative}
+.chk:hover{border-color:var(--border-brand)}
+.chk:checked{background:var(--bg-brand);border-color:var(--bg-brand)}
+.chk:checked::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;
+  border:solid var(--fg-onbrand);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.chk[type=radio]{border-radius:50%}
+.chk[type=radio]:checked{background:var(--bg-canvas);border:5px solid var(--bg-brand)}
+.chk[type=radio]:checked::after{display:none}
+.chk-row span{font-size:14px;color:var(--fg-secondary);line-height:1.5}
+.file-drop{border:1px dashed var(--border-control);border-radius:var(--r-lg);padding:var(--s-8);
+  text-align:center;background:var(--bg-subtle);transition:all var(--d-fast) var(--e-standard);cursor:pointer}
+.file-drop:hover{border-color:var(--border-brand);background:var(--bg-brand-subtle)}
+.switch{width:40px;height:22px;background:var(--border-control);border-radius:var(--r-full);
+  position:relative;cursor:pointer;border:0;transition:background var(--d-fast) var(--e-standard);flex:0 0 auto}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;
+  border-radius:50%;transition:transform var(--d-fast) var(--e-standard)}
+.switch[aria-checked="true"]{background:var(--bg-brand)}
+.switch[aria-checked="true"]::after{transform:translateX(18px)}
+
+/* ---------- 10 BADGES ---------- */
+.badge{display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;
+  font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;border-radius:var(--r-xs);border:1px solid transparent;white-space:nowrap}
+.badge-lg{height:26px;padding:0 10px;font-size:12px}
+.badge-brand{background:var(--bg-brand-subtle);color:var(--fg-brand);border-color:var(--border-brand)}
+.badge-accent{background:var(--bg-accent-subtle);color:var(--fg-accent);border-color:var(--border-accent)}
+.badge-neutral{background:var(--bg-muted);color:var(--fg-muted);border-color:var(--border-subtle)}
+.badge-success{background:var(--success-bg);color:var(--success-fg);border-color:currentColor}
+.badge-warning{background:var(--warning-bg);color:var(--warning-fg);border-color:currentColor}
+.badge-danger{background:var(--danger-bg);color:var(--danger-fg);border-color:currentColor}
+.badge-info{background:var(--info-bg);color:var(--info-fg);border-color:currentColor}
+.badge-solid{background:var(--bg-brand);color:var(--fg-onbrand)}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:0 0 auto}
+.badge-metric{font-family:var(--font-mono);text-transform:none;letter-spacing:0;font-weight:500}
+
+/* ---------- 11 CARDS ---------- */
+.card{background:var(--bg-canvas);border:1px solid var(--border-subtle);border-radius:var(--r-lg);
+  padding:var(--s-6);transition:border-color var(--d-fast) var(--e-standard),
+  box-shadow var(--d-fast) var(--e-standard),transform var(--d-fast) var(--e-standard)}
+.card-i{display:block;text-decoration:none;color:inherit;cursor:pointer}
+.card-i:hover{border-color:var(--border-brand);box-shadow:var(--shadow-xs);transform:translateY(-2px)}
+.card-tinted{background:var(--bg-subtle)}
+.card-brand{background:var(--bg-inverse);color:var(--fg-inverse);border-color:transparent}
+.card-brand .caption,.card-brand .body-sm{color:rgba(255,255,255,.72)}
+[data-theme="dark"] .card-brand .caption,[data-theme="dark"] .card-brand .body-sm{color:var(--n-600)}
+.card-accentbar{border-top:3px solid var(--border-accent);border-radius:0 0 var(--r-lg) var(--r-lg)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-5)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4)}
+@media(max-width:820px){.grid3,.grid4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid3,.grid4,.grid2{grid-template-columns:1fr}}
+
+/* ---------- 12 SERVICE CARD ---------- */
+.svc{position:relative;padding:var(--s-6);border:1px solid var(--border-subtle);border-radius:var(--r-lg);
+  background:var(--bg-canvas);display:block;text-decoration:none;color:inherit;
+  transition:all var(--d-fast) var(--e-standard);overflow:hidden}
+.svc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--bg-brand);
+  transform:scaleY(0);transform-origin:top;transition:transform var(--d-base) var(--e-out)}
+.svc:hover{border-color:var(--border-default);box-shadow:var(--shadow-xs);transform:translateY(-2px)}
+.svc:hover::before{transform:scaleY(1)}
+.svc-ico{width:44px;height:44px;border-radius:var(--r-md);background:var(--bg-brand-subtle);
+  color:var(--fg-brand);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s-4);
+  font-size:20px;transition:all var(--d-base) var(--e-standard)}
+.svc:hover .svc-ico{background:var(--bg-brand);color:var(--fg-onbrand)}
+.svc-no{position:absolute;top:var(--s-5);right:var(--s-5);font-family:var(--font-mono);font-size:12px;
+  color:var(--fg-disabled);letter-spacing:.05em}
+
+/* ---------- 13 PROJECT CARD ---------- */
+.proj{border:1px solid var(--border-subtle);border-radius:var(--r-lg);overflow:hidden;
+  background:var(--bg-canvas);display:block;text-decoration:none;color:inherit;
+  transition:all var(--d-fast) var(--e-standard)}
+.proj:hover{border-color:var(--border-brand);box-shadow:var(--shadow-xs);transform:translateY(-2px)}
+.proj-img{aspect-ratio:4/3;background:linear-gradient(150deg,var(--forest-800),var(--forest-600));
+  position:relative;display:flex;align-items:flex-end;padding:var(--s-4);overflow:hidden}
+.proj-img::after{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(115deg,transparent 0 22px,rgba(255,255,255,.05) 22px 24px)}
+.proj-img .badge{position:relative;z-index:1}
+.proj-body{padding:var(--s-5)}
+.proj-meta{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);margin-top:var(--s-4);
+  padding-top:var(--s-4);border-top:1px solid var(--border-subtle)}
+.proj-meta dt{font-family:var(--font-display);font-size:10.5px;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--fg-muted);margin:0}
+.proj-meta dd{font-family:var(--font-mono);font-size:14px;font-weight:500;color:var(--fg-primary);
+  margin:2px 0 0;font-variant-numeric:tabular-nums}
+
+/* ---------- 14 DISTRICT CARD ---------- */
+.dist{border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:var(--s-4);
+  background:var(--bg-canvas);display:flex;flex-direction:column;gap:var(--s-2);
+  text-decoration:none;color:inherit;transition:all var(--d-fast) var(--e-standard);position:relative}
+.dist:hover{border-color:var(--border-brand);background:var(--bg-brand-subtle)}
+.dist[aria-current="true"]{border-color:var(--border-brand);border-left-width:3px}
+.dist-name{font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--fg-primary);
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s-2)}
+.dist-stats{display:flex;gap:var(--s-4);font-family:var(--font-mono);font-size:12px;
+  color:var(--fg-muted);font-variant-numeric:tabular-nums}
+.dist-stats b{color:var(--fg-primary);font-weight:500}
+
+/* ---------- 15 STATISTICS ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border-subtle);
+  border-bottom:1px solid var(--border-subtle)}
+.stat{padding:var(--s-8) var(--s-6);border-right:1px solid var(--border-subtle)}
+.stat:last-child{border-right:0}
+.stat-fig{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,3.4vw,44px);
+  line-height:1;letter-spacing:-.028em;color:var(--fg-primary);font-variant-numeric:tabular-nums;
+  display:flex;align-items:baseline;gap:3px}
+.stat-fig sup{font-size:.44em;color:var(--fg-accent);font-weight:600;top:-.7em;position:relative}
+.stat-unit{font-size:.44em;color:var(--fg-accent);font-weight:600;letter-spacing:0}
+.stat-lbl{font-family:var(--font-display);font-size:12px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.09em;color:var(--fg-muted);margin-top:var(--s-3)}
+.stat-sub{font-size:12.5px;color:var(--fg-muted);margin-top:6px}
+.stats-inverse{background:var(--bg-inverse);border:0;border-radius:var(--r-lg)}
+.stats-inverse .stat{border-color:rgba(255,255,255,.14)}
+.stats-inverse .stat-fig{color:var(--fg-inverse)}
+.stats-inverse .stat-lbl{color:var(--gold-300)}
+[data-theme="dark"] .stats-inverse .stat{border-color:var(--n-300)}
+[data-theme="dark"] .stats-inverse .stat-lbl{color:var(--gold-800)}
+@media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}
+  .stat{border-bottom:1px solid var(--border-subtle)}
+  .stat:nth-child(2n){border-right:0}}
+
+/* ---------- 16 TIMELINE ---------- */
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;background:var(--border-default)}
+.tl-item{position:relative;padding-bottom:var(--s-8)}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-30px;top:5px;width:11px;height:11px;
+  border-radius:50%;background:var(--bg-canvas);border:2px solid var(--border-default);z-index:1}
+.tl-item[data-state="done"]::before{background:var(--bg-brand);border-color:var(--bg-brand)}
+.tl-item[data-state="active"]::before{background:var(--gold-500);border-color:var(--gold-500);
+  box-shadow:0 0 0 4px var(--bg-accent-subtle)}
+.tl-date{font-family:var(--font-mono);font-size:12px;color:var(--fg-accent);letter-spacing:.04em;
+  text-transform:uppercase}
+.tl-title{font-family:var(--font-display);font-weight:600;font-size:17px;margin:3px 0 6px}
+.tl-h{display:grid;grid-template-columns:130px 1fr;gap:var(--s-6)}
+@media(max-width:700px){.tl-h{grid-template-columns:1fr;gap:var(--s-1)}}
+
+/* ---------- 17 TABLES ---------- */
+.tbl-wrap{border:1px solid var(--border-subtle);border-radius:var(--r-lg);overflow:hidden}
+table.dt{width:100%;border-collapse:collapse;font-size:14px}
+table.dt thead th{background:var(--bg-subtle);text-align:left;font-family:var(--font-display);
+  font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--fg-muted);
+  padding:12px var(--s-4);border-bottom:1px solid var(--border-default);white-space:nowrap}
+table.dt tbody td{padding:14px var(--s-4);border-bottom:1px solid var(--border-subtle);
+  color:var(--fg-secondary);vertical-align:top}
+table.dt tbody tr:last-child td{border-bottom:0}
+table.dt tbody tr:hover{background:var(--bg-subtle)}
+table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-mono);
+  font-variant-numeric:tabular-nums;color:var(--fg-primary)}
+table.dt td:first-child{color:var(--fg-primary);font-weight:500}
+table.dt tfoot td{padding:12px var(--s-4);background:var(--bg-subtle);font-weight:600;
+  color:var(--fg-primary);border-top:1px solid var(--border-default)}
+.th-sort{cursor:pointer;user-select:none}
+.th-sort::after{content:"↕";margin-left:5px;opacity:.4}
+.th-sort[aria-sort="ascending"]::after{content:"↑";opacity:1;color:var(--fg-brand)}
+
+/* ---------- 18 ACCORDION ---------- */
+.acc{border-top:1px solid var(--border-subtle)}
+.acc-item{border-bottom:1px solid var(--border-subtle)}
+.acc-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--s-4);
+  background:transparent;border:0;padding:var(--s-5) var(--s-2) var(--s-5) 0;cursor:pointer;
+  font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--fg-primary);
+  text-align:left;transition:color var(--d-fast) var(--e-standard)}
+.acc-trigger:hover{color:var(--fg-brand)}
+.acc-trigger .chev{flex:0 0 auto;width:20px;height:20px;color:var(--fg-muted);
+  transition:transform var(--d-base) var(--e-standard);font-style:normal;
+  display:flex;align-items:center;justify-content:center}
+.acc-trigger[aria-expanded="true"] .chev{transform:rotate(180deg);color:var(--fg-brand)}
+.acc-panel{overflow:hidden;max-height:0;transition:max-height var(--d-base) var(--e-standard)}
+.acc-panel[data-open="true"]{max-height:600px}
+.acc-panel .inner{padding:0 var(--s-10) var(--s-6) 0;color:var(--fg-secondary);font-size:15px;max-width:70ch}
+
+/* ---------- 19 NAVIGATION ---------- */
+.hdr{border:1px solid var(--border-subtle);border-radius:var(--r-lg);overflow:hidden}
+.hdr-bar{display:flex;align-items:center;justify-content:space-between;gap:var(--s-6);
+  padding:0 var(--s-5);height:72px;background:var(--bg-canvas);border-bottom:1px solid var(--border-subtle)}
+.hdr-bar.scrolled{height:60px;box-shadow:var(--shadow-sm)}
+.logo-lockup{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:34px;height:34px;border-radius:var(--r-xs);background:var(--bg-brand);
+  color:var(--gold-400);display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;font-size:17px}
+.logo-txt{font-family:var(--font-display);font-weight:700;font-size:16px;letter-spacing:-.01em;
+  color:var(--fg-primary);line-height:1.1}
+.logo-txt span{display:block;font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--fg-accent)}
+.nav{display:flex;gap:2px;align-items:center}
+.nav-lnk{padding:8px 12px;border-radius:var(--r-sm);font-family:var(--font-display);font-weight:500;
+  font-size:14px;color:var(--fg-secondary);text-decoration:none;position:relative;
+  transition:color var(--d-fast) var(--e-standard),background var(--d-fast) var(--e-standard)}
+.nav-lnk:hover{color:var(--fg-primary);background:var(--bg-muted)}
+.nav-lnk[aria-current="page"]{color:var(--fg-primary);font-weight:600}
+.nav-lnk[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;
+  height:2px;background:var(--border-accent)}
+.util-bar{display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-5);
+  height:34px;background:var(--bg-inverse);color:var(--fg-inverse);font-size:12px}
+.util-bar a{color:inherit;opacity:.82;text-decoration:none}
+.util-bar a:hover{opacity:1}
+.mega{background:var(--bg-canvas);border-top:1px solid var(--border-subtle);padding:var(--s-6) var(--s-5);
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:var(--s-8);box-shadow:var(--shadow-md)}
+.mega h5{font-family:var(--font-display);font-size:11px;text-transform:uppercase;letter-spacing:.09em;
+  color:var(--fg-muted);margin:0 0 var(--s-3);font-weight:600}
+.mega a{display:block;padding:6px 0;font-size:14px;color:var(--fg-secondary);text-decoration:none;
+  border-bottom:1px solid transparent;transition:all var(--d-fast) var(--e-standard)}
+.mega a:hover{color:var(--fg-brand)}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-muted);flex-wrap:wrap}
+.crumbs a{color:var(--fg-muted);text-decoration:none}
+.crumbs a:hover{color:var(--fg-brand)}
+.crumbs span[aria-current]{color:var(--fg-primary);font-weight:500}
+.anchornav{display:flex;gap:var(--s-1);border-bottom:1px solid var(--border-subtle);overflow-x:auto}
+.anchornav a{padding:12px 14px;font-family:var(--font-display);font-size:13.5px;font-weight:500;
+  color:var(--fg-muted);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+.anchornav a[aria-current="true"]{color:var(--fg-primary);border-bottom-color:var(--bg-brand)}
+
+/* ---------- 20 FOOTER ---------- */
+.ftr{background:var(--bg-inverse);color:var(--fg-inverse);border-radius:var(--r-lg);overflow:hidden}
+.ftr-main{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:var(--s-8);padding:var(--s-10) var(--s-8)}
+.ftr h5{font-family:var(--font-display);font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--gold-300);margin:0 0 var(--s-4);font-weight:600}
+.ftr a{display:block;padding:5px 0;font-size:13.5px;color:rgba(255,255,255,.76);text-decoration:none;
+  transition:color var(--d-fast) var(--e-standard)}
+.ftr a:hover{color:#fff}
+.ftr p{font-size:13.5px;color:rgba(255,255,255,.72);max-width:34ch}
+.ftr-legal{border-top:1px solid rgba(255,255,255,.14);padding:var(--s-4) var(--s-8);
+  display:flex;justify-content:space-between;gap:var(--s-4);flex-wrap:wrap;font-size:12.5px;
+  color:rgba(255,255,255,.6)}
+[data-theme="dark"] .ftr h5{color:var(--gold-800)}
+[data-theme="dark"] .ftr a,[data-theme="dark"] .ftr p{color:var(--n-700)}
+[data-theme="dark"] .ftr a:hover{color:var(--n-950)}
+[data-theme="dark"] .ftr-legal{border-color:var(--n-300);color:var(--n-600)}
+@media(max-width:820px){.ftr-main{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.ftr-main{grid-template-columns:1fr}}
+
+/* ---------- 21 SECTIONS ---------- */
+.sec-demo{border:1px solid var(--border-subtle);border-radius:var(--r-lg);padding:var(--s-10) var(--s-8);
+  background:var(--bg-canvas)}
+.sec-demo.band{background:var(--bg-subtle)}
+.sec-demo.inverse{background:var(--bg-inverse);color:var(--fg-inverse)}
+.sec-head{max-width:64ch;margin-bottom:var(--s-8)}
+.sec-head .rule{width:48px;height:2px;background:var(--border-accent);margin:var(--s-3) 0 var(--s-4)}
+.cta-band{background:var(--bg-inverse);color:var(--fg-inverse);border-radius:var(--r-lg);
+  padding:var(--s-12) var(--s-8);display:flex;align-items:center;justify-content:space-between;
+  gap:var(--s-8);flex-wrap:wrap}
+
+/* ---------- 23 LOADING ---------- */
+.sk{background:var(--skeleton);background-size:400% 100%;animation:shimmer 1.4s ease infinite;
+  border-radius:var(--r-xs);height:12px}
+@keyframes shimmer{0%{background-position:100% 50%}100%{background-position:0 50%}}
+.spinner{width:20px;height:20px;border:2px solid var(--border-default);border-top-color:var(--fg-brand);
+  border-radius:50%;animation:spin .7s linear infinite}
+.progress{height:2px;background:var(--bg-muted);border-radius:var(--r-full);overflow:hidden}
+.progress i{display:block;height:100%;width:42%;background:var(--bg-brand);
+  animation:indet 1.4s var(--e-standard) infinite}
+@keyframes indet{0%{transform:translateX(-100%)}100%{transform:translateX(240%)}}
+.empty{text-align:center;padding:var(--s-12) var(--s-6);border:1px dashed var(--border-default);
+  border-radius:var(--r-lg);color:var(--fg-muted)}
+
+@media(max-width:900px){
+  .cf-grid{grid-template-columns:1fr!important}
+  .mega{grid-template-columns:1fr;gap:var(--s-5)}
+  .hdr-bar{flex-wrap:wrap;height:auto;padding:12px var(--s-5);gap:var(--s-3)}
+  .nav{order:3;width:100%;overflow-x:auto}
+  .util-bar{flex-direction:column;height:auto;padding:8px var(--s-5);gap:4px;align-items:flex-start}
+  .spec-type{grid-template-columns:1fr}
+  .spec-type .meta{text-align:left}
+  .ramp{grid-template-columns:repeat(6,1fr)}
+  .gridviz{grid-template-columns:repeat(6,1fr)}
+  table.spec{display:block;overflow-x:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div class="theme-toggle" role="group" aria-label="Theme">
+  <button id="tL" aria-pressed="true" onclick="setTheme('light')">Light</button>
+  <button id="tD" aria-pressed="false" onclick="setTheme('dark')">Dark</button>
+</div>
+<div class="layout">
+<nav class="sidebar">
+  <h1>Bolamudi Enterprise</h1>
+  <div class="sub">Design System v1.0</div>
+  <div class="grp">Strategy</div>
+  <a href="#s00">00 · Positioning &amp; Principles</a>
+  <a href="#s01">01 · Logo Assessment</a>
+  <div class="grp">Foundations</div>
+  <a href="#s02">02 · Colour</a>
+  <a href="#s03">03 · Typography</a>
+  <a href="#s04">04 · Spacing &amp; Grid</a>
+  <a href="#s05">05 · Radius, Border, Elevation</a>
+  <a href="#s06">06 · Motion</a>
+  <a href="#s07">07 · Icon &amp; Imagery</a>
+  <div class="grp">Components</div>
+  <a href="#s08">08 · Buttons</a>
+  <a href="#s09">09 · Inputs &amp; Form Controls</a>
+  <a href="#s10">10 · Badges</a>
+  <a href="#s11">11 · Cards</a>
+  <a href="#s12">12 · Service Cards</a>
+  <a href="#s13">13 · Project Cards</a>
+  <a href="#s14">14 · District Cards</a>
+  <a href="#s15">15 · Statistics</a>
+  <a href="#s16">16 · Timeline</a>
+  <a href="#s17">17 · Tables</a>
+  <a href="#s18">18 · Accordion &amp; FAQ</a>
+  <a href="#s19">19 · Navigation</a>
+  <a href="#s20">20 · Footer</a>
+  <a href="#s21">21 · Sections</a>
+  <a href="#s22">22 · Contact Forms</a>
+  <a href="#s23">23 · Loading &amp; Empty States</a>
+  <div class="grp">Rules</div>
+  <a href="#s24">24 · Responsive Behaviour</a>
+  <a href="#s25">25 · Accessibility</a>
+  <a href="#s26">26 · Governance</a>
+</nav>
+<main>
+<!-- ==================== 00 ==================== -->
+<section class="doc-sec" id="s00">
+<h2><span class="num">00 / STRATEGY</span>Positioning &amp; Design Principles</h2>
+<p class="lede">Every token and component in this document exists to answer one commercial question: <b>would a 45-year-old project director at an IPP forward this website to their investment committee?</b> Not "does it look nice."</p>
+
+<h3 class="sub">The strategic problem</h3>
+<p>Bolamudi Enterprise sells <em>de-risking</em>. A developer with ₹800 crore of capex committed does not buy land aggregation or liaison — they buy the elimination of the two failure modes that kill utility-scale projects in Karnataka: land title disputes and approval timelines. The website's job is to make a buyer believe those failure modes are survivable with this firm.</p>
+<p>The credibility gap is structural. Bolamudi is a small firm competing for attention against balance sheets. The founder's 20 years is the entire asset. So the site must trade on <b>specificity</b>, not scale — districts named, approvals enumerated, sequences documented, timelines quantified. Vagueness reads as inexperience. Detail reads as experience.</p>
+
+<h3 class="sub">Six principles</h3>
+<table class="spec">
+<tr><th style="width:190px">Principle</th><th>What it means in the interface</th></tr>
+<tr><td>1. Evidence over adjective</td><td>Never write "extensive experience." Write "1,240 acres aggregated across 6 districts." Every claim on the site must resolve to a number, a district name, or a named statutory instrument. The design system therefore over-invests in Statistics, Tables and Timeline components and under-invests in decorative hero art.</td></tr>
+<tr><td>2. Institutional restraint</td><td>Sharp corners, hairline borders, near-zero shadow, one accent colour used sparingly. Gradients, glassmorphism, glow effects, pill buttons, emoji and 3D illustration are banned — they are the visual grammar of SaaS startups, which is the exact category the client asked not to resemble.</td></tr>
+<tr><td>3. Density is trust</td><td>Consultancy buyers read. Whitespace-heavy, one-sentence-per-screen layouts signal that the firm has nothing to say. Body copy runs 60–75 characters, sections carry real paragraphs, tables are dense. Apple-style airiness is used only in the hero and section transitions, not in content.</td></tr>
+<tr><td>4. Typographic hierarchy carries the design</td><td>With no photography budget guaranteed and a logo that cannot scale (see §01), the type system does the heavy lifting. This is the Stripe model: a rigorous scale, two families, obsessive optical alignment.</td></tr>
+<tr><td>5. Motion confirms, never entertains</td><td>Animation exists to confirm state change and orient the eye on scroll. Duration ceiling 520ms. No parallax, no scroll-jacking, no counter animations longer than 1.2s. Siemens Energy's model.</td></tr>
+<tr><td>6. Accessible by construction</td><td>WCAG 2.2 AA is a floor, not a retrofit. Every token pair in this document has a computed contrast ratio published beside it. Investment firms and infrastructure majors increasingly run accessibility checks in vendor onboarding — failing one is a commercial risk, not a moral one.</td></tr>
+</table>
+
+<div class="why"><b>Design decision — why not a "green energy" visual language?</b> The obvious move is leaf motifs, bright solar-orange CTAs and turbine photography. Rejected. Every competitor in this space uses it, so it differentiates nothing; more importantly it reads as <em>marketing</em>, and Bolamudi's buyer is deeply suspicious of marketing. The logo already supplies the green. The interface stays sober so the logo's warmth reads as heritage rather than eco-branding.</div>
+</section>
+
+<!-- ==================== 01 ==================== -->
+<section class="doc-sec" id="s01">
+<h2><span class="num">01 / BRAND INPUT</span>Logo Assessment &amp; Constraints</h2>
+<p class="lede">You supplied Option 2. The palette below is extracted faithfully from it. But you asked for honesty, so: the mark has three properties that will actively fight the positioning you described, and the design system has to be built to compensate.</p>
+
+<div class="warn-box">
+<b>Problem 1 — the script wordmark contradicts the category.</b> "Bolamudi" is set in a formal calligraphic script with a swash. That letterform family belongs to hospitality, jewellery, catering, event management and wedding services. Not one of Black &amp; Veatch, AECOM, Arup, WSP, Jacobs, Siemens Energy or ReNew uses a script logotype — all seven use a grotesque or neo-grotesque sans. A procurement manager scanning a shortlist will subconsciously bucket a script wordmark as "small local business." This is the single largest credibility leak in the brand.<br><br>
+<b>Problem 2 — the mark does not survive at 32px.</b> The B-monogram contains a building silhouette, a solar-panel-like grid, a swoosh arc and five layered field furrows. At header height (32–40px) those elements collapse into a dark green blob. There is no simplified mark, no favicon-safe variant, no monochrome variant.<br><br>
+<b>Problem 3 — the lockup is a poster, not a logo.</b> The four-word tagline strip and the five icon columns beneath it are a brochure slide. They cannot be used in a header, a footer, an email signature or a favicon. In practice you have no usable logo asset yet — only artwork.<br><br>
+<b>Problem 4 — the gold gradient will not render.</b> The gold is a metallic gradient. Metallic gradients degrade badly at small sizes, in single-colour print, on dark backgrounds, and in email clients. It must be flattened to one solid gold before it can be a web asset.
+</div>
+
+<h3 class="sub">Recommendation</h3>
+<table class="spec">
+<tr><th style="width:150px">Action</th><th>Detail</th><th style="width:90px">Priority</th></tr>
+<tr><td>Re-set the wordmark</td><td>Keep the concept, the green, the gold and the furrow/monogram idea. Replace the script with a confident semi-condensed grotesque in the brand green — small caps or sentence case, tight tracking. This alone moves the brand two categories upmarket and costs one designer-day.</td><td><span class="fail">Critical</span></td></tr>
+<tr><td>Derive a simplified mark</td><td>Reduce the monogram to 2–3 shapes maximum: the B, the arc, one furrow set. Must be legible at 16px and in pure single-colour.</td><td><span class="fail">Critical</span></td></tr>
+<tr><td>Build a lockup family</td><td>Horizontal (header, 40px cap height), stacked (footer, print), mark-only (favicon, avatar, app icon), monochrome black, monochrome white (for dark theme and green backgrounds), single-colour gold (for embossing/print).</td><td>High</td></tr>
+<tr><td>Retire the icon strip</td><td>The five service icons are useful — but as a website section (see §12 Service Cards), not as part of the logo.</td><td>High</td></tr>
+<tr><td>Flatten the gold</td><td>One solid value: <code>#C29B26</code>. Gradient permitted only on large-format print and the physical signage, never in the interface.</td><td>Medium</td></tr>
+</table>
+
+<div class="why"><b>What this design system does about it.</b> Until the wordmark is re-cut, the system deliberately restrains the logo: it appears at fixed small size in the header and footer only, is never enlarged in the hero, and is never set over photography. The <em>type system</em> (§03) is what establishes engineering authority on every page. If the wordmark is re-cut, nothing else in this document changes — the colour ramps are extracted from the mark's hues, not its letterforms.</div>
+</section>
+
+<!-- ==================== 02 ==================== -->
+<section class="doc-sec" id="s02">
+<h2><span class="num">02 / FOUNDATIONS</span>Colour</h2>
+<p class="lede">Two brand hues from the logo, one green-tinted neutral ramp, four semantic hues. Eleven steps each so that dark theme can shift up the ramp rather than invert. Every ratio below is computed, not estimated.</p>
+
+<h4 class="sub">Forest — primary brand</h4>
+<div class="ramp">
+<div style="background:#F1F9F4;color:#06180F">50<span>F1F9F4</span></div>
+<div style="background:#DCF0E5;color:#06180F">100<span>DCF0E5</span></div>
+<div style="background:#B4DCC5;color:#06180F">200<span>B4DCC5</span></div>
+<div style="background:#7DBE99;color:#06180F">300<span>7DBE99</span></div>
+<div style="background:#4A9B6C;color:#06180F">400<span>4A9B6C</span></div>
+<div style="background:#27794C;color:#fff">500<span>27794C</span></div>
+<div style="background:#1D5C3A;color:#fff">600<span>1D5C3A</span></div>
+<div style="background:#16492E;color:#fff">700<span>16492E</span></div>
+<div style="background:#103823;color:#fff">800<span>103823</span></div>
+<div style="background:#0B2818;color:#fff">900<span>0B2818</span></div>
+<div style="background:#06180F;color:#fff">950<span>06180F</span></div>
+</div>
+<p class="caption"><b>800</b> is the core brand value — it is the darkest step that still reads as green rather than black, and carries white text at 13.03:1. <b>700</b> is brand text on light. <b>300/400</b> are the dark-theme brand values.</p>
+
+<h4 class="sub">Gold — accent</h4>
+<div class="ramp">
+<div style="background:#FCF8ED;color:#4A3708">50<span>FCF8ED</span></div>
+<div style="background:#F7EFD8;color:#4A3708">100<span>F7EFD8</span></div>
+<div style="background:#EEDFAF;color:#4A3708">200<span>EEDFAF</span></div>
+<div style="background:#E2C878;color:#4A3708">300<span>E2C878</span></div>
+<div style="background:#D4B14A;color:#4A3708">400<span>D4B14A</span></div>
+<div style="background:#C29B26;color:#06180F">500<span>C29B26</span></div>
+<div style="background:#A6801A;color:#fff">600<span>A6801A</span></div>
+<div style="background:#8C6A12;color:#fff">700<span>8C6A12</span></div>
+<div style="background:#6B4F0C;color:#fff">800<span>6B4F0C</span></div>
+<div style="background:#4A3708;color:#fff">900<span>4A3708</span></div>
+<div style="background:#2E2205;color:#fff">950<span>2E2205</span></div>
+</div>
+<div class="warn-box"><b>Hard rule — gold is not a text colour on white.</b> Gold-500 on white is <span class="fail">2.62:1</span> and gold-600 is <span class="fail">3.67:1</span>. Both fail AA for body text. Only <b>gold-700 (5.02:1)</b> and darker may be used for text on light surfaces. On dark surfaces the position reverses: gold-300/400 are the accessible values (9.29–11.65:1) and gold-700 fails. This is why gold is defined as an <em>accent</em> token, not a brand-action token.</div>
+
+<h4 class="sub">Neutral — green-tinted graphite</h4>
+<div class="ramp">
+<div style="background:#FFFFFF;color:#161B18;border-right:1px solid #EBEEEB">0<span>FFFFFF</span></div>
+<div style="background:#FAFBFA;color:#161B18">25<span>FAFBFA</span></div>
+<div style="background:#F5F7F5;color:#161B18">50<span>F5F7F5</span></div>
+<div style="background:#EBEEEB;color:#161B18">100<span>EBEEEB</span></div>
+<div style="background:#DCE1DD;color:#161B18">200<span>DCE1DD</span></div>
+<div style="background:#C0C8C2;color:#161B18">300<span>C0C8C2</span></div>
+<div style="background:#98A29B;color:#0C100E">400<span>98A29B</span></div>
+<div style="background:#67736C;color:#fff">500<span>67736C</span></div>
+<div style="background:#525C56;color:#fff">600<span>525C56</span></div>
+<div style="background:#3C4540;color:#fff">700<span>3C4540</span></div>
+<div style="background:#272E2A;color:#fff">800<span>272E2A</span></div>
+<div style="background:#161B18;color:#fff">900<span>161B18</span></div>
+<div style="background:#0C100E;color:#fff">950<span>0C100E</span></div>
+</div>
+<div class="why"><b>Why not a pure grey?</b> Pure neutral greys (#808080 family) placed beside a saturated forest green read as dirty — the eye perceives a magenta cast by simultaneous contrast. Every neutral step here carries a small green bias (hue ≈ 140°, chroma ≈ 2–4%). The effect is invisible in isolation and makes the whole page feel colour-managed rather than assembled. This is the same trick Stripe uses with its blue-tinted greys.</div>
+
+<h4 class="sub">Semantic hues</h4>
+<div class="token-grid">
+<div class="token"><i style="background:#0E7A45"></i><div><b>--success-fg</b><em>#0E7A45 · 5.40:1 <span class="pass">AA</span></em></div></div>
+<div class="token"><i style="background:#A16207"></i><div><b>--warning-fg</b><em>#A16207 · 4.92:1 <span class="pass">AA</span></em></div></div>
+<div class="token"><i style="background:#B42318"></i><div><b>--danger-fg</b><em>#B42318 · 6.57:1 <span class="pass">AA</span></em></div></div>
+<div class="token"><i style="background:#175CD3"></i><div><b>--info-fg</b><em>#175CD3 · 5.99:1 <span class="pass">AA</span></em></div></div>
+</div>
+<div class="why"><b>Why success is not brand green.</b> Forest is the brand. If forest also means "success," a green-bordered field becomes ambiguous — is it valid, or just branded? Success is pushed to a bluer, brighter green (#0E7A45) that is visibly distinct from forest-600 at a glance. Non-negotiable in forms.</div>
+
+<h4 class="sub">Semantic token map</h4>
+<p>Components never reference <code>--forest-800</code>. They reference <code>--bg-brand</code>. This is the layer that makes dark theme a 40-line change instead of a rebuild.</p>
+<table class="spec">
+<tr><th style="width:200px">Semantic token</th><th style="width:200px">Light</th><th style="width:200px">Dark</th><th>Use</th></tr>
+<tr><td>--bg-canvas</td><td>#FFFFFF</td><td>#0C100E</td><td>Page background</td></tr>
+<tr><td>--bg-subtle</td><td>neutral-50</td><td>#161B18</td><td>Alternating section bands, sidebars, table headers</td></tr>
+<tr><td>--bg-muted</td><td>neutral-100</td><td>#1E2521</td><td>Disabled fills, code, skeleton base</td></tr>
+<tr><td>--bg-brand</td><td>forest-800</td><td>forest-400</td><td>Primary button, active nav indicator</td></tr>
+<tr><td>--bg-brand-subtle</td><td>forest-50</td><td>forest-400 @12%</td><td>Selected rows, brand badges, icon wells</td></tr>
+<tr><td>--bg-inverse</td><td>forest-900</td><td>neutral-50</td><td>Footer, CTA bands, testimonial blocks</td></tr>
+<tr><td>--fg-primary</td><td>neutral-900 · 17.44:1</td><td>neutral-50 · 17.88:1</td><td>Headings, body</td></tr>
+<tr><td>--fg-secondary</td><td>neutral-700 · 9.92:1</td><td>neutral-300 · 11.21:1</td><td>Supporting paragraphs</td></tr>
+<tr><td>--fg-muted</td><td>neutral-600 · 6.94:1</td><td>neutral-400 · 7.28:1</td><td>Labels, captions, metadata</td></tr>
+<tr><td>--fg-brand</td><td>forest-700 · 10.36:1</td><td>forest-300 · 8.85:1</td><td>Links, brand text</td></tr>
+<tr><td>--fg-accent</td><td>gold-700 · 5.02:1</td><td>gold-300 · 11.65:1</td><td>Eyebrows, section numerals, rules</td></tr>
+<tr><td>--fg-onbrand</td><td>#FFFFFF on forest-800 · 13.03:1</td><td>forest-950 on forest-400 · 5.65:1</td><td>Text on brand fill</td></tr>
+<tr><td>--border-subtle</td><td>neutral-200</td><td>#252D29</td><td>Card edges, dividers (decorative — 3:1 not required)</td></tr>
+<tr><td>--border-control</td><td>#7F8983 · 3.62:1</td><td>#6E7A72 · 4.28:1</td><td>Input/checkbox boundaries (<b>WCAG 1.4.11 requires ≥3:1</b>)</td></tr>
+<tr><td>--focus-ring</td><td>forest-500 · 5.35:1</td><td>gold-400 · 9.29:1</td><td>Keyboard focus</td></tr>
+</table>
+<div class="why"><b>Why the focus ring changes hue in dark mode.</b> Forest-500 on the dark canvas is 3.58:1 — technically passing 1.4.11 but visually weak against a near-black field. Gold-400 hits 9.29:1 and is the only brand-family colour that reads as unmistakably "focused" on dark. Consistency of <em>meaning</em> beats consistency of hue.</div>
+
+<h4 class="sub">Colour usage ratio</h4>
+<p>Approximate area of any given viewport: <b>72% neutral surfaces · 18% forest · 7% imagery · 3% gold.</b> Gold above ~5% of a viewport starts to read as decorative and the page loses its institutional register. Gold is permitted on: eyebrow labels, section numerals, the 2px rule under section headings, statistic key figures, timeline nodes, and hover underlines. It is <em>not</em> permitted on: primary buttons, large fills, body text on light, or icons at small sizes.</p>
+</section>
+
+<!-- ==================== 03 ==================== -->
+<section class="doc-sec" id="s03">
+<h2><span class="num">03 / FOUNDATIONS</span>Typography</h2>
+<p class="lede">Three families with strictly separated jobs. Because the wordmark cannot carry authority (§01), the type system must.</p>
+
+<table class="spec">
+<tr><th style="width:150px">Family</th><th style="width:120px">Role</th><th>Rationale</th></tr>
+<tr><td>Archivo</td><td>Display / headings / UI labels</td><td>A grotesque drawn from American gothic signage — slightly condensed, high x-height, low contrast, flat terminals. It reads <em>engineered</em> rather than <em>friendly</em>, which is exactly the correction the script wordmark needs. Variable, open-licence, excellent at 700 weight for large display sizes. Direct free equivalent to the Söhne/GT America register used by top-tier engineering firms.</td></tr>
+<tr><td>Inter</td><td>Body / long-form / forms</td><td>Designed for screen UI at small sizes; the largest x-height-to-cap ratio in its class, disambiguated <code>Il1</code>, and — critically — real tabular numerals. Bolamudi's pages are full of MW figures, survey numbers and acre counts. Neutral enough not to compete with Archivo.</td></tr>
+<tr><td>IBM Plex Mono</td><td>Technical data</td><td>Reserved for capacity figures, survey numbers, coordinates, dates, reference codes and section numerals. Monospace here is a <em>credibility signal</em> — it says "this number came from a document." Used sparingly, it does more for perceived rigour than any illustration.</td></tr>
+</table>
+<div class="why"><b>Why not a serif?</b> A serif (the Arup / legal-consultancy register) was considered and rejected. Serifs pair badly with an already-ornate script wordmark — the page would read as two competing calligraphic voices. A grotesque creates deliberate contrast: the logo is heritage, the interface is engineering. If the wordmark is re-cut as recommended, a serif becomes viable for pull-quotes only.</div>
+<p class="caption"><b>Licensed upgrade path:</b> if budget allows, Archivo → <em>Söhne</em> or <em>GT America</em>; Inter → <em>Söhne</em> or <em>Suisse Int'l</em>; Plex Mono → <em>Söhne Mono</em>. The scale below is unchanged by the substitution.</p>
+
+<h3 class="sub">Type scale</h3>
+<p class="caption">Fluid, clamped. Ratio 1.250 (major third) at desktop, compressing to 1.200 at mobile so that display sizes do not overwhelm a 360px viewport. All values in the live rendering below are the real production values.</p>
+<div class="demo">
+<div class="spec-type"><p class="d1">Land is the critical path</p><div class="meta">Display 1<br>Archivo 700<br>clamp(40, 5.2vw, 64)<br>LH 1.04 · LS −0.028em</div></div>
+<div class="spec-type"><p class="d2">Karnataka, end to end</p><div class="meta">Display 2<br>Archivo 700<br>clamp(32, 4vw, 48)<br>LH 1.08 · LS −0.024em</div></div>
+<div class="spec-type"><p class="h1">Statutory approvals</p><div class="meta">H1 (page title)<br>Archivo 700<br>clamp(28, 3.2vw, 40)<br>LH 1.14 · LS −0.020em</div></div>
+<div class="spec-type"><p class="h2">Transmission right of way</p><div class="meta">H2 (section)<br>Archivo 600<br>clamp(24, 2.4vw, 32)<br>LH 1.20 · LS −0.016em</div></div>
+<div class="spec-type"><p class="h3">Revenue record verification</p><div class="meta">H3 · 24px<br>Archivo 600 · LH 1.28</div></div>
+<div class="spec-type"><p class="h4">Card and accordion titles</p><div class="meta">H4 · 19px<br>Archivo 600 · LH 1.35</div></div>
+<div class="spec-type"><p class="h5">Compact card titles</p><div class="meta">H5 · 16px<br>Archivo 600 · LH 1.40</div></div>
+<div class="spec-type"><p class="eyebrow">Project Development Support</p><div class="meta">Eyebrow · 12px<br>Archivo 600 · UPPER<br>LS +0.14em · gold-700</div></div>
+<div class="spec-type"><p class="body-lg">Lead paragraph. Used once per section, directly beneath the heading, to carry the argument.</p><div class="meta">Body LG · 18px<br>Inter 400 · LH 1.65</div></div>
+<div class="spec-type"><p class="body-md">Default body copy. Measure is capped at 70 characters; below 45 characters the eye loses the line, above 75 it loses the return sweep.</p><div class="meta">Body MD · 16px<br>Inter 400 · LH 1.65</div></div>
+<div class="spec-type"><p class="body-sm">Dense body — used inside cards, tables and sidebars where the container itself provides the reading frame.</p><div class="meta">Body SM · 14px<br>Inter 400 · LH 1.60</div></div>
+<div class="spec-type"><p class="caption">Caption / metadata / legal. Never below 12px anywhere on the site.</p><div class="meta">Caption · 12.5px<br>Inter 400 · fg-muted</div></div>
+<div class="spec-type"><p class="data">1,240 ac · 420 MW · Sy. No. 118/2B · 14.4675°N</p><div class="meta">Data · 14px<br>Plex Mono 500<br>tabular-nums</div></div>
+</div>
+
+<h4 class="sub">Typographic rules</h4>
+<table class="spec">
+<tr><td style="width:190px">Measure</td><td>45–75 characters. Enforce with <code>max-width:70ch</code> on all body containers. Full-bleed 1200px paragraphs are the most common failure on consultancy sites.</td></tr>
+<tr><td>Optical tracking</td><td>Negative tracking scales with size: −0.028em at 64px down to 0 at 16px, then <em>positive</em> +0.01em below 13px. Uniform tracking across a scale is the tell of an amateur type system.</td></tr>
+<tr><td>Numerals</td><td><code>font-variant-numeric:tabular-nums</code> is mandatory in tables, statistics, timelines and any animated counter — proportional numerals make counters visibly jitter.</td></tr>
+<tr><td>Weights in use</td><td>Archivo 600 / 700 only. Inter 400 / 500 / 600 only. Plex Mono 400 / 500. Nine total files. Never use 300 or lighter — thin weights fail contrast perception at 14px and read as fashion, not engineering.</td></tr>
+<tr><td>Case</td><td>Uppercase only for eyebrows, table headers and badges, always with ≥0.07em tracking. Never uppercase a full heading — it destroys word-shape recognition and slows reading ~12%.</td></tr>
+<tr><td>Widows &amp; orphans</td><td>Non-breaking space before the last word of every H1/H2. A single-word second line in a display heading is the most visible polish failure on a landing page.</td></tr>
+<tr><td>Loading</td><td><code>font-display:swap</code> with metric-matched fallbacks (Arial for Inter/Archivo) to keep CLS &lt; 0.02. Self-host via <code>next/font</code> — no third-party font request on a site targeting institutional buyers behind corporate proxies.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 04 ==================== -->
+<section class="doc-sec" id="s04">
+<h2><span class="num">04 / FOUNDATIONS</span>Spacing, Grid &amp; Layout</h2>
+<p class="lede">A 4px base unit with an 8px working rhythm. Only the steps below exist — arbitrary values are a review-blocking defect.</p>
+
+<div class="demo">
+<div class="sp-row"><code>space-1</code><i style="width:4px"></i><span class="caption">4px — icon-to-label, badge padding</span></div>
+<div class="sp-row"><code>space-2</code><i style="width:8px"></i><span class="caption">8px — tight stacks, chip gaps</span></div>
+<div class="sp-row"><code>space-3</code><i style="width:12px"></i><span class="caption">12px — label-to-input, list items</span></div>
+<div class="sp-row"><code>space-4</code><i style="width:16px"></i><span class="caption">16px — default gap, card inner padding (mobile)</span></div>
+<div class="sp-row"><code>space-5</code><i style="width:20px"></i><span class="caption">20px — mobile gutter</span></div>
+<div class="sp-row"><code>space-6</code><i style="width:24px"></i><span class="caption">24px — card padding, grid gutter</span></div>
+<div class="sp-row"><code>space-8</code><i style="width:32px"></i><span class="caption">32px — card padding (large), heading-to-content</span></div>
+<div class="sp-row"><code>space-10</code><i style="width:40px"></i><span class="caption">40px — sub-block separation</span></div>
+<div class="sp-row"><code>space-12</code><i style="width:48px"></i><span class="caption">48px — block separation</span></div>
+<div class="sp-row"><code>space-16</code><i style="width:64px"></i><span class="caption">64px — section padding (mobile)</span></div>
+<div class="sp-row"><code>space-20</code><i style="width:80px"></i><span class="caption">80px — section padding (tablet)</span></div>
+<div class="sp-row"><code>space-28</code><i style="width:112px"></i><span class="caption">112px — section padding (desktop)</span></div>
+<div class="sp-row"><code>space-32</code><i style="width:128px"></i><span class="caption">128px — hero padding (desktop)</span></div>
+<div class="sp-row"><code>space-40</code><i style="width:160px"></i><span class="caption">160px — maximum, reserved for the closing CTA band</span></div>
+</div>
+
+<h4 class="sub">Vertical rhythm law</h4>
+<div class="why"><b>Proximity encodes hierarchy.</b> The space <em>above</em> a heading must always be larger than the space below it — otherwise the heading visually belongs to the paragraph it follows rather than the one it introduces. Enforced ratios: H2 → 96px above / 24px below. H3 → 48px above / 12px below. H4 → 32px above / 8px below. This single rule fixes more perceived-quality problems than any other.</div>
+
+<h4 class="sub">Grid</h4>
+<div class="demo">
+<div class="gridviz"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+</div>
+<table class="spec">
+<tr><th style="width:150px">Breakpoint</th><th style="width:90px">Columns</th><th style="width:90px">Gutter</th><th style="width:110px">Margin</th><th>Content max</th></tr>
+<tr><td>&lt; 640px</td><td>4</td><td>16px</td><td>20px</td><td>fluid</td></tr>
+<tr><td>640 – 1023px</td><td>8</td><td>20px</td><td>32px</td><td>fluid</td></tr>
+<tr><td>1024 – 1279px</td><td>12</td><td>24px</td><td>40px</td><td>fluid</td></tr>
+<tr><td>≥ 1280px</td><td>12</td><td>24px</td><td>auto</td><td><b>1200px</b> content · 1440px shell</td></tr>
+</table>
+<div class="why"><b>Why 1200px and not 1440px content width.</b> At 1440px content width, a 16px paragraph exceeds 110 characters — unreadable. 1200px with a 12-column grid gives an 8-column text block of ~760px ≈ 72 characters, exactly on target. The 1440px shell is used only for full-bleed imagery, map bands and the header rule, so the page feels wide without the text becoming wide. This is the AECOM/Jacobs pattern.</div>
+<table class="spec">
+<tr><th style="width:190px">Canonical layout</th><th>Columns (desktop)</th></tr>
+<tr><td>Hero, split</td><td>Copy 6 · gap 1 · visual 5</td></tr>
+<tr><td>Long-form article</td><td>Sticky contents 3 · gap 1 · body 8</td></tr>
+<tr><td>Service grid</td><td>3 × 4 columns (6 services → 2 rows)</td></tr>
+<tr><td>Project grid</td><td>3 × 4 columns; featured project spans 8</td></tr>
+<tr><td>District grid</td><td>4 × 3 columns (dense, map-adjacent)</td></tr>
+<tr><td>Statistics band</td><td>4 × 3 columns, vertical hairline dividers</td></tr>
+<tr><td>Contact page</td><td>Form 7 · gap 1 · office details 4</td></tr>
+</table>
+</section>
+
+<!-- ==================== 05 ==================== -->
+<section class="doc-sec" id="s05">
+<h2><span class="num">05 / FOUNDATIONS</span>Radius, Border &amp; Elevation</h2>
+<p class="lede">This is where consultancy sites are won or lost. Rounded corners and soft shadows are the visual signature of consumer SaaS. Bolamudi's system is <b>border-first</b>: structure is drawn with hairlines, not with shadow.</p>
+
+<h4 class="sub">Radius</h4>
+<div class="demo"><div class="radius-grid">
+<i style="border-radius:2px">2 · xs</i>
+<i style="border-radius:3px">3 · sm</i>
+<i style="border-radius:4px">4 · md</i>
+<i style="border-radius:6px">6 · lg</i>
+<i style="border-radius:8px">8 · xl</i>
+<i style="border-radius:999px">full</i>
+</div></div>
+<table class="spec">
+<tr><td style="width:110px"><code>2px</code></td><td>Badges, tags, table cell highlights, skeleton bars</td></tr>
+<tr><td><code>3px</code></td><td>Buttons, inputs, selects, checkboxes</td></tr>
+<tr><td><code>4px</code></td><td>Small cards, dropdown menus, tooltips</td></tr>
+<tr><td><code>6px</code></td><td>Standard cards, accordions, modals, image containers</td></tr>
+<tr><td><code>8px</code></td><td>Maximum. Large media containers and the hero visual only.</td></tr>
+<tr><td><code>full</code></td><td>Avatars and the theme switch <em>only</em>. Never buttons — pill buttons are the single strongest startup signal in an interface.</td></tr>
+</table>
+<div class="why"><b>Why 3px on buttons and not 8px.</b> At 8px+ radius the eye reads "app." At 0px it reads "brutalist/dev tool." 3px is the register of Bloomberg, Stripe's dashboard, Siemens and every serious engineering interface — the corner is softened enough to feel manufactured, not enough to feel playful. Consistency matters more than the exact value; what kills a design system is having 4px, 6px, 8px and 12px buttons on the same page.</div>
+
+<h4 class="sub">Elevation</h4>
+<div class="demo tinted"><div class="elev-grid">
+<div class="elev">flat<br><span class="caption">border only</span></div>
+<div class="elev" style="box-shadow:var(--shadow-xs)">xs<br><span class="caption">hover lift</span></div>
+<div class="elev" style="box-shadow:var(--shadow-sm)">sm<br><span class="caption">sticky header</span></div>
+<div class="elev" style="box-shadow:var(--shadow-md)">md<br><span class="caption">dropdown</span></div>
+<div class="elev" style="box-shadow:var(--shadow-lg)">lg<br><span class="caption">modal / drawer</span></div>
+</div></div>
+<table class="spec">
+<tr><th style="width:110px">Level</th><th style="width:300px">Light</th><th>Applied to</th></tr>
+<tr><td>flat</td><td>1px solid border-subtle</td><td><b>Default for all cards.</b> Cards do not have shadows at rest.</td></tr>
+<tr><td>xs</td><td>0 1px 2px rgba(12,16,14,.06)</td><td>Card hover, button hover</td></tr>
+<tr><td>sm</td><td>0 1px 3px / 0 1px 2px</td><td>Sticky header after scroll</td></tr>
+<tr><td>md</td><td>0 4px 12px / 0 2px 4px</td><td>Dropdowns, mega menu, tooltips, toasts</td></tr>
+<tr><td>lg</td><td>0 12px 32px / 0 4px 8px</td><td>Modals, mobile drawer</td></tr>
+</table>
+<div class="why"><b>Shadows in dark theme do not work.</b> A black shadow on a near-black canvas is invisible. In dark mode elevation is communicated by <em>surface lightening</em> — canvas #0C100E → subtle #161B18 → muted #1E2521 → overlay #262E2A — with shadow retained only for spatial separation of true overlays. Both mechanisms are already in the token set; components need no conditional logic.</div>
+<div class="why"><b>Border hierarchy.</b> <code>--border-subtle</code> for decoration (cards, dividers) — no contrast requirement. <code>--border-control</code> for anything a user can interact with (inputs, checkboxes, radio, unfilled buttons) — <b>must be ≥3:1</b> under WCAG 2.2 SC 1.4.11. Using the subtle border on inputs is the most common accessibility failure in Tailwind-based builds, because <code>border-gray-200</code> is 1.3:1.</div>
+</section>
+
+<!-- ==================== 06 ==================== -->
+<section class="doc-sec" id="s06">
+<h2><span class="num">06 / FOUNDATIONS</span>Motion</h2>
+<p class="lede">Framer Motion is in the stack, which makes over-animation the primary risk. Motion here confirms state and orients the eye. It never performs.</p>
+<table class="spec">
+<tr><th style="width:140px">Token</th><th style="width:90px">Duration</th><th style="width:230px">Easing</th><th>Use</th></tr>
+<tr><td>instant</td><td>100ms</td><td>linear</td><td>Colour-only changes: hover fill, focus ring appearance</td></tr>
+<tr><td>fast</td><td>160ms</td><td>cubic-bezier(.4,0,.2,1)</td><td>Buttons, links, small icon transforms</td></tr>
+<tr><td>base</td><td>220ms</td><td>cubic-bezier(.4,0,.2,1)</td><td>Dropdowns, tooltips, accordion open/close, theme switch</td></tr>
+<tr><td>slow</td><td>320ms</td><td>cubic-bezier(.16,1,.3,1)</td><td>Modals, mobile drawer, mega menu</td></tr>
+<tr><td>reveal</td><td>520ms</td><td>cubic-bezier(.16,1,.3,1)</td><td>Scroll-triggered section entrance</td></tr>
+</table>
+<table class="spec">
+<tr><th style="width:190px">Pattern</th><th>Specification</th></tr>
+<tr><td>Section reveal</td><td><code>opacity 0→1</code>, <code>translateY 16px→0</code>, 520ms ease-out. Trigger at 20% viewport intersection. <b>Fires once</b> — re-animating on scroll-back is nauseating and signals gimmickry.</td></tr>
+<tr><td>Stagger</td><td>60ms between siblings, <b>capped at 6 items</b> (360ms total). Beyond 6, animate the container as one unit — a 12-card grid staggering at 60ms takes 720ms and the last card looks broken.</td></tr>
+<tr><td>Counter (statistics)</td><td>Ease-out over 1200ms max, tabular numerals, starts at 60% of final value not zero. Runs once on first intersection.</td></tr>
+<tr><td>Card hover</td><td><code>translateY(-2px)</code> + border-subtle→border-brand + shadow flat→xs, 160ms. <b>No scale transform</b> — scaling resamples text and looks cheap.</td></tr>
+<tr><td>Accordion</td><td>Height auto-transition 220ms + chevron rotate 180° 220ms. Content fades in at 160ms with 60ms delay so text does not appear to squeeze.</td></tr>
+<tr><td>Page transition</td><td>140ms cross-fade only. No slide, no wipe. Route changes on a content site must feel instant.</td></tr>
+<tr><td>Sticky header</td><td>On scroll &gt;80px: height 88px→64px, shadow none→sm, background transparent→canvas, 220ms.</td></tr>
+</table>
+<div class="warn-box"><b>Banned outright:</b> parallax backgrounds · scroll-jacking / pinned sections · horizontal auto-carousels · text scramble/typewriter effects · bounce or elastic easing · looping background video · cursor followers · any animation exceeding 520ms except the statistics counter.</div>
+<div class="why"><b>Reduced motion is not optional.</b> Under <code>prefers-reduced-motion: reduce</code> all transforms are removed and durations collapse to a 100ms opacity fade. Content must never be hidden pending an animation that will not run — implement reveals as <em>opacity from 1</em> with JS adding the animation class, so a user with JS disabled or motion reduced sees fully rendered content. Vestibular disorders affect roughly 1 in 20 adults; this is also a WCAG 2.3.3 requirement.</div>
+</section>
+
+<!-- ==================== 07 ==================== -->
+<section class="doc-sec" id="s07">
+<h2><span class="num">07 / FOUNDATIONS</span>Iconography &amp; Imagery</h2>
+<h4 class="sub">Icons</h4>
+<table class="spec">
+<tr><td style="width:170px">Library</td><td>Lucide (ships with shadcn/ui). One library only — mixing icon sets is instantly visible.</td></tr>
+<tr><td>Stroke</td><td>1.5px at 20px and 24px. 2px only at 32px+. Never filled icons except status indicators.</td></tr>
+<tr><td>Sizes</td><td>16 (inline/badges) · 20 (buttons, inputs) · 24 (nav, list items) · 32 (service cards) · 48 (empty states)</td></tr>
+<tr><td>Colour</td><td>Inherits <code>currentColor</code>. Decorative icons at <code>--fg-muted</code>; meaningful icons at <code>--fg-brand</code>. Gold icons only at 24px+ and only on dark surfaces.</td></tr>
+<tr><td>Alignment</td><td>Optically centred, not mathematically — a 20px icon beside 16px text sits 1px above the baseline centre.</td></tr>
+<tr><td>Custom set</td><td>Five bespoke icons are required (land parcel, solar array, transmission tower, government building, growth) matching the logo's icon strip, redrawn at 1.5px stroke on a 24px grid to sit consistently with Lucide. This is the correct home for the artwork currently sitting inside the logo lockup.</td></tr>
+<tr><td>Accessibility</td><td>Decorative: <code>aria-hidden="true"</code>. Meaningful: <code>role="img"</code> + <code>aria-label</code>. Icon-only buttons always carry <code>aria-label</code>.</td></tr>
+</table>
+
+<h4 class="sub">Photography</h4>
+<table class="spec">
+<tr><td style="width:170px">Subject — required</td><td>Real Karnataka sites. Land parcels with visible terrain and boundary markers. Substations, transmission corridors, survey work in progress. Wide landscapes with infrastructure at small scale — this communicates <em>land</em>, which is the actual product.</td></tr>
+<tr><td>Subject — banned</td><td>Stock handshakes · people pointing at laptops · generic glass-tower boardrooms · lens-flare solar close-ups · anything obviously not India · AI-generated imagery of any kind. Institutional buyers spot stock photography immediately and it destroys the specificity the whole strategy rests on.</td></tr>
+<tr><td>Treatment</td><td>Slight desaturation (−12%), warm shadow lift toward forest-900. Never duotone the brand green over photography — it reads as 2016 startup landing page.</td></tr>
+<tr><td>Ratios</td><td>16:9 hero and project heroes · 4:3 project cards · 3:2 editorial · 1:1 team portraits</td></tr>
+<tr><td>Overlay</td><td>When text sits on an image, a <code>linear-gradient(90deg, forest-950 @72%, transparent 70%)</code> scrim is mandatory and the text must be re-tested to ≥4.5:1 against the <em>lightest</em> pixel it covers.</td></tr>
+<tr><td>Fallback</td><td>If real site photography is unavailable at launch, use the abstract land-contour graphic system (topographic line art in forest-100 on canvas) rather than stock. An honest graphic beats a dishonest photograph.</td></tr>
+<tr><td>Performance</td><td><code>next/image</code>, AVIF with WebP fallback, quality 80, explicit <code>sizes</code>, LQIP blur placeholder, lazy below fold. Hero image budget: 180KB.</td></tr>
+</table>
+</section>
+<!-- ==================== 08 ==================== -->
+<section class="doc-sec" id="s08">
+<h2><span class="num">08 / COMPONENTS</span>Buttons</h2>
+<p class="lede">Six variants, three sizes, seven states. The constraint that matters: <b>one primary button per viewport.</b> Two primaries means the page has no opinion about what the visitor should do.</p>
+
+<h4 class="sub">Variants</h4>
+<div class="demo"><div class="row">
+<button class="btn btn-primary btn-md">Request a consultation</button>
+<button class="btn btn-secondary btn-md">View capabilities</button>
+<button class="btn btn-tertiary btn-md">Download profile</button>
+<button class="btn btn-ghost btn-md">Cancel</button>
+<button class="btn btn-danger btn-md">Withdraw enquiry</button>
+<a class="lnk-arrow" href="#s08">Read the case study <i>→</i></a>
+</div></div>
+<table class="spec">
+<tr><th style="width:130px">Variant</th><th style="width:180px">Fill / border</th><th>When to use</th></tr>
+<tr><td>Primary</td><td>forest-800 → white text</td><td>The single conversion action: "Request a consultation." One per screen.</td></tr>
+<tr><td>Secondary</td><td>transparent, border-control, forest-700 text</td><td>The credible alternative beside a primary. "View capabilities."</td></tr>
+<tr><td>Tertiary</td><td>neutral-100 fill</td><td>Low-emphasis utility inside cards and toolbars. Downloads, filters.</td></tr>
+<tr><td>Ghost</td><td>transparent</td><td>Dismissive or reversing actions. Modal cancel, "clear filters."</td></tr>
+<tr><td>Danger</td><td>danger-600 → white</td><td>Destructive only. On a marketing site this appears in the enquiry portal, nowhere else.</td></tr>
+<tr><td>Link / arrow</td><td>text + animated arrow</td><td>In-content navigation. The arrow translates 4px on hover — the only permitted decorative motion on a text element.</td></tr>
+<tr><td>On-inverse</td><td>white fill / white outline</td><td>Reserved for the CTA band and footer where the surface is forest-900.</td></tr>
+</table>
+
+<h4 class="sub">Sizes &amp; icon buttons</h4>
+<div class="demo"><div class="row">
+<button class="btn btn-primary btn-sm">Small · 36px</button>
+<button class="btn btn-primary btn-md">Medium · 44px</button>
+<button class="btn btn-primary btn-lg">Large · 52px</button>
+<button class="btn btn-secondary btn-md btn-icon" aria-label="Download PDF">↓</button>
+<button class="btn btn-primary btn-md">Get in touch <span aria-hidden="true">→</span></button>
+</div></div>
+<p class="caption"><b>44px is the default</b> — it is the WCAG 2.2 AA minimum target height (SC 2.5.8 requires 24×24 CSS px, but 44px is the usable figure and the iOS/Material convention). 36px is permitted only inside dense table rows and filter bars where an equivalent larger control exists elsewhere. 52px is for the hero and the closing CTA band only.</p>
+
+<h4 class="sub">States</h4>
+<div class="demo"><div class="row">
+<button class="btn btn-primary btn-md">Default</button>
+<button class="btn btn-primary btn-md" style="background:var(--bg-brand-hover);box-shadow:var(--shadow-xs)">Hover</button>
+<button class="btn btn-primary btn-md" style="background:var(--bg-brand-active);transform:translateY(.5px)">Active</button>
+<button class="btn btn-primary btn-md" style="outline:2px solid var(--focus-ring);outline-offset:2px">Focus</button>
+<button class="btn btn-primary btn-md" disabled>Disabled</button>
+<button class="btn btn-primary btn-md" data-loading="true" style="width:150px">Submitting</button>
+</div>
+<div class="row" style="margin-top:16px">
+<button class="btn btn-secondary btn-md">Default</button>
+<button class="btn btn-secondary btn-md" style="background:var(--bg-brand-subtle);border-color:var(--border-brand)">Hover</button>
+<button class="btn btn-secondary btn-md" style="outline:2px solid var(--focus-ring);outline-offset:2px">Focus</button>
+<button class="btn btn-secondary btn-md" disabled>Disabled</button>
+</div></div>
+<table class="spec">
+<tr><th style="width:130px">State</th><th>Specification</th></tr>
+<tr><td>Default</td><td>As token. Transition 160ms on background, border-color, colour, box-shadow — never on <code>all</code>.</td></tr>
+<tr><td>Hover</td><td>Primary darkens one ramp step (800→700) and gains shadow-xs. <b>No transform on primary</b> — moving the main CTA on hover makes it feel unstable.</td></tr>
+<tr><td>Active</td><td>Darkens to 900, shadow removed, <code>translateY(0.5px)</code>. The sub-pixel drop reads as physical depression.</td></tr>
+<tr><td>Focus-visible</td><td>2px forest-500 ring, 2px offset. <code>:focus-visible</code> only, so mouse users never see it. Removing focus outlines is a WCAG 2.4.7 failure.</td></tr>
+<tr><td>Disabled</td><td>neutral-100 fill, neutral-400 text (2.25:1 — intentionally below AA, which is permitted for disabled controls under 1.4.3). Prefer <code>aria-disabled="true"</code> over the <code>disabled</code> attribute so the control stays focusable and screen-reader users can discover why it is unavailable.</td></tr>
+<tr><td>Loading</td><td>Label goes transparent, 16px spinner centred, <b>width is locked to the pre-click width</b> so the button does not resize. <code>aria-busy="true"</code> plus an <code>aria-live="polite"</code> status message. Pointer events off.</td></tr>
+<tr><td>Success (forms)</td><td>Optional 1.4s hold: checkmark + "Enquiry received" before the panel swaps to the confirmation state.</td></tr>
+</table>
+<div class="why"><b>Why gold is never a primary button.</b> Gold-500 on white is 2.62:1 — text on it fails, and a gold fill with dark text sits at 6.99:1 but visually screams "sale banner." Gold's job in this system is to <em>mark</em> (rules, numerals, eyebrows), not to <em>act</em>. Forest carries every action.</div>
+<div class="why"><b>Button copy rules.</b> Verb + object, sentence case, never more than four words. "Request a consultation" not "Submit." "Download the capability statement" not "Click here." Never "Learn more" — it tests worst of any CTA label because it promises nothing.</div>
+</section>
+
+<!-- ==================== 09 ==================== -->
+<section class="doc-sec" id="s09">
+<h2><span class="num">09 / COMPONENTS</span>Inputs &amp; Form Controls</h2>
+<p class="lede">All controls are 44px, left-aligned, top-labelled, and bordered at ≥3:1. This is the highest-liability part of the site: the enquiry form is the conversion.</p>
+
+<div class="demo" style="max-width:560px">
+<div class="field">
+  <label for="d1">Full name <span class="req" aria-hidden="true">*</span></label>
+  <input class="inp" id="d1" placeholder="Rajesh Kumar">
+</div>
+<div class="field">
+  <label for="d2">Work email <span class="req" aria-hidden="true">*</span></label>
+  <input class="inp" id="d2" value="rajesh@" aria-invalid="true" aria-describedby="d2e">
+  <span class="err" id="d2e"><span aria-hidden="true">⚠</span> Enter a complete work email address, e.g. name@company.com</span>
+</div>
+<div class="field">
+  <label for="d3">Mobile</label>
+  <div class="inp-group"><span class="inp-prefix">+91</span><input class="inp" id="d3" placeholder="98450 00000" inputmode="numeric"></div>
+  <span class="hint">We call within one working day. No marketing calls.</span>
+</div>
+<div class="field">
+  <label for="d4">Verified capacity</label>
+  <input class="inp" id="d4" value="420 MW" data-valid="true">
+</div>
+<div class="field">
+  <label for="d5">Service required</label>
+  <select class="inp sel" id="d5">
+    <option>Land aggregation</option><option>Government liaison</option>
+    <option>Statutory approvals</option><option>Transmission right of way</option>
+    <option>Full project development support</option>
+  </select>
+</div>
+<div class="field">
+  <label for="d6">Project brief</label>
+  <textarea class="inp" id="d6" placeholder="Capacity, target district, expected timeline…"></textarea>
+  <span class="hint">0 / 1000</span>
+</div>
+<div class="field">
+  <label for="d7">Disabled field</label>
+  <input class="inp" id="d7" value="Auto-filled from CRM" disabled>
+</div>
+<h4 class="sub">Selection controls</h4>
+<div class="chk-row"><input class="chk" type="checkbox" id="c1" checked><label for="c1"><span>Solar</span></label></div>
+<div class="chk-row"><input class="chk" type="checkbox" id="c2"><label for="c2"><span>Wind</span></label></div>
+<div class="chk-row"><input class="chk" type="radio" name="r" id="r1" checked><label for="r1"><span>Greenfield site</span></label></div>
+<div class="chk-row"><input class="chk" type="radio" name="r" id="r2"><label for="r2"><span>Brownfield / expansion</span></label></div>
+<div class="chk-row"><button class="switch" role="switch" aria-checked="true" aria-labelledby="sw1" onclick="this.setAttribute('aria-checked',this.getAttribute('aria-checked')!=='true')"></button><span id="sw1">Send me the quarterly Karnataka RE policy note</span></div>
+<h4 class="sub">File upload</h4>
+<div class="file-drop">
+  <div style="font-family:var(--font-display);font-weight:600;font-size:15px">Drop site documents here</div>
+  <div class="caption" style="margin-top:4px">PDF, DOCX, XLSX or KML · up to 25 MB · or <span style="color:var(--fg-brand);font-weight:500">browse files</span></div>
+</div>
+</div>
+
+<table class="spec">
+<tr><th style="width:150px">Rule</th><th>Specification &amp; rationale</th></tr>
+<tr><td>Label position</td><td><b>Always above the field</b>, 13px Archivo 600, 6px gap. Floating labels and placeholder-as-label are banned: they fail for screen readers, disappear on input, break autofill styling, and cause measurable error-rate increases in usability testing.</td></tr>
+<tr><td>Required marking</td><td>Red asterisk with <code>aria-hidden</code> plus the native <code>required</code> attribute. If most fields are required, mark the <em>optional</em> ones instead — a form of eight asterisks reads as hostile.</td></tr>
+<tr><td>Border contrast</td><td><code>--border-control</code> at 3.62:1 light / 4.28:1 dark. Tailwind's default <code>border-gray-200</code> is 1.32:1 and is a WCAG 1.4.11 failure — this is the most common bug in shadcn/ui builds.</td></tr>
+<tr><td>Focus</td><td>Border → forest-700 plus a 3px forest-50 halo. The halo does the visual work; the border change does the semantic work for high-contrast mode users.</td></tr>
+<tr><td>Error</td><td>Border danger-600, message below the field with a warning glyph, linked via <code>aria-describedby</code>, and <code>aria-invalid="true"</code>. <b>Colour is never the only signal</b> (WCAG 1.4.1). Errors are specific and instructive — "Enter a complete work email address, e.g. name@company.com" not "Invalid input."</td></tr>
+<tr><td>Validation timing</td><td>Validate on blur, <em>not</em> on keystroke. Re-validate on keystroke only after the field has already errored once. Validating while typing marks every field invalid before the user finishes and is the single most irritating form pattern.</td></tr>
+<tr><td>Autofill</td><td>Correct <code>autocomplete</code> tokens on every field (<code>name</code>, <code>email</code>, <code>tel</code>, <code>organization</code>). WCAG 2.2 SC 1.3.5. Override the browser's yellow autofill background with a token-consistent inset shadow.</td></tr>
+<tr><td>Phone</td><td>Fixed <code>+91</code> prefix, <code>inputmode="numeric"</code>, accept spaces and hyphens, normalise server-side. Never reject a number for formatting.</td></tr>
+<tr><td>Selection controls</td><td>18px box with a 44px hit area extended via the label. Checkbox radius 2px, radio 50% — the shape difference must be visible at a glance because it signals single vs multiple choice.</td></tr>
+<tr><td>Switch</td><td><code>role="switch"</code> + <code>aria-checked</code>. Only for immediate-effect settings. A form field that requires Submit uses a checkbox, never a switch.</td></tr>
+<tr><td>Touch targets</td><td>44×44px minimum, 8px minimum spacing between adjacent targets.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 10 ==================== -->
+<section class="doc-sec" id="s10">
+<h2><span class="num">10 / COMPONENTS</span>Badges</h2>
+<p class="lede">Badges carry status and classification. On this site they do enormous work — they are how a project card communicates stage, technology and capacity in one glance.</p>
+<div class="demo"><div class="row">
+<span class="badge badge-brand">Solar</span>
+<span class="badge badge-brand">Wind</span>
+<span class="badge badge-brand">Hybrid</span>
+<span class="badge badge-brand">Pumped Storage</span>
+<span class="badge badge-accent">Featured</span>
+<span class="badge badge-neutral">Archived</span>
+<span class="badge badge-success"><span class="dot"></span>Commissioned</span>
+<span class="badge badge-warning"><span class="dot"></span>Approvals in progress</span>
+<span class="badge badge-info"><span class="dot"></span>Under development</span>
+<span class="badge badge-danger"><span class="dot"></span>On hold</span>
+<span class="badge badge-solid">KERC Approved</span>
+<span class="badge badge-neutral badge-metric badge-lg">420 MW</span>
+<span class="badge badge-neutral badge-metric badge-lg">1,240 ac</span>
+</div></div>
+<table class="spec">
+<tr><th style="width:150px">Type</th><th>Rule</th></tr>
+<tr><td>Technology</td><td><code>badge-brand</code> — Solar, Wind, Hybrid, Pumped Storage, BESS. Always the same variant so technology is instantly distinguishable from status.</td></tr>
+<tr><td>Status</td><td>Semantic variants with a leading dot. Fixed vocabulary: <em>Under development · Approvals in progress · Land aggregation complete · Commissioned · On hold</em>. Never invent a status at build time.</td></tr>
+<tr><td>Metric</td><td><code>badge-metric</code> — Plex Mono, sentence case, tabular numerals. For capacity, acreage, district counts. Uppercase tracking is removed because it destroys numeral legibility.</td></tr>
+<tr><td>Emphasis</td><td><code>badge-accent</code> (gold) for "Featured" only. Maximum one per grid.</td></tr>
+<tr><td>Geometry</td><td>22px tall (26px large), 2px radius, 8px horizontal padding, 11px Archivo 600, +0.06em tracking. <b>Never pill-shaped</b> — pill badges are the strongest startup tell after pill buttons.</td></tr>
+<tr><td>Accessibility</td><td>Status badges use <code>role="status"</code> only when they change dynamically. The dot is <code>aria-hidden</code>. Colour is never the sole differentiator — the word always carries the meaning.</td></tr>
+<tr><td>Density</td><td>Maximum three badges per card. Beyond three the card becomes a tag cloud and the hierarchy inverts.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 11 ==================== -->
+<section class="doc-sec" id="s11">
+<h2><span class="num">11 / COMPONENTS</span>Cards — base</h2>
+<p class="lede">One base card, four surface treatments. Every specialised card (§12–14) inherits this geometry so the page reads as one system.</p>
+<div class="demo tinted"><div class="grid3">
+<div class="card"><h4 class="h5" style="margin-bottom:8px">Base</h4><p class="body-sm" style="color:var(--fg-secondary);margin:0">Canvas background, 1px subtle border, 6px radius, 24px padding. No shadow at rest.</p></div>
+<a class="card card-i" href="#s11"><h4 class="h5" style="margin-bottom:8px">Interactive</h4><p class="body-sm" style="color:var(--fg-secondary);margin:0">Hover me. Border shifts to brand, 2px lift, shadow-xs. Whole card is one link.</p></a>
+<div class="card card-tinted"><h4 class="h5" style="margin-bottom:8px">Tinted</h4><p class="body-sm" style="color:var(--fg-secondary);margin:0">Subtle surface. Used when the card sits on canvas and needs separation without a heavier border.</p></div>
+<div class="card card-brand"><h4 class="h5" style="margin-bottom:8px;color:inherit">Inverse</h4><p class="body-sm" style="margin:0">Forest-900. Reserved for one emphasis card per section — a testimonial, a headline capability, or the contact block.</p></div>
+<div class="card card-accentbar"><h4 class="h5" style="margin-bottom:8px">Accent bar</h4><p class="body-sm" style="color:var(--fg-secondary);margin:0">3px gold top rule. Marks the recommended or featured item in a set of peers.</p></div>
+<div class="card" style="padding:var(--s-8)"><h4 class="h5" style="margin-bottom:8px">Padding scale</h4><p class="body-sm" style="color:var(--fg-secondary);margin:0">16px compact · 24px default · 32px feature. Padding is uniform on all four sides — asymmetric card padding reads as a bug.</p></div>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Hover (interactive only)</td><td><code>translateY(-2px)</code> + border-brand + shadow-xs, 160ms. Non-interactive cards must <b>never</b> have hover states — a hover response on a non-clickable card is a usability lie.</td></tr>
+<tr><td>Whole-card links</td><td>The entire card is one <code>&lt;a&gt;</code>. If a card needs two destinations, it needs to be two cards. Nested interactive elements inside a card link are an accessibility failure.</td></tr>
+<tr><td>Equal height</td><td>Grid children stretch; internal content uses <code>margin-top:auto</code> on the footer row so CTAs align across a row regardless of copy length.</td></tr>
+<tr><td>Dark theme</td><td>Cards lighten to <code>--bg-subtle</code> rather than carrying shadow. Borders lighten to #252D29.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 12 ==================== -->
+<section class="doc-sec" id="s12">
+<h2><span class="num">12 / COMPONENTS</span>Service Cards</h2>
+<p class="lede">Six services, one card pattern. This is the component that replaces the icon strip currently trapped inside the logo lockup.</p>
+<div class="demo tinted"><div class="grid3">
+<a class="svc" href="#s12"><span class="svc-no">01</span><div class="svc-ico" aria-hidden="true">▤</div>
+<h4 class="h5" style="margin-bottom:6px">Land Aggregation</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0 0 14px">Parcel identification, title verification, revenue-record diligence and negotiated assembly of contiguous holdings across multiple owners.</p>
+<span class="lnk-arrow">Capability detail <i>→</i></span></a>
+<a class="svc" href="#s12"><span class="svc-no">02</span><div class="svc-ico" aria-hidden="true">⌂</div>
+<h4 class="h5" style="margin-bottom:6px">Government Liaison</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0 0 14px">Sustained engagement with district administration, KREDL, Revenue and Forest departments through the full approval sequence.</p>
+<span class="lnk-arrow">Capability detail <i>→</i></span></a>
+<a class="svc" href="#s12"><span class="svc-no">03</span><div class="svc-ico" aria-hidden="true">✓</div>
+<h4 class="h5" style="margin-bottom:6px">Statutory Approvals</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0 0 14px">Conversion, NOCs, environmental clearances and connectivity approvals, tracked against a documented critical path.</p>
+<span class="lnk-arrow">Capability detail <i>→</i></span></a>
+<a class="svc" href="#s12"><span class="svc-no">04</span><div class="svc-ico" aria-hidden="true">⌁</div>
+<h4 class="h5" style="margin-bottom:6px">Transmission Right of Way</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0 0 14px">Corridor route selection, landowner compensation settlement and tower-point acquisition for evacuation infrastructure.</p>
+<span class="lnk-arrow">Capability detail <i>→</i></span></a>
+<a class="svc" href="#s12"><span class="svc-no">05</span><div class="svc-ico" aria-hidden="true">◈</div>
+<h4 class="h5" style="margin-bottom:6px">Project Development Support</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0 0 14px">End-to-end development management from site selection through financial close readiness and handover to EPC.</p>
+<span class="lnk-arrow">Capability detail <i>→</i></span></a>
+<a class="svc" href="#s12"><span class="svc-no">06</span><div class="svc-ico" aria-hidden="true">◷</div>
+<h4 class="h5" style="margin-bottom:6px">Feasibility &amp; Due Diligence</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0 0 14px">Independent land and approval-risk assessment for acquirers evaluating a pipeline asset before transaction.</p>
+<span class="lnk-arrow">Capability detail <i>→</i></span></a>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Anatomy</td><td>Numeral (top-right, Plex Mono, neutral-400) · 44px icon well · H5 title · 2–3 line description (max 22 words) · arrow link. Fixed order, no variation.</td></tr>
+<tr><td>Hover</td><td>Three coordinated changes at 160–220ms: 3px forest bar wipes down the left edge (<code>scaleY</code> from top), icon well inverts to brand fill, card lifts 2px. The left-bar wipe is the system's signature interaction — it appears here and on the timeline only.</td></tr>
+<tr><td>The numeral</td><td>Enumeration implies a documented, finite methodology. "01 … 06" says the firm has a process. This is a deliberate credibility device borrowed from engineering capability statements.</td></tr>
+<tr><td>Copy discipline</td><td>Every description must name a document, department or artefact — "revenue-record diligence," "KREDL," "tower-point acquisition." Generic descriptions ("we help you navigate the process") destroy the entire premise.</td></tr>
+<tr><td>Grid</td><td>3 columns ≥1024px · 2 columns 640–1023px · 1 column &lt;640px. Six services fill exactly two rows at desktop — do not add a seventh without adding a ninth.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 13 ==================== -->
+<section class="doc-sec" id="s13">
+<h2><span class="num">13 / COMPONENTS</span>Project Cards</h2>
+<p class="lede">The proof component. Every element is a number or a name — this is where "20 years of experience" becomes verifiable.</p>
+<div class="demo tinted"><div class="grid3">
+<a class="proj" href="#s13">
+  <div class="proj-img"><span class="badge badge-solid">Solar</span></div>
+  <div class="proj-body">
+    <span class="badge badge-success"><span class="dot"></span>Commissioned</span>
+    <h4 class="h5" style="margin:10px 0 4px">Pavagada Cluster — Phase II</h4>
+    <p class="caption" style="margin:0">Tumakuru District, Karnataka</p>
+    <dl class="proj-meta">
+      <div><dt>Capacity</dt><dd>420 MW</dd></div>
+      <div><dt>Land</dt><dd>1,240 ac</dd></div>
+      <div><dt>Landowners</dt><dd>318</dd></div>
+      <div><dt>To approval</dt><dd>11 mo</dd></div>
+    </dl>
+  </div>
+</a>
+<a class="proj" href="#s13">
+  <div class="proj-img" style="background:linear-gradient(150deg,var(--forest-700),var(--forest-500))"><span class="badge badge-solid">Wind</span></div>
+  <div class="proj-body">
+    <span class="badge badge-warning"><span class="dot"></span>Approvals in progress</span>
+    <h4 class="h5" style="margin:10px 0 4px">Chitradurga Ridge Corridor</h4>
+    <p class="caption" style="margin:0">Chitradurga District, Karnataka</p>
+    <dl class="proj-meta">
+      <div><dt>Capacity</dt><dd>180 MW</dd></div>
+      <div><dt>Land</dt><dd>640 ac</dd></div>
+      <div><dt>RoW</dt><dd>34 km</dd></div>
+      <div><dt>Stage</dt><dd>CEIG</dd></div>
+    </dl>
+  </div>
+</a>
+<a class="proj" href="#s13">
+  <div class="proj-img" style="background:linear-gradient(150deg,var(--forest-900),var(--forest-700))"><span class="badge badge-solid">Pumped Storage</span></div>
+  <div class="proj-body">
+    <span class="badge badge-info"><span class="dot"></span>Under development</span>
+    <h4 class="h5" style="margin:10px 0 4px">Sharavathi Upper Reservoir</h4>
+    <p class="caption" style="margin:0">Shivamogga District, Karnataka</p>
+    <dl class="proj-meta">
+      <div><dt>Capacity</dt><dd>1,000 MW</dd></div>
+      <div><dt>Land</dt><dd>210 ac</dd></div>
+      <div><dt>Forest NOC</dt><dd>Stage&nbsp;I</dd></div>
+      <div><dt>Started</dt><dd>2024</dd></div>
+    </dl>
+  </div>
+</a>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Anatomy</td><td>4:3 image with technology badge bottom-left · status badge · project name (H5) · district line · 2×2 metric grid above a hairline.</td></tr>
+<tr><td>Metric grid</td><td>Exactly four metrics, Plex Mono, tabular numerals, 10.5px uppercase labels. Four is the maximum a reader absorbs without re-reading. Choose the four that answer a developer's first questions: <em>how big, how much land, how complex, how long.</em></td></tr>
+<tr><td>Image fallback</td><td>Where site photography does not exist, the diagonal forest gradient with a 2px hatch overlay is the sanctioned placeholder — technology-coded by gradient depth. Never a grey box, never stock.</td></tr>
+<tr><td>Confidentiality</td><td>Where a client name cannot be disclosed, use the geography and let the numbers carry it: "Confidential IPP · Koppal District · 250 MW." Never omit the card — an empty projects page is worse than an anonymised one.</td></tr>
+<tr><td>Featured variant</td><td>First project may span 8 of 12 columns with a 16:9 image and a 60-word summary. One per page maximum.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 14 ==================== -->
+<section class="doc-sec" id="s14">
+<h2><span class="num">14 / COMPONENTS</span>District Cards</h2>
+<p class="lede">Karnataka's district structure <em>is</em> Bolamudi's moat — approvals are district-administered, so district-level familiarity is the product. This component pairs with a state map and must stay dense enough to show 8–12 districts at once.</p>
+<div class="demo tinted"><div class="grid4">
+<a class="dist" href="#s14" aria-current="true"><span class="dist-name">Tumakuru <span class="badge badge-accent" style="height:18px;font-size:10px">Active</span></span><span class="dist-stats"><span><b>4</b> projects</span><span><b>1,240</b> ac</span></span></a>
+<a class="dist" href="#s14"><span class="dist-name">Chitradurga</span><span class="dist-stats"><span><b>3</b> projects</span><span><b>640</b> ac</span></span></a>
+<a class="dist" href="#s14"><span class="dist-name">Koppal</span><span class="dist-stats"><span><b>2</b> projects</span><span><b>410</b> ac</span></span></a>
+<a class="dist" href="#s14"><span class="dist-name">Gadag</span><span class="dist-stats"><span><b>2</b> projects</span><span><b>380</b> ac</span></span></a>
+<a class="dist" href="#s14"><span class="dist-name">Bagalkot</span><span class="dist-stats"><span><b>1</b> project</span><span><b>220</b> ac</span></span></a>
+<a class="dist" href="#s14"><span class="dist-name">Vijayapura</span><span class="dist-stats"><span><b>1</b> project</span><span><b>190</b> ac</span></span></a>
+<a class="dist" href="#s14"><span class="dist-name">Shivamogga</span><span class="dist-stats"><span><b>1</b> project</span><span><b>210</b> ac</span></span></a>
+<a class="dist" href="#s14"><span class="dist-name">Ballari</span><span class="dist-stats"><span><b>2</b> projects</span><span><b>295</b> ac</span></span></a>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Anatomy</td><td>District name (Archivo 600, 15px) · optional Active badge · two metrics in Plex Mono. Deliberately smaller and flatter than a project card — these are index entries, not features.</td></tr>
+<tr><td>Selected state</td><td><code>aria-current="true"</code> → 3px left border in brand + brand-subtle fill. Must be visible without colour (the border-width change carries it).</td></tr>
+<tr><td>Map pairing</td><td>Desktop: SVG map of Karnataka on the left (5 cols), district grid on the right (7 cols). Hovering a card highlights the district path and vice versa. <b>The map must never be the only way to select a district</b> — it is unusable on mobile and inaccessible to keyboard users. The grid is the primary control; the map is enrichment.</td></tr>
+<tr><td>Mobile</td><td>Map is hidden entirely below 768px (not shrunk — a shrunk state map is illegible). Grid drops to 2 columns.</td></tr>
+<tr><td>Data honesty</td><td>Only list districts with genuine delivered work. A 30-district grid where 22 are empty destroys credibility faster than an 8-district grid that is full. Show coverage, not ambition.</td></tr>
+</table>
+</section>
+<!-- ==================== 15 ==================== -->
+<section class="doc-sec" id="s15">
+<h2><span class="num">15 / COMPONENTS</span>Statistics</h2>
+<p class="lede">The most commercially important component on the site. Everything the firm claims should resolve into one of these figures.</p>
+<div class="demo"><div class="stats">
+<div class="stat"><div class="stat-fig">20<span class="stat-unit">yrs</span></div><div class="stat-lbl">Promoter experience</div><div class="stat-sub">Utility-scale RE execution in Karnataka</div></div>
+<div class="stat"><div class="stat-fig">2,400<span class="stat-unit">MW</span></div><div class="stat-lbl">Capacity supported</div><div class="stat-sub">Solar, wind, hybrid and pumped storage</div></div>
+<div class="stat"><div class="stat-fig">6,800<span class="stat-unit">ac</span></div><div class="stat-lbl">Land aggregated</div><div class="stat-sub">Title-verified and registered</div></div>
+<div class="stat"><div class="stat-fig">8<span class="stat-unit">dist</span></div><div class="stat-lbl">Districts covered</div><div class="stat-sub">Direct administrative relationships</div></div>
+</div></div>
+<div class="demo tinted"><div class="stats stats-inverse">
+<div class="stat"><div class="stat-fig">11<span class="stat-unit">mo</span></div><div class="stat-lbl">Median approval time</div></div>
+<div class="stat"><div class="stat-fig">318</div><div class="stat-lbl">Landowners settled</div></div>
+<div class="stat"><div class="stat-fig">100<span class="stat-unit">%</span></div><div class="stat-lbl">Title dispute rate<sup>1</sup></div></div>
+<div class="stat"><div class="stat-fig">34<span class="stat-unit">km</span></div><div class="stat-lbl">RoW corridor secured</div></div>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Figure</td><td>Archivo 700, clamp(32→44px), −0.028em tracking, tabular numerals, line-height 1.0. The unit is a 44%-size gold suffix on the baseline — this makes the number itself the visual object and keeps a four-digit figure from looking like a phone number.</td></tr>
+<tr><td>Label</td><td>12px Archivo 600 uppercase, +0.09em, muted. Sub-label 12.5px optional — use it to qualify the claim, which is what makes it defensible.</td></tr>
+<tr><td>Dividers</td><td>1px vertical hairlines between cells, top and bottom rules on the band. Borders — not cards, not shadows. Four figures in four boxes reads as a dashboard; four figures separated by hairlines reads as a data table, which is the register you want.</td></tr>
+<tr><td>Counter animation</td><td>Ease-out, 1200ms max, starts at 60% of the final value, triggers once at 30% viewport intersection, tabular numerals mandatory. Disabled entirely under reduced-motion — the final value renders immediately.</td></tr>
+<tr><td>Footnotes</td><td>Any figure that could be challenged carries a superscript linked to a footnote under the band ("¹ Across all projects where Bolamudi handled aggregation end-to-end, 2019–2025"). <b>Institutional buyers trust footnoted numbers more than round ones.</b> An unqualified "100%" is a liability; a footnoted "100%" is evidence.</td></tr>
+<tr><td>Count</td><td>Exactly four per band. Three looks thin, five wraps badly, six becomes a grid and loses impact.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 16 ==================== -->
+<section class="doc-sec" id="s16">
+<h2><span class="num">16 / COMPONENTS</span>Timeline</h2>
+<p class="lede">Two uses: the <b>project development lifecycle</b> (methodology — the highest-value page on the site) and the <b>firm milestone history</b>. Same component, different data.</p>
+<div class="demo"><div class="tl">
+<div class="tl-item" data-state="done"><div class="tl-h"><div class="tl-date">Stage 01 · 4–6 weeks</div><div>
+<h4 class="tl-title">Site identification &amp; pre-feasibility</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0">Resource assessment, terrain screening, evacuation proximity and preliminary revenue-record scan across candidate parcels.</p></div></div></div>
+<div class="tl-item" data-state="done"><div class="tl-h"><div class="tl-date">Stage 02 · 8–14 weeks</div><div>
+<h4 class="tl-title">Title diligence &amp; land aggregation</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0">RTC and mutation verification, encumbrance search, owner identification, negotiated agreements and registration of contiguous holdings.</p></div></div></div>
+<div class="tl-item" data-state="active"><div class="tl-h"><div class="tl-date">Stage 03 · 12–20 weeks</div><div>
+<h4 class="tl-title">Statutory approvals &amp; conversion</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0">Land conversion, district administration NOCs, KREDL registration, pollution control consent and forest clearance where applicable.</p></div></div></div>
+<div class="tl-item"><div class="tl-h"><div class="tl-date">Stage 04 · 10–16 weeks</div><div>
+<h4 class="tl-title">Evacuation &amp; right of way</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0">Connectivity application, corridor route finalisation, tower-point acquisition and landowner compensation settlement.</p></div></div></div>
+<div class="tl-item"><div class="tl-h"><div class="tl-date">Stage 05 · Ongoing</div><div>
+<h4 class="tl-title">Handover &amp; construction support</h4>
+<p class="body-sm" style="color:var(--fg-secondary);margin:0">Documentation transfer to EPC, continued district liaison through construction, and resolution of in-flight land matters.</p></div></div></div>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Node states</td><td><b>Done</b> — filled forest. <b>Active</b> — filled gold with a 4px halo. <b>Upcoming</b> — hollow with a neutral ring. Three states, distinguishable by fill <em>and</em> ring, so the sequence reads without colour.</td></tr>
+<tr><td>Layout</td><td>Desktop: 130px date column + content column, connected by a 1px rail. Mobile (&lt;700px): single column, date stacked above the title, rail retained at 9px from the left edge.</td></tr>
+<tr><td>Duration labels</td><td>Plex Mono, gold, uppercase. Publishing realistic durations ("12–20 weeks") is the strongest trust signal on the entire site — it demonstrates the firm has actually run the sequence enough times to know. Vague timelines signal the opposite.</td></tr>
+<tr><td>Motion</td><td>The rail draws down via <code>scaleY</code> 0→1 over 520ms on intersection; nodes fade in at 60ms stagger, capped at 6. Once only.</td></tr>
+<tr><td>Semantics</td><td>Marked up as an ordered list <code>&lt;ol&gt;</code>. The rail and nodes are CSS pseudo-elements — decorative, never in the accessibility tree.</td></tr>
+<tr><td>Milestone variant</td><td>For company history, replace the duration with a year (Plex Mono) and drop the state colouring — all nodes filled forest. Maximum eight entries; more becomes a scroll chore.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 17 ==================== -->
+<section class="doc-sec" id="s17">
+<h2><span class="num">17 / COMPONENTS</span>Tables</h2>
+<p class="lede">Tables are an asset here, not a liability. A comparison table of approvals, authorities and typical timelines is exactly the artefact a developer will screenshot and circulate internally — which is free distribution.</p>
+<div class="demo"><div class="tbl-wrap">
+<table class="dt">
+<thead><tr><th class="th-sort" aria-sort="ascending">Approval</th><th>Authority</th><th>Instrument</th><th class="num">Typical duration</th></tr></thead>
+<tbody>
+<tr><td>Land conversion</td><td>Deputy Commissioner, District</td><td>KLR Act, s.95</td><td class="num">10–16 wks</td></tr>
+<tr><td>Project registration</td><td>KREDL</td><td>Karnataka RE Policy</td><td class="num">4–6 wks</td></tr>
+<tr><td>Connectivity &amp; evacuation</td><td>KPTCL / PGCIL</td><td>Connectivity Regulations</td><td class="num">12–20 wks</td></tr>
+<tr><td>Consent to establish</td><td>KSPCB</td><td>Water &amp; Air Acts</td><td class="num">6–10 wks</td></tr>
+<tr><td>Forest clearance (if applicable)</td><td>MoEFCC / State Forest Dept.</td><td>FCA 1980</td><td class="num">24–52 wks</td></tr>
+<tr><td>Electrical safety approval</td><td>CEIG, Karnataka</td><td>CEA Regulations</td><td class="num">4–8 wks</td></tr>
+</tbody>
+<tfoot><tr><td colspan="3">Indicative critical path, parallelised</td><td class="num">44–72 wks</td></tr></tfoot>
+</table>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Structure</td><td>Header row on <code>--bg-subtle</code>, 11px uppercase Archivo. Body rows 14px, 14px vertical padding. Row hover tints to subtle. Zebra striping is <b>not</b> used — hairline separators plus hover are cleaner and read better at density.</td></tr>
+<tr><td>Numerics</td><td>Right-aligned, Plex Mono, <code>tabular-nums</code>. Right alignment on numbers is non-negotiable: it makes magnitude comparable down a column at a glance.</td></tr>
+<tr><td>Sorting</td><td><code>aria-sort</code> on the active header, glyph indicator, full keyboard operability. Only enable sorting where a table exceeds ~10 rows.</td></tr>
+<tr><td>Responsive</td><td>Two strategies. <b>Comparison tables</b> (≤4 columns) stack into definition-list cards below 768px. <b>Reference tables</b> (5+ columns) scroll horizontally inside the wrapper with the first column sticky and a right-edge shadow indicating more content. Never shrink type below 13px to force a fit.</td></tr>
+<tr><td>Accessibility</td><td>Real <code>&lt;table&gt;</code> markup with <code>&lt;caption&gt;</code> (visually hidden if the heading already carries it), <code>scope="col"</code> / <code>scope="row"</code>. Scrollable wrappers need <code>tabindex="0"</code> and <code>role="region"</code> with an <code>aria-label</code> so keyboard users can scroll them.</td></tr>
+<tr><td>Density variants</td><td>Comfortable (14px pad) default · Compact (8px) for &gt;15-row reference tables only.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 18 ==================== -->
+<section class="doc-sec" id="s18">
+<h2><span class="num">18 / COMPONENTS</span>Accordion &amp; FAQ</h2>
+<p class="lede">Same component, two contexts. FAQ is also the highest-leverage SEO surface on the site — it is where long-tail queries like "how long does land conversion take in Karnataka" get answered.</p>
+<div class="demo"><div class="acc" id="accdemo">
+<div class="acc-item">
+  <button class="acc-trigger" aria-expanded="true" aria-controls="p1" onclick="tog(this,'p1')">Do you work outside Karnataka?<span class="chev" aria-hidden="true">⌄</span></button>
+  <div class="acc-panel" id="p1" data-open="true"><div class="inner">No — and that is deliberate. Land and approvals are administered at the district level under state-specific instruments. Twenty years of relationships with Karnataka's district administration, KREDL and KPTCL is a specific asset that does not transfer to another state. We would rather be the definitive option in one state than an average option in six.</div></div>
+</div>
+<div class="acc-item">
+  <button class="acc-trigger" aria-expanded="false" aria-controls="p2" onclick="tog(this,'p2')">How do you price engagements?<span class="chev" aria-hidden="true">⌄</span></button>
+  <div class="acc-panel" id="p2"><div class="inner">Two structures: a per-acre fee for pure land aggregation, or a milestone-linked development fee for full project development support. Scope and fee are fixed in writing before mobilisation. We do not work on undefined retainers.</div></div>
+</div>
+<div class="acc-item">
+  <button class="acc-trigger" aria-expanded="false" aria-controls="p3" onclick="tog(this,'p3')">What happens if a title dispute emerges after acquisition?<span class="chev" aria-hidden="true">⌄</span></button>
+  <div class="acc-panel" id="p3"><div class="inner">Our diligence covers RTC, mutation history, encumbrance certificates and physical possession verification before any agreement is executed. Where a dispute nonetheless arises, we manage resolution through the revenue authorities at no additional development fee. The specific liability position is set out in the engagement agreement.</div></div>
+</div>
+<div class="acc-item">
+  <button class="acc-trigger" aria-expanded="false" aria-controls="p4" onclick="tog(this,'p4')">Can you support pumped storage projects?<span class="chev" aria-hidden="true">⌄</span></button>
+  <div class="acc-panel" id="p4"><div class="inner">Yes. Pumped storage carries a different approval profile — reservoir land, forest interface and water allocation — and we have executed within it. The land footprint is smaller but the clearance sequence is materially longer, typically 18–30 months.</div></div>
+</div>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Behaviour</td><td>Multi-expand by default (users compare answers). Single-expand only where panels are long enough that scroll position becomes disorienting.</td></tr>
+<tr><td>Trigger</td><td>Full-width <code>&lt;button&gt;</code>, 17px Archivo 600, left-aligned, chevron right. The <em>whole row</em> is the target — a 20px chevron as the only hit area is a common and inexcusable failure.</td></tr>
+<tr><td>Motion</td><td>Height 220ms; chevron rotates 180° in sync; panel content fades in at 160ms with 60ms delay so text does not appear compressed.</td></tr>
+<tr><td>Accessibility</td><td><code>aria-expanded</code> on the trigger, <code>aria-controls</code> → panel id, <code>role="region"</code> + <code>aria-labelledby</code> on the panel. Enter and Space both toggle. Never hide the panel with <code>display:none</code> mid-transition — it breaks the screen-reader reading order.</td></tr>
+<tr><td>SEO</td><td>Emit <code>FAQPage</code> JSON-LD structured data. Answers must be in the DOM at load, not fetched on expand, or they will not be indexed. Keep answers 40–90 words: long enough to be substantive, short enough for a featured snippet.</td></tr>
+<tr><td>Content strategy</td><td>Answer the questions a buyer is too polite to ask — pricing structure, liability on title failure, why you are single-state, what happens when timelines slip. Answering an uncomfortable question directly is the cheapest trust the site can buy.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 19 ==================== -->
+<section class="doc-sec" id="s19">
+<h2><span class="num">19 / COMPONENTS</span>Navigation</h2>
+<p class="lede">Two-tier header: a utility bar carrying the direct line, and a main bar carrying the structure. The utility bar exists because this buyer picks up the phone.</p>
+<div class="demo" style="padding:0;overflow:visible">
+<div class="hdr">
+  <div class="util-bar">
+    <span>Karnataka · Renewable Energy Project Development Support</span>
+    <span style="display:flex;gap:18px"><a href="#s19">+91 98450 00000</a><a href="#s19">contact@bolamudi.in</a></span>
+  </div>
+  <div class="hdr-bar">
+    <a class="logo-lockup" href="#s19">
+      <span class="logo-mark" aria-hidden="true">B</span>
+      <span class="logo-txt">BOLAMUDI<span>ENTERPRISE</span></span>
+    </a>
+    <nav class="nav">
+      <a class="nav-lnk" href="#s19" aria-current="page">Home</a>
+      <a class="nav-lnk" href="#s19">Capabilities <span aria-hidden="true" style="font-size:9px">▾</span></a>
+      <a class="nav-lnk" href="#s19">Projects</a>
+      <a class="nav-lnk" href="#s19">Districts</a>
+      <a class="nav-lnk" href="#s19">Approach</a>
+      <a class="nav-lnk" href="#s19">Insights</a>
+      <a class="nav-lnk" href="#s19">About</a>
+    </nav>
+    <button class="btn btn-primary btn-sm">Request a consultation</button>
+  </div>
+  <div class="mega">
+    <div>
+      <h5>Capabilities</h5>
+      <p class="body-sm" style="color:var(--fg-secondary);margin:0 0 12px">End-to-end development support for utility-scale renewable energy in Karnataka.</p>
+      <a class="lnk-arrow" href="#s19">All capabilities <i>→</i></a>
+    </div>
+    <div><h5>Land &amp; approvals</h5>
+      <a href="#s19">Land Aggregation</a><a href="#s19">Statutory Approvals</a><a href="#s19">Government Liaison</a></div>
+    <div><h5>Infrastructure</h5>
+      <a href="#s19">Transmission Right of Way</a><a href="#s19">Project Development Support</a><a href="#s19">Feasibility &amp; Due Diligence</a></div>
+  </div>
+</div>
+<div style="padding:24px">
+  <h4 class="sub" style="margin-top:0">Breadcrumbs</h4>
+  <div class="crumbs"><a href="#s19">Home</a><span aria-hidden="true">/</span><a href="#s19">Projects</a><span aria-hidden="true">/</span><a href="#s19">Solar</a><span aria-hidden="true">/</span><span aria-current="page">Pavagada Cluster — Phase II</span></div>
+  <h4 class="sub">In-page anchor navigation</h4>
+  <div class="anchornav">
+    <a href="#s19" aria-current="true">Overview</a><a href="#s19">Scope</a><a href="#s19">Land position</a><a href="#s19">Approvals</a><a href="#s19">Evacuation</a><a href="#s19">Outcome</a>
+  </div>
+</div>
+</div>
+<table class="spec">
+<tr><td style="width:150px">Utility bar</td><td>34px, forest-900, 12px. Phone and email as live <code>tel:</code> / <code>mailto:</code> links. Hidden below 768px, where the phone number moves into the mobile drawer as a full-width button.</td></tr>
+<tr><td>Main bar</td><td>72px at rest → 60px when scrolled past 80px, with shadow-sm and a solid canvas background. Sticky, not fixed-transparent — a transparent header over content is a legibility risk on a text-dense site.</td></tr>
+<tr><td>Active state</td><td>2px gold underline plus weight 500→600. Two signals, so it survives greyscale.</td></tr>
+<tr><td>Mega menu</td><td>Opens on click or on focus, <b>not</b> on hover-with-no-delay. If hover is used, apply a 150ms open delay and a 300ms close delay, or the menu will flicker as the pointer crosses it. Escape closes and returns focus to the trigger. Full-width panel, three columns, one descriptive block plus two link columns.</td></tr>
+<tr><td>Primary CTA</td><td>Always present in the header, always the same label. A consultancy site with no header CTA leaks its highest-intent traffic.</td></tr>
+<tr><td>Mobile (&lt;1024px)</td><td>Hamburger (44×44) → right-side drawer at 320px with shadow-lg and a 55% overlay scrim. Accordion sub-navigation. Focus trapped inside the drawer, Escape closes, body scroll locked, focus returns to the hamburger on close. Phone CTA pinned at the bottom.</td></tr>
+<tr><td>Breadcrumbs</td><td><code>&lt;nav aria-label="Breadcrumb"&gt;</code> + ordered list + <code>BreadcrumbList</code> JSON-LD. Present on every page except the home page. Slashes are <code>aria-hidden</code>.</td></tr>
+<tr><td>Anchor nav</td><td>Sticks below the header on long project and capability pages. Active section tracked by IntersectionObserver. Horizontally scrollable on mobile with the active item scrolled into view.</td></tr>
+<tr><td>Skip link</td><td>"Skip to main content" as the first focusable element, visually hidden until focused. WCAG 2.4.1.</td></tr>
+</table>
+<div class="why"><b>Seven top-level items is the ceiling.</b> The set above — Capabilities, Projects, Districts, Approach, Insights, About, plus Home — maps to the buyer's actual evaluation sequence: <em>what do you do → prove it → where → how → do you think → who are you.</em> "Districts" earns a top-level slot because geography is the differentiator; on a generic consultancy it would not.</div>
+</section>
+
+<!-- ==================== 20 ==================== -->
+<section class="doc-sec" id="s20">
+<h2><span class="num">20 / COMPONENTS</span>Footer</h2>
+<p class="lede">On a B2B consultancy site the footer is a second navigation layer and a credibility surface — registration details, jurisdiction, and a full sitemap for crawlers.</p>
+<div class="demo" style="padding:0"><div class="ftr">
+<div class="ftr-main">
+  <div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <span style="width:38px;height:38px;border-radius:3px;background:var(--gold-500);color:var(--forest-900);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:19px">B</span>
+      <span style="font-family:var(--font-display);font-weight:700;font-size:17px;line-height:1.1">BOLAMUDI<span style="display:block;font-size:9px;letter-spacing:.2em;color:var(--gold-300)">ENTERPRISE</span></span>
+    </div>
+    <p>Renewable energy project development support across Karnataka — land aggregation, statutory approvals, government liaison and transmission right of way.</p>
+    <p style="margin-top:14px;font-family:var(--font-mono);font-size:12px">GSTIN 29XXXXXXXXXXXZX<br>Udyam Reg. UDYAM-KR-XX-XXXXXXX</p>
+  </div>
+  <div><h5>Capabilities</h5>
+    <a href="#s20">Land Aggregation</a><a href="#s20">Government Liaison</a><a href="#s20">Statutory Approvals</a><a href="#s20">Transmission RoW</a><a href="#s20">Development Support</a><a href="#s20">Due Diligence</a></div>
+  <div><h5>Company</h5>
+    <a href="#s20">About</a><a href="#s20">Approach</a><a href="#s20">Projects</a><a href="#s20">Districts</a><a href="#s20">Insights</a><a href="#s20">Careers</a></div>
+  <div><h5>Contact</h5>
+    <p style="margin:0 0 12px">Bengaluru, Karnataka 560001<br>India</p>
+    <a href="#s20">+91 98450 00000</a>
+    <a href="#s20">contact@bolamudi.in</a>
+    <a href="#s20">LinkedIn</a>
+    <div style="margin-top:16px"><button class="btn btn-oninverse btn-sm">Request a consultation</button></div>
+  </div>
+</div>
+<div class="ftr-legal">
+  <span>© 2026 Bolamudi Enterprise. All rights reserved.</span>
+  <span style="display:flex;gap:18px"><a href="#s20" style="display:inline">Privacy</a><a href="#s20" style="display:inline">Terms</a><a href="#s20" style="display:inline">Disclaimer</a></span>
+</div>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Structure</td><td>4 columns (1.6 / 1 / 1 / 1.2) — brand block, capabilities, company, contact + CTA. Legal bar below a hairline.</td></tr>
+<tr><td>Credibility block</td><td>GSTIN and Udyam registration in Plex Mono. This is a small detail that materially raises perceived legitimacy for Indian B2B buyers evaluating a smaller firm, and costs nothing.</td></tr>
+<tr><td>Surface</td><td>forest-900. In dark theme it <em>inverts to light</em> (neutral-50) — a near-black footer on a near-black page has no edge and the page appears to run off. Inverting maintains the compositional full-stop.</td></tr>
+<tr><td>Link contrast</td><td>rgba(255,255,255,.76) on forest-900 ≈ 9.3:1. Passes AA comfortably. Do not drop below .70 alpha.</td></tr>
+<tr><td>Responsive</td><td>4 → 2 columns at 820px → 1 column at 560px, with the CTA moving above the link lists so it is not buried.</td></tr>
+<tr><td>Not included</td><td>No newsletter form (this audience does not subscribe), no social icon row beyond LinkedIn, no "made with" credit. Every one of those reads as small-business.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 21 ==================== -->
+<section class="doc-sec" id="s21">
+<h2><span class="num">21 / COMPONENTS</span>Sections &amp; Page Composition</h2>
+<p class="lede">Sections are the largest unit in the system. Their rhythm is what makes a page feel authored rather than assembled.</p>
+<div class="demo" style="padding:0">
+<div class="sec-demo">
+  <div class="sec-head">
+    <p class="eyebrow">Capabilities</p>
+    <div class="rule"></div>
+    <h3 class="h2" style="margin-bottom:12px">Six disciplines that decide whether a project reaches financial close</h3>
+    <p class="body-lg" style="color:var(--fg-secondary)">Land and approvals are the critical path on every utility-scale renewable project in Karnataka. We work only on that path.</p>
+  </div>
+  <div class="row"><button class="btn btn-primary btn-md">Request a consultation</button><button class="btn btn-secondary btn-md">Download capability statement</button></div>
+</div>
+<div class="sec-demo band" style="margin-top:16px">
+  <p class="eyebrow">Alternating band</p>
+  <p class="body-md" style="color:var(--fg-secondary);margin-top:8px">Identical structure on <code>--bg-subtle</code>. Bands alternate to segment a long page without introducing borders.</p>
+</div>
+<div class="cta-band" style="margin-top:16px">
+  <div style="max-width:52ch">
+    <h3 class="h3" style="margin-bottom:8px;color:inherit">Considering a site in Karnataka?</h3>
+    <p class="body-md" style="opacity:.82;margin:0">Send us the district and target capacity. We will tell you what the land and approval position actually looks like — before you commit capital.</p>
+  </div>
+  <div class="row"><button class="btn btn-oninverse btn-lg">Request a consultation</button><button class="btn btn-oninverse-sec btn-lg">+91 98450 00000</button></div>
+</div>
+</div>
+<table class="spec">
+<tr><th style="width:150px">Section type</th><th>Specification</th></tr>
+<tr><td>Section header</td><td>Eyebrow (gold, uppercase) → 48×2px gold rule → H2 → lead paragraph, capped at 64ch. Fixed order everywhere. The rule is the system's connective tissue — it appears in every section header and nowhere else.</td></tr>
+<tr><td>Vertical padding</td><td>64px mobile · 80px tablet · 112px desktop. Hero 96 / 120 / 160px. Consecutive same-surface sections collapse to a single padding rather than doubling.</td></tr>
+<tr><td>Alternating bands</td><td>canvas → subtle → canvas → inverse. Never two inverse sections in a row, and never more than two inverse sections per page — inverse is emphasis, and emphasis everywhere is emphasis nowhere.</td></tr>
+<tr><td>Hero</td><td>6/1/5 split. Left: eyebrow, D1 heading (max 9 words), 18px lead (max 28 words), two buttons, and a 3-figure stat row on a hairline. Right: 16:9 site photograph or the contour graphic. Full-bleed to 1440px, content to 1200px. <b>No carousel.</b></td></tr>
+<tr><td>CTA band</td><td>One per page, immediately above the footer, forest-900, flex row collapsing to a stack at 820px. Copy states the specific offer, never "Get in touch today!"</td></tr>
+<tr><td>Semantics</td><td>Every section is a <code>&lt;section&gt;</code> with <code>aria-labelledby</code> pointing at its H2. Exactly one H1 per page. Heading levels never skip.</td></tr>
+</table>
+<h4 class="sub">Canonical home page sequence</h4>
+<table class="spec">
+<tr><td style="width:44px">1</td><td>Hero — positioning statement + primary CTA + three proof figures</td></tr>
+<tr><td>2</td><td>Statistics band (4 figures, hairline dividers)</td></tr>
+<tr><td>3</td><td>Capabilities — 6 service cards</td></tr>
+<tr><td>4</td><td>Approach — 5-stage timeline (the differentiator; place it high)</td></tr>
+<tr><td>5</td><td>Districts — Karnataka map + district grid</td></tr>
+<tr><td>6</td><td>Projects — 3 project cards + "all projects"</td></tr>
+<tr><td>7</td><td>Promoter — inverse card, portrait, 20-year credential paragraph</td></tr>
+<tr><td>8</td><td>FAQ — 4 highest-intent questions</td></tr>
+<tr><td>9</td><td>CTA band → Footer</td></tr>
+</table>
+</section>
+
+<!-- ==================== 22 ==================== -->
+<section class="doc-sec" id="s22">
+<h2><span class="num">22 / COMPONENTS</span>Contact Forms</h2>
+<p class="lede">Everything on the site funnels here. Field count is the enemy: each additional field measurably reduces completion. Seven fields is the ceiling.</p>
+<div class="demo tinted">
+<div style="display:grid;grid-template-columns:1.6fr 1fr;gap:32px" class="cf-grid">
+<div class="card" style="padding:var(--s-8)">
+  <p class="eyebrow">Enquiry</p>
+  <h3 class="h3" style="margin:8px 0 6px">Tell us about the site</h3>
+  <p class="body-sm" style="color:var(--fg-secondary);margin:0 0 24px">We respond within one working day. Everything you send is treated as confidential.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="field"><label for="f1">Full name <span class="req">*</span></label><input class="inp" id="f1" autocomplete="name"></div>
+    <div class="field"><label for="f2">Company <span class="req">*</span></label><input class="inp" id="f2" autocomplete="organization"></div>
+    <div class="field"><label for="f3">Work email <span class="req">*</span></label><input class="inp" id="f3" type="email" autocomplete="email"></div>
+    <div class="field"><label for="f4">Mobile</label><div class="inp-group"><span class="inp-prefix">+91</span><input class="inp" id="f4" autocomplete="tel"></div></div>
+    <div class="field"><label for="f5">Service required <span class="req">*</span></label><select class="inp sel" id="f5"><option>Land aggregation</option><option>Statutory approvals</option><option>Government liaison</option><option>Transmission right of way</option><option>Full development support</option></select></div>
+    <div class="field"><label for="f6">District</label><select class="inp sel" id="f6"><option>Not yet identified</option><option>Tumakuru</option><option>Chitradurga</option><option>Koppal</option><option>Gadag</option></select></div>
+  </div>
+  <div class="field"><label for="f7">Project brief</label><textarea class="inp" id="f7" placeholder="Target capacity, technology, timeline, and where you are in the process."></textarea></div>
+  <div class="chk-row"><input class="chk" type="checkbox" id="f8"><label for="f8"><span>I consent to Bolamudi Enterprise storing these details to respond to this enquiry. <a class="lnk" href="#s22">Privacy policy</a>.</span></label></div>
+  <div class="row" style="margin-top:20px;align-items:center;gap:16px">
+    <button class="btn btn-primary btn-lg">Send enquiry</button>
+    <span class="caption">Or call <b style="color:var(--fg-primary)">+91 98450 00000</b></span>
+  </div>
+</div>
+<div class="col">
+  <div class="card card-brand">
+    <p class="eyebrow" style="color:var(--gold-300)">Direct line</p>
+    <h4 class="h4" style="margin:8px 0 10px;color:inherit">Speak to the promoter</h4>
+    <p class="body-sm" style="margin:0 0 16px">Enquiries about site viability, approval position or timelines are answered directly — not by an account manager.</p>
+    <p class="data" style="color:var(--gold-300)">+91 98450 00000</p>
+    <p class="data" style="color:var(--gold-300)">contact@bolamudi.in</p>
+  </div>
+  <div class="card">
+    <h5 class="h5" style="margin:0 0 8px">Office</h5>
+    <p class="body-sm" style="color:var(--fg-secondary);margin:0">Bengaluru, Karnataka 560001<br>Monday–Saturday, 09:30–18:30 IST</p>
+  </div>
+  <div class="card" style="border-color:var(--success-fg)">
+    <span class="badge badge-success"><span class="dot"></span>Submitted</span>
+    <h5 class="h5" style="margin:10px 0 6px">Enquiry received</h5>
+    <p class="body-sm" style="color:var(--fg-secondary);margin:0">Reference <span class="data">BE-2026-0417</span>. We will respond by Tuesday, 11 August. <span style="display:block;margin-top:6px">Success state — replaces the form in place, never a redirect.</span></p>
+  </div>
+</div>
+</div></div>
+<table class="spec">
+<tr><td style="width:150px">Field set</td><td>Name, company, email, mobile, service, district, brief. Consent checkbox. <b>Seven fields maximum.</b> Every field beyond seven must justify itself against the drop in completions.</td></tr>
+<tr><td>Layout</td><td>Two-column pairs on desktop for short fields, full width for the textarea. Single column below 768px. Form 7 columns, contact sidebar 4 columns.</td></tr>
+<tr><td>The phone number beside the button</td><td>Deliberate. This buyer often prefers to call. Removing the phone number to force form submissions costs conversions in this segment.</td></tr>
+<tr><td>Submission</td><td>Button enters loading (width locked), <code>aria-busy="true"</code>, then the form is <b>replaced in place</b> by the success state with a reference number and a committed response date. Never redirect to a "thank you" page — the user loses their context and the reference number.</td></tr>
+<tr><td>Error summary</td><td>On failed submit, an error summary block appears above the form listing each failure as a link to the field, and receives focus. WCAG 3.3.1 / 3.3.3.</td></tr>
+<tr><td>Spam</td><td>Honeypot field + time-to-submit heuristic + Cloudflare Turnstile. <b>No visible CAPTCHA</b> — a reCAPTCHA grid on a consultancy enquiry form is an insult to a senior buyer and measurably reduces completion.</td></tr>
+<tr><td>Consent</td><td>Unticked by default, explicit, linked to the privacy policy. Required under India's DPDP Act 2023 and expected by any European or institutional counterparty.</td></tr>
+<tr><td>Confirmation</td><td>Auto-acknowledgement email within 60 seconds restating the submitted brief and the reference number. Silence after submission is the most common conversion leak on B2B sites.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 23 ==================== -->
+<section class="doc-sec" id="s23">
+<h2><span class="num">23 / COMPONENTS</span>Loading, Empty &amp; Error States</h2>
+<p class="lede">A mostly-static marketing site still has loading states: route transitions, filtered project grids, map data, form submission. Designing them prevents the layout-shift jank that reads as amateur.</p>
+<div class="demo"><div class="grid3">
+<div class="card">
+  <div class="sk" style="height:120px;margin-bottom:16px;border-radius:4px"></div>
+  <div class="sk" style="width:40%;margin-bottom:10px"></div>
+  <div class="sk" style="width:85%;margin-bottom:8px"></div>
+  <div class="sk" style="width:60%"></div>
+</div>
+<div class="card" style="display:flex;flex-direction:column;gap:14px;justify-content:center;align-items:center">
+  <div class="spinner"></div><span class="caption">Inline spinner — 20px, brand top arc</span>
+  <div class="progress" style="width:100%"><i></i></div><span class="caption">Route progress — 2px, top of viewport</span>
+</div>
+<div class="empty">
+  <div style="font-size:28px;margin-bottom:10px" aria-hidden="true">◌</div>
+  <div style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--fg-primary)">No projects in this district yet</div>
+  <p class="caption" style="margin:6px auto 14px;max-width:30ch">We work across 8 districts. Try another, or tell us where your site is.</p>
+  <button class="btn btn-secondary btn-sm">Clear filters</button>
+</div>
+</div></div>
+<table class="spec">
+<tr><th style="width:150px">State</th><th>Specification</th></tr>
+<tr><td>Skeleton</td><td>Used whenever the final layout is known — project grids, district lists, table rows. Skeleton geometry must match the real content's geometry exactly, or the swap causes visible shift. Shimmer 1.4s, neutral-100 → 200. Container carries <code>aria-busy="true"</code>; individual bars are <code>aria-hidden</code>.</td></tr>
+<tr><td>Spinner</td><td>Only where the result shape is unknown or the wait is under ~400ms. 20px inline, 16px in buttons. Never a full-page spinner overlay.</td></tr>
+<tr><td>Progress bar</td><td>2px indeterminate bar pinned to the top of the viewport for route transitions. Appears only after a 200ms delay — flashing a loader for a 60ms transition is worse than showing nothing.</td></tr>
+<tr><td>Button loading</td><td>Width locked to pre-click width, label transparent, 16px spinner centred, pointer events off, <code>aria-busy="true"</code> plus a polite live-region announcement.</td></tr>
+<tr><td>Image loading</td><td>LQIP blur-up with the aspect ratio reserved via <code>aspect-ratio</code>. Cumulative Layout Shift target &lt; 0.02.</td></tr>
+<tr><td>Empty state</td><td>Icon (48px, muted) + what happened + why + one recovery action. Never a bare "No results." Dashed border distinguishes it from a content card.</td></tr>
+<tr><td>Error state</td><td>Same anatomy, danger-toned icon, plain-language cause, a retry action, and a fallback route ("or call us directly"). Never surface a status code to a visitor.</td></tr>
+<tr><td>Announcements</td><td>All async state changes announced through a single persistent <code>aria-live="polite"</code> region. Errors use <code>role="alert"</code>.</td></tr>
+</table>
+</section>
+<!-- ==================== 24 ==================== -->
+<section class="doc-sec" id="s24">
+<h2><span class="num">24 / RULES</span>Responsive Behaviour</h2>
+<p class="lede">Mobile-first authoring, desktop-first design intent. Roughly 55–65% of Indian B2B traffic is mobile — but the decision-maker who forwards the site to a committee is on a 1440px corporate laptop. Both must be first-class.</p>
+<table class="spec">
+<tr><th style="width:120px">Token</th><th style="width:110px">Min width</th><th style="width:150px">Device</th><th>Design intent</th></tr>
+<tr><td>base</td><td>360px</td><td>Small Android</td><td>Single column, 20px margins, all interactions tap-first. This is the true floor — design to 360, not 375.</td></tr>
+<tr><td>sm</td><td>640px</td><td>Large phone / small tablet</td><td>2-column card grids appear. Statistics go 2×2.</td></tr>
+<tr><td>md</td><td>768px</td><td>Tablet portrait</td><td>Utility bar returns. Tables begin to fit. Forms go two-up.</td></tr>
+<tr><td>lg</td><td>1024px</td><td>Tablet landscape / small laptop</td><td>Desktop navigation replaces the drawer. 12-column grid. 3-column card grids.</td></tr>
+<tr><td>xl</td><td>1280px</td><td>Laptop</td><td>Container locks at 1200px. Full section padding (112px).</td></tr>
+<tr><td>2xl</td><td>1536px</td><td>Desktop / external monitor</td><td>Shell caps at 1440px for full-bleed media. Content does <b>not</b> grow further.</td></tr>
+</table>
+<h4 class="sub">Per-component behaviour</h4>
+<table class="spec">
+<tr><th style="width:150px">Component</th><th style="width:210px">&lt;640px</th><th style="width:210px">640–1023px</th><th>≥1024px</th></tr>
+<tr><td>Header</td><td>Logo + hamburger. Utility bar hidden.</td><td>Logo + hamburger + CTA. Utility bar visible ≥768px.</td><td>Full nav + mega menu + CTA. Sticky compress at 80px scroll.</td></tr>
+<tr><td>Hero</td><td>Stacked. Image below copy, 16:9. D1 clamps to 40px. Buttons full-width stacked.</td><td>Stacked, image 21:9. Buttons inline.</td><td>6/1/5 split, D1 up to 64px, stat row on hairline.</td></tr>
+<tr><td>Service cards</td><td>1 column</td><td>2 columns</td><td>3 columns</td></tr>
+<tr><td>Project cards</td><td>1 column</td><td>2 columns</td><td>3 columns; featured spans 8/12</td></tr>
+<tr><td>District cards</td><td>2 columns, map hidden</td><td>3 columns, map hidden</td><td>4 columns + interactive SVG map (5/7 split)</td></tr>
+<tr><td>Statistics</td><td>2×2, borders on all sides</td><td>2×2</td><td>1×4 with vertical hairlines</td></tr>
+<tr><td>Timeline</td><td>Single column, date above title, rail retained</td><td>Single column</td><td>130px date column + content column</td></tr>
+<tr><td>Tables</td><td>≤4 cols → stacked cards. 5+ cols → horizontal scroll, sticky first column.</td><td>Horizontal scroll where needed</td><td>Full table</td></tr>
+<tr><td>Contact form</td><td>Single column, 44px controls, sidebar below form</td><td>Single column, sidebar below</td><td>Form 7 cols / sidebar 4 cols, paired fields</td></tr>
+<tr><td>Footer</td><td>1 column, CTA moved above link lists</td><td>2 columns</td><td>4 columns</td></tr>
+<tr><td>Section padding</td><td>64px</td><td>80px</td><td>112px (hero 160px)</td></tr>
+</table>
+<table class="spec">
+<tr><td style="width:150px">Fluid type</td><td>All display sizes use <code>clamp()</code> against viewport width, so there is no size jump at a breakpoint. Only <em>layout</em> changes at breakpoints, never type size.</td></tr>
+<tr><td>Touch vs pointer</td><td>Hover effects are gated behind <code>@media (hover:hover)</code>. On touch devices a hover style that sticks after tap looks broken.</td></tr>
+<tr><td>Orientation</td><td>Landscape phones (&lt;500px height): sticky header compresses to 52px and the mobile drawer becomes scrollable rather than centred.</td></tr>
+<tr><td>Zoom</td><td>Layout must remain functional at 200% browser zoom and at 320px effective width (WCAG 1.4.10 reflow). No horizontal scrolling of the page body at any zoom level.</td></tr>
+<tr><td>Testing matrix</td><td>360×640 · 390×844 · 768×1024 · 1024×768 · 1280×800 · 1440×900 · 1920×1080. Plus 200% zoom at 1280 and Chrome/Safari/Firefox/Edge current + one prior version.</td></tr>
+</table>
+</section>
+
+<!-- ==================== 25 ==================== -->
+<section class="doc-sec" id="s25">
+<h2><span class="num">25 / RULES</span>Accessibility</h2>
+<p class="lede">Target: <b>WCAG 2.2 Level AA</b>, with AAA contrast wherever the palette allows for free. This is a commercial requirement — institutional and international counterparties increasingly include accessibility in vendor onboarding.</p>
+<h4 class="sub">Contrast — verified values</h4>
+<table class="spec">
+<tr><th style="width:250px">Pair</th><th style="width:90px">Light</th><th style="width:90px">Dark</th><th>Verdict</th></tr>
+<tr><td>Body text on canvas</td><td>17.44:1</td><td>17.88:1</td><td><span class="pass">AAA</span></td></tr>
+<tr><td>Secondary text on canvas</td><td>9.92:1</td><td>11.21:1</td><td><span class="pass">AAA</span></td></tr>
+<tr><td>Muted text on canvas</td><td>6.94:1</td><td>7.28:1</td><td><span class="pass">AAA</span></td></tr>
+<tr><td>Brand link on canvas</td><td>10.36:1</td><td>8.85:1</td><td><span class="pass">AAA</span></td></tr>
+<tr><td>Accent (gold) text on canvas</td><td>5.02:1</td><td>11.65:1</td><td><span class="pass">AA</span> / AAA</td></tr>
+<tr><td>White on primary button</td><td>13.03:1</td><td>5.65:1</td><td><span class="pass">AAA</span> / AA</td></tr>
+<tr><td>Control border on canvas</td><td>3.62:1</td><td>4.28:1</td><td><span class="pass">Passes 1.4.11</span></td></tr>
+<tr><td>Focus ring on canvas</td><td>5.35:1</td><td>9.29:1</td><td><span class="pass">Passes 1.4.11</span></td></tr>
+<tr><td>Footer link on forest-900</td><td>≈9.3:1</td><td>≈9.9:1</td><td><span class="pass">AAA</span></td></tr>
+<tr><td>Gold-500 text on white</td><td>2.62:1</td><td>—</td><td><span class="fail">FAIL — banned</span></td></tr>
+<tr><td>Gold-600 text on white</td><td>3.67:1</td><td>—</td><td><span class="fail">FAIL for body — large text only</span></td></tr>
+<tr><td>Disabled text on disabled fill</td><td>2.25:1</td><td>—</td><td>Permitted (1.4.3 exempts disabled controls)</td></tr>
+</table>
+<h4 class="sub">Requirements by category</h4>
+<table class="spec">
+<tr><th style="width:150px">Area</th><th>Requirement</th></tr>
+<tr><td>Perceivable</td><td>Text ≥4.5:1 (≥3:1 for 18.66px+ bold or 24px+). Never below 12px. Colour never the sole carrier of meaning — status badges pair colour with a word, form errors pair colour with a glyph and text, the active nav item pairs an underline with a weight change. Text can be resized to 200% without loss of content.</td></tr>
+<tr><td>Non-text contrast</td><td>SC 1.4.11 — all input borders, checkbox borders, focus indicators, icon buttons and chart elements at ≥3:1. This is the criterion most Tailwind builds fail by default.</td></tr>
+<tr><td>Images</td><td>Meaningful images get descriptive alt text ("Solar array under construction, Pavagada, Tumakuru district"). Decorative images get <code>alt=""</code>. The Karnataka map has an accessible text equivalent — the district grid <em>is</em> that equivalent.</td></tr>
+<tr><td>Keyboard</td><td>Every interactive element reachable and operable by keyboard, in DOM order. No traps except intentional modal focus traps with a documented escape. Skip link first. Visible focus on everything (SC 2.4.7, 2.4.11 focus-not-obscured).</td></tr>
+<tr><td>Targets</td><td>44×44 CSS px minimum, 8px minimum spacing. WCAG 2.2 SC 2.5.8 requires 24×24 — we exceed it deliberately.</td></tr>
+<tr><td>Motion</td><td><code>prefers-reduced-motion</code> honoured globally. No content depends on animation to become visible. Nothing flashes more than 3× per second (SC 2.3.1).</td></tr>
+<tr><td>Forms</td><td>Programmatic <code>&lt;label for&gt;</code> on every control. <code>aria-describedby</code> for hints and errors. <code>aria-invalid</code> on failures. Error summary receives focus on failed submit. Correct <code>autocomplete</code> tokens (SC 1.3.5). No cognitive tests — no CAPTCHA puzzle, no re-typing an email (SC 3.3.7 redundant entry, 3.3.8 accessible authentication).</td></tr>
+<tr><td>Structure</td><td>One H1 per page, no skipped levels. Landmarks: <code>header</code>, <code>nav</code>, <code>main</code>, <code>aside</code>, <code>footer</code>. Multiple navs disambiguated with <code>aria-label</code>. Lists marked up as lists.</td></tr>
+<tr><td>Language</td><td><code>lang="en-IN"</code>. Any Kannada content wrapped with <code>lang="kn"</code> so screen readers switch pronunciation.</td></tr>
+<tr><td>Dynamic content</td><td>One persistent <code>aria-live="polite"</code> region for status; <code>role="alert"</code> for errors. Route changes announce the new page title and move focus to the H1.</td></tr>
+<tr><td>Dark mode</td><td>Respects <code>prefers-color-scheme</code> on first visit, with a manual override persisted. The toggle is a labelled control, not an unlabelled icon.</td></tr>
+<tr><td>Testing</td><td>axe-core in CI as a build gate · manual keyboard pass on every template · NVDA (Windows) and VoiceOver (macOS/iOS) on the header, contact form, accordion and project grid · 200% zoom pass · greyscale pass to verify no colour-only signalling.</td></tr>
+</table>
+<div class="why"><b>The two failures this system is specifically engineered against.</b> (1) <em>Low-contrast borders</em> — the shadcn/Tailwind default palette puts input borders at ~1.3:1, which fails SC 1.4.11 on every form. Hence the dedicated <code>--border-control</code> token. (2) <em>Gold text</em> — the brand's own accent colour fails contrast on white, and the natural instinct will be to use it for headings and links. Hence the explicit ban and the gold-700 substitute.</div>
+</section>
+
+<!-- ==================== 26 ==================== -->
+<section class="doc-sec" id="s26">
+<h2><span class="num">26 / GOVERNANCE</span>Implementation &amp; Governance</h2>
+<h4 class="sub">Token architecture</h4>
+<p>Three layers, strictly enforced. <b>Primitives</b> (<code>--forest-800</code>) → <b>semantic</b> (<code>--bg-brand</code>) → <b>component</b> (<code>--btn-primary-bg</code>, optional). Components must never reference a primitive directly. Any pull request that hard-codes a hex value or references a primitive from a component is rejected. This single rule is what makes the dark theme a 40-line change and what will make a future rebrand survivable.</p>
+<table class="spec">
+<tr><td style="width:170px">Tailwind config</td><td>Extend <code>theme.colors</code> with the semantic names only — do not expose primitives to utility classes, or developers will use <code>bg-forest-800</code> and the theming layer dies. Map to CSS variables so dark mode is a class swap, not a variant explosion.</td></tr>
+<tr><td>shadcn/ui</td><td>Adopt Button, Input, Select, Checkbox, RadioGroup, Accordion, Dialog, Sheet, Tabs, Table, Badge, Form. Override the default border tokens immediately (see §25). Do <b>not</b> adopt its default radius scale — set <code>--radius: 3px</code>.</td></tr>
+<tr><td>Framer Motion</td><td>Centralise variants in one <code>motion.ts</code> module exporting <code>fadeUp</code>, <code>stagger</code>, <code>drawRail</code>, <code>countUp</code>. Every animation on the site imports from it. Ad-hoc inline animation values are how motion systems rot.</td></tr>
+<tr><td>Fonts</td><td>Self-host via <code>next/font/google</code>, subset to <code>latin</code>, preload the display face only. No runtime request to fonts.googleapis.com — corporate proxies block it and the site loses its typography for exactly the audience it is built for.</td></tr>
+</table>
+<h4 class="sub">Performance budget</h4>
+<table class="spec">
+<tr><td style="width:170px">LCP</td><td>&lt; 2.0s on 4G. Hero image preloaded, AVIF, ≤180KB.</td></tr>
+<tr><td>CLS</td><td>&lt; 0.02. All media has explicit aspect ratios; fonts are metric-matched.</td></tr>
+<tr><td>INP</td><td>&lt; 200ms.</td></tr>
+<tr><td>JS</td><td>≤ 120KB gzipped on the home route. Framer Motion imported per-component, never globally.</td></tr>
+<tr><td>Lighthouse</td><td>≥95 across Performance, Accessibility, Best Practices, SEO — as a CI gate, not an aspiration.</td></tr>
+</table>
+<h4 class="sub">SEO foundations tied to the design system</h4>
+<table class="spec">
+<tr><td style="width:170px">Structured data</td><td><code>Organization</code> + <code>LocalBusiness</code> (site-wide) · <code>Service</code> (each capability page) · <code>FAQPage</code> (accordion) · <code>BreadcrumbList</code> · <code>Person</code> (promoter). The design system's components map 1:1 to these schemas — that is not a coincidence, it is the reason the FAQ and timeline are components rather than prose.</td></tr>
+<tr><td>Heading discipline</td><td>The §03 scale enforces a single H1 and no skipped levels, which is simultaneously an accessibility and a crawl requirement.</td></tr>
+<tr><td>Local intent</td><td>District cards create genuinely useful district-level landing pages ("Land aggregation in Tumakuru"). This is the highest-ROI organic play available to a single-state firm.</td></tr>
+<tr><td>Content in DOM</td><td>Accordion answers, table content and tab panels must be server-rendered and present in the HTML, not fetched on interaction.</td></tr>
+</table>
+<h4 class="sub">Definition of done — component checklist</h4>
+<table class="spec">
+<tr><td style="width:44px">1</td><td>All variants and sizes implemented against tokens; zero hard-coded colour values</td></tr>
+<tr><td>2</td><td>Seven states covered: default, hover, active, focus-visible, disabled, loading, error (where applicable)</td></tr>
+<tr><td>3</td><td>Verified at 360 / 768 / 1024 / 1440 and at 200% zoom</td></tr>
+<tr><td>4</td><td>Light and dark theme both visually checked</td></tr>
+<tr><td>5</td><td>Full keyboard pass; visible focus; correct ARIA</td></tr>
+<tr><td>6</td><td>axe-core clean</td></tr>
+<tr><td>7</td><td>Reduced-motion variant verified</td></tr>
+<tr><td>8</td><td>Greyscale pass — no meaning lost</td></tr>
+<tr><td>9</td><td>Real content tested, including the longest plausible string and an empty state</td></tr>
+</table>
+<h4 class="sub">Open items requiring your decision</h4>
+<table class="spec">
+<tr><td style="width:44px">1</td><td><b>Wordmark re-cut</b> (§01) — blocking for header, favicon and any print collateral. Highest-priority item in the whole project.</td></tr>
+<tr><td>2</td><td><b>Real project data</b> — the figures in §13 and §15 are placeholders. The entire strategy fails without verified numbers. Nothing on this site should ship with invented statistics.</td></tr>
+<tr><td>3</td><td><b>Photography</b> — commission a one-day site shoot, or commit to the contour-graphic fallback. Decide before build, not after.</td></tr>
+<tr><td>4</td><td><b>Client name disclosure</b> — which engagements can be named, and which must be anonymised to "Confidential IPP."</td></tr>
+<tr><td>5</td><td><b>Kannada version</b> — likely valuable for landowner-facing pages, irrelevant for developer-facing pages. If yes, it affects the type stack (Noto Sans Kannada) and must be decided now.</td></tr>
+</table>
+</section>
+</main>
+</div>
+<script>
+function tog(btn,id){
+  var open = btn.getAttribute('aria-expanded')==='true';
+  btn.setAttribute('aria-expanded', String(!open));
+  document.getElementById(id).setAttribute('data-open', String(!open));
+}
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('tL').setAttribute('aria-pressed',t==='light');
+  document.getElementById('tD').setAttribute('aria-pressed',t==='dark');
+}
+</script>
+</body>
+</html>
