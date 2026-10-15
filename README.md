@@ -1,6 +1,6 @@
 # Bolamudi
 
-Website for Bolamudi Enterprise (bolamudi.com).
+Website for Bolamudi Energy (bolamudi.com).
 
 | Folder | What's in it |
 |---|---|

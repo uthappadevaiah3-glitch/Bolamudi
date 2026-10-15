@@ -1,4 +1,4 @@
-/* Bolamudi Enterprise: component styles (design system per homepage spec §2).
+/* Bolamudi Energy: component styles (design system per homepage spec §2).
    Colours, fonts and widths come only from tokens.css; the build rejects raw colours here. */
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}

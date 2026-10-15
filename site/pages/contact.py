@@ -9,7 +9,7 @@ next_steps = [
 ]
 
 questions = [
-    ('What exactly does Bolamudi Enterprise do?','Pre-construction development support for utility-scale renewable projects in Karnataka: land aggregation, statutory approvals, government liaison, evacuation coordination and transmission right of way &mdash; from site screening to construction-ready handover.'),
+    ('What exactly does Bolamudi Energy do?','Pre-construction development support for utility-scale renewable projects in Karnataka: land aggregation, statutory approvals, government liaison, evacuation coordination and transmission right of way &mdash; from site screening to construction-ready handover.'),
     ('Do you work outside Karnataka?', 'No. Land procedure, revenue practice and local body process are state-specific, and our value is district-level depth in one state.'),
     ('How early should we involve you in a project?', 'At site screening, before commercial commitment. The most expensive land and approval errors are made before a specialist is in the room.'),
     ('Can you help with land that is already partly aggregated?', 'Yes. We audit what is held &mdash; title, contiguity, statutory position &mdash; and take over the remainder with a sequencing plan that protects what you have already invested.'),

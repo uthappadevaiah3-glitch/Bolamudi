@@ -4,7 +4,7 @@ Change a value here, run `python site/build.py`, and every page that uses it upd
 """
 from datetime import date
 
-COMPANY = 'Bolamudi Enterprise'
+COMPANY = 'Bolamudi Energy'
 DOMAIN = 'bolamudi.com'
 PHONE = '+91 91138 23687'            # shown as written; the tap-to-call link is derived from it
 EMAIL = 'bolamudienergyinfra@gmail.com'

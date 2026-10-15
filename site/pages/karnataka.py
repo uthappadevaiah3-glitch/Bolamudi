@@ -17,7 +17,7 @@ tiers = [
 
 body = ui.page_head(
     'Karnataka', 'We know this ground.',
-    'Bolamudi Enterprise develops the land, approvals and right of way that utility-scale renewable projects in Karnataka stand on. This is a district-by-district account of how that actually works here &mdash; what the land looks like, where the approvals slow down, and what stops projects.',
+    'Bolamudi Energy develops the land, approvals and right of way that utility-scale renewable projects in Karnataka stand on. This is a district-by-district account of how that actually works here &mdash; what the land looks like, where the approvals slow down, and what stops projects.',
     'wind-farmland.jpg',
     actions=ui.btns(ui.btn('Explore the coverage', '#coverage', 'onwhite'), ui.btn('Request a district briefing', 'contact.html', 'ghost'))) + f'''
 <section class="tight surf">

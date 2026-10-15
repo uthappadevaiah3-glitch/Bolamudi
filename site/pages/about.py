@@ -89,8 +89,8 @@ engagements = [
 ]
 
 body = ui.page_head(
-    'About Bolamudi Enterprise', "Two decades inside Karnataka's renewable energy development machinery.",
-    'Bolamudi Enterprise is a project development support firm. We handle the land, statutory and liaison work that decides whether a sanctioned renewable project reaches construction &mdash; and when.',
+    'About Bolamudi Energy', "Two decades inside Karnataka's renewable energy development machinery.",
+    'Bolamudi Energy is a project development support firm. We handle the land, statutory and liaison work that decides whether a sanctioned renewable project reaches construction &mdash; and when.',
     'wind-ridge.jpg') + f'''
 <section class="tight">
   <div class="wrap">

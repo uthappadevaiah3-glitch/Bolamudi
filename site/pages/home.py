@@ -67,7 +67,7 @@ body = f'''
   <div class="wrap">
     <p class="eyebrow">Karnataka · Renewable Energy Project Development</p>
     <h1>Land and approvals, resolved before they become the critical path.</h1>
-    <p class="lead">Bolamudi Enterprise secures land, statutory clearances and transmission right of way for utility-scale solar, wind, hybrid and pumped storage projects across Karnataka — led by two decades of on-ground execution.</p>
+    <p class="lead">Bolamudi Energy secures land, statutory clearances and transmission right of way for utility-scale solar, wind, hybrid and pumped storage projects across Karnataka — led by two decades of on-ground execution.</p>
     {ui.btns(ui.btn('Request a consultation', 'contact.html'), ui.btn('How we work', '#approach', 'ghost'))}
     <p class="micro-strip">LAND AGGREGATION · GOVERNMENT LIAISON · STATUTORY APPROVALS · TRANSMISSION ROW</p>
   </div>
@@ -190,7 +190,7 @@ body = f'''
       <h2>Two decades of Karnataka execution</h2>
       <h3 class="mt-20">Founder &amp; Managing Partner</h3>
       <p class="muted mt-14">The practice is built on twenty years spent inside the execution of utility-scale renewable projects with one of India's largest renewable energy developers — across land, liaison, statutory approvals and transmission right of way, at district level, throughout Karnataka.</p>
-      <p class="muted mt-12">Bolamudi Enterprise was founded to offer that execution capability directly to developers, IPPs and investors who carry schedule risk in this state.</p>
+      <p class="muted mt-12">Bolamudi Energy was founded to offer that execution capability directly to developers, IPPs and investors who carry schedule risk in this state.</p>
       <hr class="gold-rule">
       <div class="grid2 facts">
         {''.join(f'<div><p class="eyebrow">{k}</p><p class="muted fs-15">{v}</p></div>' for k, v in facts)}
@@ -242,5 +242,5 @@ body = f'''
 
 PAGES = {'index.html': ui.page(
     f'{cfg.COMPANY} — Land, Approvals &amp; Right of Way for Renewable Projects in Karnataka',
-    'Bolamudi Enterprise secures land, statutory clearances and transmission right of way for utility-scale solar, wind, hybrid and pumped storage projects across Karnataka.',
+    'Bolamudi Energy secures land, statutory clearances and transmission right of way for utility-scale solar, wind, hybrid and pumped storage projects across Karnataka.',
     body, nav='index.html')}
