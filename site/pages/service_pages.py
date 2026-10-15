@@ -93,6 +93,7 @@ PAGES |= service_page(
      ('Owner engagement &amp; rate discovery', 'Village-level engagement, guidance value versus prevailing market benchmarking, consent mapping, early identification of hold-out risk inside the array boundary.'),
      ('Agreement execution', 'Registered Agreement to Sale or lease deed, power of attorney where appropriate, advance schedule tied to documentary milestones.'),
      ('Statutory pathway', 'Section 109 permission where the acquirer is a company &mdash; threshold raised to four hectares under the 2025 amendment; conversion via the Deputy Commissioner or the automatic conversion route available to renewable energy projects under the 2025 Land Revenue Rules.'),
+     ('Compensatory afforestation land', 'Where the project diverts forest land, the developer must provide an equal extent of non-forest land for compensatory afforestation, handed to the Forest Department free of encumbrances and notified as protected forest before final forest approval. We identify suitable blocks &mdash; ten hectares or more, ideally twenty-five or more to avoid the small-block surcharge &mdash; verify title, aggregate them and complete transfer and mutation to the Forest Department, on the same register as the project land.'),
      ('Registration &amp; mutation', 'Sub-registrar execution, khata transfer, mutation into the SPV&rsquo;s name, updated RTC reflecting the project entity.'),
      ('Handover', 'Consolidated land dossier issued to developer and lender in audit format.')],
     [ui.panel(f'Spatial {ui.chip("SHP / KML / PDF")}', [
@@ -106,6 +107,7 @@ PAGES |= service_page(
         'Registered Agreements to Sale / lease deeds', 'Section 109 permission order',
         'Conversion order or deemed-conversion acknowledgement',
         'Registered sale deeds, khata certificates and mutated RTCs in the SPV&rsquo;s name',
+        'Compensatory afforestation land schedule, title pack and transfer to the Forest Department, where forest land is diverted',
         'Land Due Diligence Handover File'], cls='span-all')],
     'Send us your polygon or your capacity target.',
     'We&rsquo;ll return a land feasibility read &mdash; village coverage, likely title complexity, indicative rate band and aggregation risk &mdash; within 10 working days.')

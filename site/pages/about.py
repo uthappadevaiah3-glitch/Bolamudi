@@ -30,7 +30,7 @@ domain = [
         'Incentive and reimbursement claims under the Karnataka Renewable Energy Policy 2022&ndash;27',
         'District administration and Deputy Commissioner office liaison',
         'Single-window and Udyog Mitra coordination where applicable',
-        'Forest, environmental and wildlife clearance interfaces where the site demands it',
+        'Forest, environmental and wildlife clearance interfaces, including compensatory afforestation land, where the site demands it',
         'Panchayat, local body and NOC coordination']),
     ('Evacuation &amp; grid connectivity', 'A project without a confirmed bay is a project without a date.', [
         'Evacuation scheme application and approval through KPTCL',
