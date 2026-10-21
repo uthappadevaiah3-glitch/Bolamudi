@@ -45,7 +45,7 @@ body = ui.page_head(
     <div class="prose">
       <p><strong>Resource profile.</strong> Strong direct normal irradiance across the northern taluks with a workable wind regime on the higher ground; among the districts the state has identified for ultra-mega solar development.</p>
       <p><strong>Land character.</strong> Fragmented dryland holdings with active joint-family shares; workable contiguous blocks are achievable but demand disciplined parcel sequencing and early hold-out identification.</p>
-      <p><strong>Approvals character.</strong> Conversion and Section 109 dominate the early file; the queue forms at the district revenue offices, and sequencing against KREDL registration decides the quarter.</p>
+      <p><strong>Approvals character.</strong> Land-use conversion dominates the early file; the queue forms at the district revenue offices, and sequencing against KREDL registration decides the quarter.</p>
       <p><strong>Evacuation character.</strong> Grid context is favourable near the ultra-mega park corridors, but bay availability must be confirmed before land commitment, not after.</p>
       {ui.btns(ui.btn('Request a briefing on Koppal', 'contact.html'))}
     </div>

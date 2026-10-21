@@ -20,7 +20,6 @@ domain = [
         'RTC, mutation register and encumbrance chain verification',
         'Joint measurement and boundary reconciliation with survey authorities',
         'Structuring for purchase, long-lease and hybrid tenure',
-        'Section 109 exemption route under the Karnataka Land Reforms Act, 1961',
         'Ceiling-limit and non-agriculturist acquisition constraints',
         'Seven-year transfer restriction and its effect on downstream project sale',
         'Gomala, government and inam land classification and grant pathways']),
@@ -50,7 +49,7 @@ LED, SUPPORTED = '&#9679; Led', '&#9675; Supported'
 lifecycle = [
     ('Site identification', 'Terrain, resource, access and evacuation proximity screening', SUPPORTED),
     ('Land aggregation', 'Title verification, owner negotiation, consolidation', LED),
-    ('Land use &amp; exemption', 'Conversion position, Section 109 exemption, tenure structuring', LED),
+    ('Land use &amp; exemption', 'Conversion position, deemed-conversion route, tenure structuring', LED),
     ('Statutory approvals', 'KREDL, SLAC, district administration, sectoral clearances', LED),
     ('Evacuation &amp; connectivity', 'KPTCL scheme approval, bay allocation, ESCOM interface', LED),
     ('Transmission right of way', 'Corridor consent, compensation, objection resolution', LED),

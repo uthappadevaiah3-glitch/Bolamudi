@@ -24,7 +24,7 @@ cards = [
 ]
 
 approvals = [
-    ('District &amp; revenue', ['Land conversion (<abbr title="Non-Agricultural">NA</abbr>)', 'Section 109 exemption', 'Tenancy and land-ceiling checks', 'Mutation and khata transfer', 'Village panchayat NOC', 'Revenue survey and sketch']),
+    ('District &amp; revenue', ['Land conversion (<abbr title="Non-Agricultural">NA</abbr>)', 'Tenancy and land-ceiling checks', 'Mutation and khata transfer', 'Village panchayat NOC', 'Revenue survey and sketch']),
     ('State &amp; regulatory', ['<abbr title="Karnataka Renewable Energy Development Ltd">KREDL</abbr> registration', '<abbr title="Karnataka Electricity Regulatory Commission">KERC</abbr> approvals', 'Pollution control board <abbr title="Consent for Establishment">CFE</abbr>/<abbr title="Consent for Operation">CFO</abbr>', 'Fire and factories NOC', 'Forest and wildlife referrals', 'Groundwater clearance']),
     ('Utility &amp; transmission', ['<abbr title="Karnataka Power Transmission Corporation Ltd">KPTCL</abbr>/<abbr title="Central Transmission Utility">CTU</abbr> connectivity', 'Evacuation approval', 'Bay allotment', 'Right of way approvals', 'Crossing permissions', 'Charging and commissioning clearance']),
 ]
